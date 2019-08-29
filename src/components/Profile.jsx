@@ -1,6 +1,8 @@
 import React from 'react';
 import { graphql, useStaticQuery } from 'gatsby';
 
+import Avatar from './Avatar';
+
 const Profile = () => {
   const data = useStaticQuery(graphql`
     query SiteMetadata {
@@ -18,7 +20,12 @@ const Profile = () => {
     }
   } = data;
 
-  return <h1>{title}</h1>;
+  return (
+    <>
+      <Avatar />
+      <h1>{title}</h1>
+    </>
+  );
 };
 
 export default Profile;
