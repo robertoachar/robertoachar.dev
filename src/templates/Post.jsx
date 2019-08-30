@@ -3,6 +3,7 @@ import { graphql } from 'gatsby';
 
 import Layout from '../components/Layout';
 import SEO from '../components/SEO';
+import * as POST from '../components/Post';
 
 const Post = ({ data }) => {
   const post = data.markdownRemark;
@@ -10,8 +11,18 @@ const Post = ({ data }) => {
   return (
     <Layout>
       <SEO title={post.frontmatter.title} />
-      <h2>{post.frontmatter.title}</h2>
-      <div dangerouslySetInnerHTML={{ __html: post.html }}></div>
+      <POST.PostHeader>
+        <POST.PostDate>
+          {post.frontmatter.date} - {post.timeToRead} min de leitura
+        </POST.PostDate>
+        <POST.PostTitle>{post.frontmatter.title}</POST.PostTitle>
+        <POST.PostDescription>
+          {post.frontmatter.description}
+        </POST.PostDescription>
+      </POST.PostHeader>
+      <POST.MainContent>
+        <div dangerouslySetInnerHTML={{ __html: post.html }}></div>
+      </POST.MainContent>
     </Layout>
   );
 };
@@ -21,8 +32,11 @@ export const query = graphql`
     markdownRemark(fields: { slug: { eq: $slug } }) {
       frontmatter {
         title
+        description
+        date(formatString: "DD [de] MMMM [de] YYYY", locale: "pt-BR")
       }
       html
+      timeToRead
     }
   }
 `;
