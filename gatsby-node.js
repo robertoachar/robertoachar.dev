@@ -40,18 +40,37 @@ exports.createPages = ({ actions, graphql }) => {
               slug
             }
           }
+          next {
+            fields {
+              slug
+            }
+            frontmatter {
+              title
+            }
+          }
+          previous {
+            fields {
+              slug
+            }
+            frontmatter {
+              title
+            }
+          }
         }
       }
     }
   `).then((result) => {
     const posts = result.data.allMarkdownRemark.edges;
 
-    posts.forEach(({ node }) => {
+    posts.forEach(({ node, previous, next }) => {
       createPage({
         path: node.fields.slug,
         component: path.resolve('./src/templates/Post.jsx'),
         context: {
-          slug: node.fields.slug
+          slug: node.fields.slug,
+          // ORDER: DESC
+          previousPost: next,
+          nextPost: previous
         }
       });
     });

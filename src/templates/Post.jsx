@@ -4,9 +4,11 @@ import { graphql } from 'gatsby';
 import Layout from '../components/Layout';
 import SEO from '../components/SEO';
 import * as POST from '../components/Post';
+import OtherPosts from '../components/OtherPosts';
 
-const Post = ({ data }) => {
+const Post = ({ data, pageContext }) => {
   const post = data.markdownRemark;
+  const { previousPost, nextPost } = pageContext;
 
   return (
     <Layout>
@@ -23,6 +25,7 @@ const Post = ({ data }) => {
       <POST.MainContent>
         <div dangerouslySetInnerHTML={{ __html: post.html }}></div>
       </POST.MainContent>
+      <OtherPosts previous={previousPost} next={nextPost} />
     </Layout>
   );
 };
