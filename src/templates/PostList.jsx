@@ -2,12 +2,17 @@ import React from 'react';
 import { graphql } from 'gatsby';
 
 import Layout from '../components/Layout';
+import SEO from '../components/SEO';
+import Posts from '../components/Posts';
 
 const PostList = ({ data }) => {
+  const posts = data.allMarkdownRemark.edges;
+
   return (
     <Layout>
+      <SEO title="Blog" />
       <h1>Post List</h1>
-      <pre>{JSON.stringify(data, null, 2)}</pre>
+      <Posts posts={posts} />
     </Layout>
   );
 };
