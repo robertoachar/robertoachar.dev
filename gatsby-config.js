@@ -7,6 +7,14 @@ module.exports = {
   plugins: [
     'gatsby-plugin-react-helmet',
     'gatsby-plugin-styled-components',
+    // needs to be first (gatsby-remark-images)
+    {
+      resolve: 'gatsby-source-filesystem',
+      options: {
+        name: 'uploads',
+        path: `${__dirname}/images`
+      }
+    },
     {
       resolve: 'gatsby-source-filesystem',
       options: {
@@ -33,7 +41,22 @@ module.exports = {
         // GitHub Flavored Markdown mode (default: true)
         gfm: true,
         // Plugins configs
-        plugins: []
+        plugins: [
+          {
+            resolve: 'gatsby-remark-relative-images',
+            options: {
+              name: 'uploads'
+            }
+          },
+          {
+            resolve: 'gatsby-remark-images',
+            options: {
+              maxWidth: 960,
+              linkImagesToOriginal: false
+            }
+          },
+          'gatsby-remark-lazy-load'
+        ]
       }
     },
     'gatsby-transformer-sharp',
