@@ -1,5 +1,6 @@
 import React from 'react';
 import t from 'prop-types';
+import 'normalize.css';
 
 import GlobalStyle from './GlobalStyle';
 import './Icons';
