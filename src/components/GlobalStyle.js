@@ -12,7 +12,7 @@ const GlobalStyle = createGlobalStyle`
   body {
     background-color: #ffffff;
     color: #000000;
-    font-family: sans-serif;
+    font-family: proxima-nova, sans-serif;
     font-size: 16px;
     font-weight: 400;
     text-align: left;
