@@ -15,6 +15,7 @@ const query = `{
         fields {
           slug
         }
+        timeToRead
         excerpt(pruneLength: 5000)
       }
     }

@@ -22,6 +22,7 @@
     "@fortawesome/free-brands-svg-icons": "5.10.2",
     "@fortawesome/free-solid-svg-icons": "5.10.2",
     "@fortawesome/react-fontawesome": "0.1.4",
+    "algoliasearch": "3.34.0",
     "dotenv": "8.1.0",
     "gatsby": "2.14.6",
     "gatsby-image": "2.2.14",
@@ -45,6 +46,7 @@
     "react": "16.9.0",
     "react-dom": "16.9.0",
     "react-helmet": "5.2.1",
+    "react-instantsearch-dom": "5.7.0",
     "styled-components": "4.3.2"
   },
   "devDependencies": {
