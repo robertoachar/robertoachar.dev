@@ -1,0 +1,6 @@
+{
+  "extends": ["airbnb", "airbnb/hooks", "plugin:prettier/recommended"],
+  "env": {
+    "es6": true
+  }
+}
