@@ -1,40 +1,34 @@
 import React from 'react';
 import styled from 'styled-components';
-import { graphql, Link, useStaticQuery } from 'gatsby';
+import { graphql, useStaticQuery } from 'gatsby';
 
+import Heading1 from '../Heading1';
+import Paragraph from '../Paragraph';
+import Hyperlink from '../Hyperlink';
 import Avatar from './Avatar';
 
 const ProfileWrapper = styled.section`
-  color: #8899a6;
+  align-items: center;
   display: flex;
   flex-direction: column;
+  text-align: center;
 `;
 
-const ProfileLink = styled(Link)`
-  color: #8899a6;
-  text-decoration: none;
-  transition: color 0.5s;
-
-  &:hover {
-    color: #1fa1f2;
-  }
+const ProfileAuthor = styled(Heading1)`
+  font-size: 1.5rem;
+  letter-spacing: 0.05rem;
+  margin-top: 1rem;
+  text-transform: uppercase;
 `;
 
-const ProfileAuthor = styled.h1`
-  font-size: 1.6rem;
-  margin: 0.5rem auto 1.5rem;
+const ProfileRole = styled(Paragraph)`
+  color: #bee3f8;
+  margin-top: 0.25rem;
 `;
 
-const ProfilePosition = styled.small`
-  display: block;
-  font-size: 1.2rem;
-  font-weight: 300;
-`;
-
-const ProfileDescription = styled.p`
-  font-size: 1rem;
-  font-weight: 300;
-  line-height: 1.4;
+const ProfileDescription = styled(Paragraph)`
+  color: #cbd5e0;
+  margin-top: 1.5rem;
 `;
 
 const Profile = () => {
@@ -56,13 +50,11 @@ const Profile = () => {
 
   return (
     <ProfileWrapper>
-      <ProfileLink>
+      <Hyperlink>
         <Avatar />
-        <ProfileAuthor>
-          {title}
-          <ProfilePosition>Full Stack Web Developer</ProfilePosition>
-        </ProfileAuthor>
-      </ProfileLink>
+        <ProfileAuthor>{title}</ProfileAuthor>
+        <ProfileRole>Full Stack Web Developer</ProfileRole>
+      </Hyperlink>
       <ProfileDescription>
         Lorem ipsum dolor sit amet consectetur adipisicing elit. Quos, sapiente?
       </ProfileDescription>
