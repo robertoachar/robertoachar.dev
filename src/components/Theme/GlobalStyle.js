@@ -12,12 +12,12 @@ const GlobalStyle = createGlobalStyle`
 
   body.dark {
     --background: ${({ theme }) => theme.colors['blue-grey-800']};
-    --body: ${({ theme }) => theme.colors['blue-grey-200']};
+    --body: ${({ theme }) => theme.colors['blue-grey-100']};
     --sidebar-background: ${({ theme }) => theme.colors['blue-grey-900']};
   }
 
   body.light {
-    --background: ${({ theme }) => theme.colors['blue-grey-200']};
+    --background: ${({ theme }) => theme.colors['blue-grey-100']};
     --body: ${({ theme }) => theme.colors['blue-grey-800']};
     --sidebar-background: ${({ theme }) => theme.colors['blue-grey-900']};
   }
