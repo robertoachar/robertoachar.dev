@@ -2,9 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import { graphql, useStaticQuery } from 'gatsby';
 
-import Heading1 from '../Heading1';
-import Paragraph from '../Paragraph';
-import Hyperlink from '../Hyperlink';
+import { Heading1, Hyperlink, Paragraph } from '../Common';
 import Avatar from './Avatar';
 
 const ProfileWrapper = styled.section`
