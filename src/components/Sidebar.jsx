@@ -8,10 +8,11 @@ import { ThemeSwitcher } from './Theme';
 
 const SidebarWrapper = styled.aside`
   background-color: var(--sidebar-background);
-  border-top: 8px solid #102a43;
+  border-top: 8px solid var(--sidebar-background);
   grid-area: sidebar;
   min-height: 100vh;
   padding: 1.5rem;
+  position: fixed;
   width: 20rem;
 `;
 
