@@ -1,19 +1,20 @@
 import React from 'react';
-import PropTypes from 'prop-types';
+import t from 'prop-types';
 import styled from 'styled-components';
 
 import Root from './Root';
 import Sidebar from './Sidebar';
-import Menubar from './Menubar';
 
 const Container = styled.section`
-  display: flex;
+  display: grid;
+  grid-template-columns: 20rem 1fr;
+  grid-template-areas: 'sidebar main';
 `;
 
 const Main = styled.main`
-  background: #333;
-  min-height: 100vh;
-  padding: 0 3.75rem 0 20rem;
+  border-top: 8px solid var(--sidebar-background);
+  grid-area: main;
+  margin: 0 auto;
   width: 100%;
 `;
 
@@ -23,14 +24,13 @@ const Layout = ({ children }) => {
       <Container>
         <Sidebar />
         <Main>{children}</Main>
-        <Menubar />
       </Container>
     </Root>
   );
 };
 
 Layout.propTypes = {
-  children: PropTypes.node.isRequired
+  children: t.node.isRequired
 };
 
 export default Layout;
