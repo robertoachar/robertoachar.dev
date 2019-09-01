@@ -2,30 +2,26 @@ import React from 'react';
 import styled from 'styled-components';
 import { Link } from 'gatsby';
 
-const MenuWrapper = styled.nav``;
-
-const MenuList = styled.ul`
-  font-size: 1.2rem;
-  font-weight: 300;
-  margin: 0;
-  padding: 0;
-  list-style: none;
+const MenuContainer = styled.nav`
+  margin: 0 -1.5rem;
 `;
 
-const MenuItem = styled.li`
-  padding: 0.5rem 0;
+const MenuList = styled.ul``;
 
-  .active {
-    color: #1fa1f2;
-  }
-`;
+const MenuItem = styled.li``;
 
 const MenuLink = styled(Link)`
+  border-left: 8px solid transparent;
   color: #8899a6;
+  display: block;
+  padding: 0.5rem;
+  text-align: center;
   text-decoration: none;
-  transition: color 0.5s;
+  transition: color 0.5s, border-color 0.5s;
 
-  &:hover {
+  &:hover,
+  &.active {
+    border-left: 8px solid #2b6cb0;
     color: #1fa1f2;
   }
 `;
@@ -36,17 +32,17 @@ const links = [
     to: '/'
   },
   {
-    label: 'Blog',
-    to: '/blog'
-  },
-  {
     label: 'Sobre',
     to: '/about'
+  },
+  {
+    label: 'Blog',
+    to: '/blog'
   }
 ];
 
 const Menu = () => (
-  <MenuWrapper>
+  <MenuContainer>
     <MenuList>
       {links.map((link) => {
         return (
@@ -58,7 +54,7 @@ const Menu = () => (
         );
       })}
     </MenuList>
-  </MenuWrapper>
+  </MenuContainer>
 );
 
 export default Menu;
