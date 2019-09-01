@@ -2,33 +2,25 @@ import React from 'react';
 import styled from 'styled-components';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
-const SocialMediaWrapper = styled.nav`
-  margin: 2rem auto;
-  width: 100%;
+import ExternalLink from './ExternalLink';
+
+const SocialMediaContainer = styled.nav`
+  margin-top: 1.5rem;
 `;
 
 const SocialMediaList = styled.ul`
   align-items: center;
   display: flex;
   justify-content: space-around;
-  margin: 0;
-  padding: 0;
-  list-style: none;
 `;
 
 const SocialMediaItem = styled.li``;
 
-const SocialMediaLink = styled.a`
-  color: #8899a6;
-  text-decoration: none;
-  transition: color 0.5s;
-
-  &:hover {
-    color: #1fa1f2;
-  }
+const SocialMediaLink = styled(ExternalLink)`
+  color: #cbd5e0;
 `;
 
-const IconWrapper = styled.div`
+const IconContainer = styled.div`
   fill: #bbb;
   height: 2rem;
   width: 2rem;
@@ -63,21 +55,21 @@ const links = [
 ];
 
 const SocialMedia = () => (
-  <SocialMediaWrapper>
+  <SocialMediaContainer>
     <SocialMediaList>
       {links.map((link) => {
         return (
           <SocialMediaItem key={link.label}>
             <SocialMediaLink href={link.href} title={link.label}>
-              <IconWrapper>
-                <FontAwesomeIcon icon={link.icon} fixedWidth />
-              </IconWrapper>
+              <IconContainer>
+                <FontAwesomeIcon icon={link.icon} fixedWidth size="lg" />
+              </IconContainer>
             </SocialMediaLink>
           </SocialMediaItem>
         );
       })}
     </SocialMediaList>
-  </SocialMediaWrapper>
+  </SocialMediaContainer>
 );
 
 export default SocialMedia;
