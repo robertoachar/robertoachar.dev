@@ -3,11 +3,17 @@ import styled from 'styled-components';
 import { graphql, useStaticQuery } from 'gatsby';
 import Img from 'gatsby-image';
 
+const Container = styled.div`
+  border: 2px solid #2c5282;
+  border-radius: 50%;
+  margin: auto;
+  max-width: 8rem;
+  padding: 0.25rem;
+`;
+
 const Photo = styled(Img)`
   border-radius: 50%;
-  height: 3.75rem;
-  margin: auto;
-  width: 3.75rem;
+  max-width: 100%;
 `;
 
 const Avatar = () => {
@@ -15,15 +21,19 @@ const Avatar = () => {
     query {
       avatarImage: file(relativePath: { eq: "avatar.png" }) {
         childImageSharp {
-          fixed(width: 60, height: 60) {
-            ...GatsbyImageSharpFixed
+          fluid(maxWidth: 128) {
+            ...GatsbyImageSharpFluid
           }
         }
       }
     }
   `);
 
-  return <Photo fixed={avatarImage.childImageSharp.fixed} />;
+  return (
+    <Container>
+      <Photo fluid={avatarImage.childImageSharp.fluid} />
+    </Container>
+  );
 };
 
 export default Avatar;
