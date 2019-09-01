@@ -14,6 +14,7 @@
     "format": "prettier --write \"**/*.{js,jsx,json,md}\"",
     "lint": "eslint src/**/*.{jsx,js}",
     "start": "gatsby develop",
+    "start:remote": "gatsby develop -H 0.0.0.0",
     "start:playground": "GATSBY_GRAPHQL_IDE=playground gatsby develop",
     "serve": "gatsby serve",
     "test": "echo \"Write tests! -> https://gatsby.dev/unit-testing \""
