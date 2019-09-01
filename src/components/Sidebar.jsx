@@ -4,9 +4,10 @@ import styled from 'styled-components';
 import Profile from './Profile/Profile';
 import SocialMedia from './SocialMedia';
 import Menu from './Menu';
+import { ThemeSwitcher } from './Theme';
 
 const SidebarWrapper = styled.aside`
-  background-color: #102a43;
+  background-color: var(--sidebar-background);
   border-top: 8px solid #102a43;
   grid-area: sidebar;
   min-height: 100vh;
@@ -15,10 +16,16 @@ const SidebarWrapper = styled.aside`
 `;
 
 const SidebarSeparator = styled.hr`
-  background: #334e68;
+  background: var(--background);
   border: 0;
-  border-bottom: 1px solid #334e68;
+  border-bottom: 1px solid var(--background);
   margin: 1rem 0;
+`;
+
+const SidebarTheme = styled.div`
+  display: flex;
+  justify-content: center;
+  margin-top: 1.5rem;
 `;
 
 const Sidebar = () => (
@@ -28,6 +35,9 @@ const Sidebar = () => (
     <Menu />
     <SidebarSeparator />
     <SocialMedia />
+    <SidebarTheme>
+      <ThemeSwitcher />
+    </SidebarTheme>
   </SidebarWrapper>
 );
 
