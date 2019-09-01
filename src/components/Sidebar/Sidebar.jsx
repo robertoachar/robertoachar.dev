@@ -1,10 +1,10 @@
 import React from 'react';
 import styled from 'styled-components';
 
-import Profile from './Profile/Profile';
+import Profile from './Profile';
 import SocialMedia from './SocialMedia';
 import Menu from './Menu';
-import { ThemeSwitcher } from './Theme';
+import { ThemeSwitcher } from '../Theme';
 
 const SidebarWrapper = styled.aside`
   background-color: var(--sidebar-background);
