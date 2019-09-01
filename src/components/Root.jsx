@@ -1,15 +1,18 @@
 import React from 'react';
 import t from 'prop-types';
+import { ThemeProvider } from 'styled-components';
 import 'normalize.css';
 
-import GlobalStyle from './GlobalStyle';
+import theme, { GlobalStyle } from './Theme';
 import './Icons';
 
 const Root = ({ children }) => (
-  <>
-    <GlobalStyle />
-    {children}
-  </>
+  <ThemeProvider theme={theme}>
+    <>
+      <GlobalStyle />
+      {children}
+    </>
+  </ThemeProvider>
 );
 
 Root.propTypes = {
