@@ -50,7 +50,7 @@ const Profile = () => {
 
   return (
     <ProfileWrapper>
-      <Hyperlink>
+      <Hyperlink to="/">
         <Avatar />
         <ProfileAuthor>{title}</ProfileAuthor>
         <ProfileRole>Full Stack Web Developer</ProfileRole>
