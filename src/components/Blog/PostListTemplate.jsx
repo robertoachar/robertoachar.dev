@@ -20,7 +20,7 @@ export const query = graphql`
           frontmatter {
             title
             category
-            date(formatString: "DD [de] MMMM [de] YYYY", locale: "pt-BR")
+            date(formatString: "DD/MM/YYYY", locale: "pt-BR")
             description
           }
           timeToRead

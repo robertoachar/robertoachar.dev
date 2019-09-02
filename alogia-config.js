@@ -9,7 +9,7 @@ const query = `{
           title
           category
           date_timestamp: date
-          date(formatString: "DD [de] MMMM [de] YYYY", locale: "pt-BR")
+          date(formatString: "DD/MM/YYYY", locale: "pt-BR")
           description
         }
         fields {
