@@ -5,7 +5,7 @@ export default {
   size: {
     small: '.875rem',
     normal: '1rem',
-    medium: '1.5rem',
+    medium: '1.25rem',
     large: '2rem'
   },
   weight: {
