@@ -1,5 +1,6 @@
 import React from 'react';
 import t from 'prop-types';
+import styled from 'styled-components';
 import { graphql } from 'gatsby';
 
 import Layout from '../Layout';
@@ -33,6 +34,10 @@ export const query = graphql`
   }
 `;
 
+const PostsContainer = styled.section`
+  padding: 1.5rem 2.5rem;
+`;
+
 const PostListTemplate = ({
   data: {
     allMarkdownRemark: { edges: posts }
@@ -44,9 +49,11 @@ const PostListTemplate = ({
   return (
     <Layout>
       <SEO title="Blog" />
-      <Heading1>Blog</Heading1>
-      <PostList posts={posts} />
-      <Pagination currentPage={currentPage} numPages={numPages} />
+      <PostsContainer>
+        <Heading1>Blog</Heading1>
+        <PostList posts={posts} />
+        <Pagination currentPage={currentPage} numPages={numPages} />
+      </PostsContainer>
     </Layout>
   );
 };

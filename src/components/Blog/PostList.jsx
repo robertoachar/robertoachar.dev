@@ -4,16 +4,15 @@ import styled from 'styled-components';
 
 import PostItem from './PostItem';
 
-const PostsContainer = styled.section`
+const PostsWrapper = styled.div`
   display: grid;
   grid-gap: 2.5rem;
   grid-template-columns: repeat(auto-fill, minmax(256px, 1fr));
-  padding: 2.5rem;
 `;
 
 const PostList = ({ posts }) => {
   return (
-    <PostsContainer>
+    <PostsWrapper>
       {posts.map(
         ({
           node: {
@@ -30,7 +29,7 @@ const PostList = ({ posts }) => {
           />
         )
       )}
-    </PostsContainer>
+    </PostsWrapper>
   );
 };
 
