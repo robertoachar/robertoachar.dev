@@ -10,10 +10,16 @@ const GlobalStyle = createGlobalStyle`
     box-sizing: inherit;
   }
 
+  body {
+    --yellow: ${({ theme }) => theme.colors.yellow};
+  }
+
   body.dark {
     --background: ${({ theme }) => theme.colors['blue-grey-800']};
     --body: ${({ theme }) => theme.colors['blue-grey-100']};
     --sidebar-background: ${({ theme }) => theme.colors['blue-grey-900']};
+    --text: ${({ theme }) => theme.colors['grey-200']};
+    --text-light: ${({ theme }) => theme.colors['grey-500']};
   }
 
   body.light {

@@ -13,5 +13,10 @@ export default {
   'blue-grey-600': '#486581',
   'blue-grey-700': '#334E68',
   'blue-grey-800': '#243B53',
-  'blue-grey-900': '#102A43'
+  'blue-grey-900': '#102A43',
+
+  'grey-200': '#EDF2F7',
+  'grey-500': '#A0AEC0',
+
+  yellow: '#ECC94B'
 };
