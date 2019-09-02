@@ -78,7 +78,7 @@ exports.createPages = ({ actions, graphql }) => {
     posts.forEach(({ node, previous, next }) => {
       createPage({
         path: node.fields.slug,
-        component: path.resolve('./src/templates/Post.jsx'),
+        component: path.resolve('./src/components/Blog/PostTemplate.jsx'),
         context: {
           slug: node.fields.slug,
           // ORDER: DESC

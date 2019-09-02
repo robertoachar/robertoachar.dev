@@ -39,24 +39,39 @@ const PostLink = styled(Link)`
   }
 `;
 
-const OtherPosts = ({ next, previous }) => (
+const OtherPosts = ({ nextPost, previousPost }) => (
   <PostContainer>
-    {previous && (
-      <PostLink to={previous.fields.slug} className="previous">
-        {previous.frontmatter.title}
+    {previousPost && (
+      <PostLink to={previousPost.fields.slug} className="previous">
+        {previousPost.frontmatter.title}
       </PostLink>
     )}
 
-    {next && (
-      <PostLink to={next.fields.slug} className="next">
-        {next.frontmatter.title}
+    {nextPost && (
+      <PostLink to={nextPost.fields.slug} className="next">
+        {nextPost.frontmatter.title}
       </PostLink>
     )}
   </PostContainer>
 );
 
 OtherPosts.propTypes = {
-  children: t.node.isRequired
+  previousPost: t.shape({
+    fields: t.shape({
+      slug: t.string
+    }),
+    frontmatter: t.shape({
+      title: t.string
+    })
+  }).isRequired,
+  nextPost: t.shape({
+    fields: t.shape({
+      slug: t.string
+    }),
+    frontmatter: t.shape({
+      title: t.string
+    })
+  }).isRequired
 };
 
 export default OtherPosts;
