@@ -1,4 +1,5 @@
 import { library } from '@fortawesome/fontawesome-svg-core';
+import { faClock } from '@fortawesome/free-regular-svg-icons';
 import {
   faArrowUp,
   faDesktop,
@@ -16,6 +17,9 @@ import {
 } from '@fortawesome/free-brands-svg-icons';
 
 library.add(
+  /* regular */
+  faClock,
+
   /* solid */
   faArrowUp,
   faDesktop,
@@ -23,6 +27,7 @@ library.add(
   faLightbulb,
   faSearch,
   faTh,
+
   /* brand */
   faFacebook,
   faGithub,
