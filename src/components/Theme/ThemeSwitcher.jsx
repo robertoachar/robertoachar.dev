@@ -46,6 +46,9 @@ const ThemeSwitcher = () => {
   const [theme, setTheme] = useState(null);
 
   useEffect(() => {
+    console.log(
+      'TODO: ThemeSwitcher > useEffect running on every route change. Bug?'
+    );
     setTheme(window.__theme);
 
     window.__onThemeChange = () => setTheme(window.__theme);

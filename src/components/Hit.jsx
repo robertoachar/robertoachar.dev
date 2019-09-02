@@ -1,8 +1,8 @@
 import React from 'react';
-import PostItem from './PostItem';
+import PostItem from './Blog/PostItem';
 
 const Hit = ({ hit }) => {
-  return <PostItem post={hit}></PostItem>;
+  return <PostItem post={hit} />;
 };
 
 export default Hit;

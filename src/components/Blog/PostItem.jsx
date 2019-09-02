@@ -64,7 +64,7 @@ const PostItem = ({ post, slug, timeToRead }) => (
       <PostItemTag>{post.category}</PostItemTag>
       <PostItemInfo>
         <PostItemDate>
-          {post.date} - {timeToRead} minuto(s) de leitura
+          {`${post.date} - ${timeToRead} minuto(s) de leitura`}
         </PostItemDate>
         <PostItemTitle>{post.title}</PostItemTitle>
         <PostItemDescription>{post.description}</PostItemDescription>
@@ -75,15 +75,13 @@ const PostItem = ({ post, slug, timeToRead }) => (
 
 PostItem.propTypes = {
   post: t.shape({
-    category: t.string.isRequired,
-    date: t.string.isRequired,
-    title: t.string.isRequired,
-    description: t.string.isRequired
-  }),
-  timeToRead: t.string.isRequired,
-  fields: {
-    slug: t.string.isRequired
-  }
+    category: t.string,
+    date: t.string,
+    title: t.string,
+    description: t.string
+  }).isRequired,
+  timeToRead: t.number.isRequired,
+  slug: t.string.isRequired
 };
 
 export default PostItem;
