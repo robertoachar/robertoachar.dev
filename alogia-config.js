@@ -7,12 +7,10 @@ const query = `{
         objectID: id
         frontmatter {
           title
-          category
-          date_timestamp: date
-          date(formatString: "DD/MM/YYYY", locale: "pt-BR")
           description
-        }
-        fields {
+          date(formatString: "DD/MM/YYYY", locale: "pt-BR")
+          date_timestamp: date
+          category
           slug
         }
         timeToRead
