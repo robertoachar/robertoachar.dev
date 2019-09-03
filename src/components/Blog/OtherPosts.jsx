@@ -42,13 +42,13 @@ const PostLink = styled(Link)`
 const OtherPosts = ({ nextPost, previousPost }) => (
   <PostContainer>
     {previousPost && (
-      <PostLink to={previousPost.fields.slug} className="previous">
+      <PostLink to={previousPost.frontmatter.slug} className="previous">
         {previousPost.frontmatter.title}
       </PostLink>
     )}
 
     {nextPost && (
-      <PostLink to={nextPost.fields.slug} className="next">
+      <PostLink to={nextPost.frontmatter.slug} className="next">
         {nextPost.frontmatter.title}
       </PostLink>
     )}
@@ -57,21 +57,22 @@ const OtherPosts = ({ nextPost, previousPost }) => (
 
 OtherPosts.propTypes = {
   previousPost: t.shape({
-    fields: t.shape({
-      slug: t.string
-    }),
     frontmatter: t.shape({
-      title: t.string
+      title: t.string,
+      slug: t.string
     })
-  }).isRequired,
+  }),
   nextPost: t.shape({
-    fields: t.shape({
-      slug: t.string
-    }),
     frontmatter: t.shape({
-      title: t.string
+      title: t.string,
+      slug: t.string
     })
-  }).isRequired
+  })
+};
+
+OtherPosts.defaultProps = {
+  previousPost: null,
+  nextPost: null
 };
 
 export default OtherPosts;
