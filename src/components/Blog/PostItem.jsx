@@ -91,7 +91,7 @@ const CardTimeText = styled.span`
 `;
 
 const PostItem = ({ post, timeToRead }) => (
-  <Hyperlink to={`blog${post.slug}`}>
+  <Hyperlink to={`blog/${post.slug}`}>
     <Card>
       <CardCover>
         {post.cover && <Image fluid={post.cover.childImageSharp.fluid} />}
