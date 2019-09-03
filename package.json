@@ -10,7 +10,7 @@
   "license": "CC-BY-NC-SA-4.0",
   "private": true,
   "scripts": {
-    "build": "gatsby build",
+    "build": "gatsby clean && gatsby build",
     "format": "prettier --write \"**/*.{js,jsx,json,md}\"",
     "lint": "eslint src/**/*.{jsx,js}",
     "start": "gatsby clean && gatsby develop",
