@@ -29,15 +29,18 @@ const MenuLink = styled(Link)`
 const links = [
   {
     label: 'Home',
-    to: '/'
+    to: '/',
+    partial: false
   },
   {
     label: 'Sobre',
-    to: '/about'
+    to: '/about',
+    partial: true
   },
   {
     label: 'Blog',
-    to: '/blog'
+    to: '/blog',
+    partial: true
   }
 ];
 
@@ -47,7 +50,11 @@ const Menu = () => (
       {links.map((link) => {
         return (
           <MenuItem key={link.label}>
-            <MenuLink to={link.to} activeClassName="active">
+            <MenuLink
+              to={link.to}
+              activeClassName="active"
+              partiallyActive={link.partial}
+            >
               {link.label}
             </MenuLink>
           </MenuItem>
