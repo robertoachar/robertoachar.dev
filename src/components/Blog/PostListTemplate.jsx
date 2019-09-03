@@ -74,7 +74,7 @@ PostListTemplate.propTypes = {
               description: t.string,
               date: t.string,
               category: t.string,
-              tags: t.string,
+              tags: t.arrayOf(t.string),
               slug: t.string
             }),
             timeToRead: t.number
