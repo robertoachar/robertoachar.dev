@@ -1,14 +1,19 @@
 import React from 'react';
+import styled from 'styled-components';
 
-import Layout from '../components/Layout';
 import SEO from '../components/SEO';
 import PageTitle from '../components/PageTitle';
 
+const Container = styled.div`
+  margin: 0 auto;
+  max-width: 960px;
+`;
+
 const IndexPage = () => (
-  <Layout>
+  <Container>
     <SEO title="Home Page" />
     <PageTitle>Home Page</PageTitle>
-  </Layout>
+  </Container>
 );
 
 export default IndexPage;

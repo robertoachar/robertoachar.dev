@@ -4,7 +4,6 @@ import React from 'react';
 import t from 'prop-types';
 import { graphql } from 'gatsby';
 
-import Layout from '../Layout';
 import SEO from '../SEO';
 import * as POST from './Post';
 import OtherPosts from './OtherPosts';
@@ -27,7 +26,7 @@ const PostTemplate = ({ data: { markdownRemark: post }, pageContext }) => {
   const { previousPost, nextPost } = pageContext;
 
   return (
-    <Layout>
+    <>
       <SEO title={post.frontmatter.title} />
       <POST.PostHeader>
         <POST.PostDate>
@@ -42,7 +41,7 @@ const PostTemplate = ({ data: { markdownRemark: post }, pageContext }) => {
         <div dangerouslySetInnerHTML={{ __html: post.html }} />
       </POST.MainContent>
       <OtherPosts previous={previousPost} next={nextPost} />
-    </Layout>
+    </>
   );
 };
 

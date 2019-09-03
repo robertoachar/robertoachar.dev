@@ -1,14 +1,19 @@
 import React from 'react';
+import styled from 'styled-components';
 
-import Layout from '../components/Layout';
 import SEO from '../components/SEO';
 import Search from '../components/Blog/Search';
 
+const Container = styled.div`
+  margin: 0 auto;
+  max-width: 960px;
+`;
+
 const SearchPage = () => (
-  <Layout>
+  <Container>
     <SEO title="Encontrar artigo" />
     <Search />
-  </Layout>
+  </Container>
 );
 
 export default SearchPage;

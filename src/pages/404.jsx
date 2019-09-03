@@ -1,13 +1,17 @@
 import React from 'react';
+import styled from 'styled-components';
 
-import Layout from '../components/Layout';
-import SEO from '../components/SEO';
+import PageTitle from '../components/PageTitle';
 
-const NotFoundPage = () => (
-  <Layout>
-    <SEO title="404: Not found" />
-    <h1>Page not found</h1>
-  </Layout>
+const Container = styled.div`
+  margin: 0 auto;
+  max-width: 960px;
+`;
+
+const IndexPage = () => (
+  <Container>
+    <PageTitle>Página não encontrada</PageTitle>
+  </Container>
 );
 
-export default NotFoundPage;
+export default IndexPage;

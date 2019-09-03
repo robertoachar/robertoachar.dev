@@ -3,7 +3,6 @@ import t from 'prop-types';
 import styled from 'styled-components';
 import { graphql } from 'gatsby';
 
-import Layout from '../Layout';
 import SEO from '../SEO';
 import PostList from './PostList';
 import Pagination from './Pagination';
@@ -53,14 +52,14 @@ const PostListTemplate = ({
   const { currentPage, numPages } = pageContext;
 
   return (
-    <Layout>
+    <>
       <SEO title="Blog" />
       <PostsContainer>
         <Heading1>Blog</Heading1>
         <PostList posts={posts} />
         <Pagination currentPage={currentPage} numPages={numPages} />
       </PostsContainer>
-    </Layout>
+    </>
   );
 };
 
