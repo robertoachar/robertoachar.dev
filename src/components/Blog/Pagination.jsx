@@ -2,15 +2,26 @@ import React, { useEffect, useState } from 'react';
 import t from 'prop-types';
 import styled from 'styled-components';
 
-import { Hyperlink } from '../Common';
+import { Hyperlink, Span } from '../Common';
 
 const PaginationContainer = styled.section`
   align-items: center;
   border-top: 1px solid #38444d;
   color: #8899a6;
-  display: flex;
-  padding: 1.5rem 3rem;
-  justify-content: space-between;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  margin-top: 2rem;
+  padding: 2rem 0 0;
+`;
+
+const PreviousNavigation = styled.div``;
+
+const Pages = styled.div`
+  text-align: center;
+`;
+
+const NextNavigation = styled.div`
+  text-align: right;
 `;
 
 const Pagination = ({ currentPage, numPages }) => {
@@ -36,9 +47,15 @@ const Pagination = ({ currentPage, numPages }) => {
 
   return (
     <PaginationContainer>
-      {!first && <Hyperlink to={previous}>Página anterior</Hyperlink>}
-      <p>{`${currentPage} de ${numPages}`}</p>
-      {!last && <Hyperlink to={next}>Próxima página</Hyperlink>}
+      <PreviousNavigation>
+        {!first && <Hyperlink to={previous}>Anterior</Hyperlink>}
+      </PreviousNavigation>
+      <Pages>
+        <Span>{`${currentPage} de ${numPages}`}</Span>
+      </Pages>
+      <NextNavigation>
+        {!last && <Hyperlink to={next}>Próxima</Hyperlink>}
+      </NextNavigation>
     </PaginationContainer>
   );
 };
