@@ -8,6 +8,7 @@ const PostsWrapper = styled.div`
   display: grid;
   grid-gap: 2.5rem;
   grid-template-columns: repeat(auto-fill, minmax(256px, 1fr));
+  margin-top: 2rem;
 `;
 
 const PostList = ({ posts }) => {
@@ -29,7 +30,7 @@ PostList.propTypes = {
           description: t.string,
           date: t.string,
           category: t.string,
-          tags: t.string,
+          tags: t.arrayOf(t.string),
           slug: t.string
         }),
         timeToRead: t.number
