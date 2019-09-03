@@ -30,7 +30,7 @@ exports.createPages = ({ actions, graphql }) => {
   `).then((result) => {
     const posts = result.data.allMarkdownRemark.edges;
 
-    const postsPerPage = 5;
+    const postsPerPage = 50;
     const numPages = Math.ceil(posts.length / postsPerPage);
 
     Array.from({ length: numPages }).forEach((_, index) => {
