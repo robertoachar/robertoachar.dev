@@ -13,7 +13,7 @@
     "build": "gatsby build",
     "format": "prettier --write \"**/*.{js,jsx,json,md}\"",
     "lint": "eslint src/**/*.{jsx,js}",
-    "start": "gatsby develop",
+    "start": "gatsby clean && gatsby develop",
     "start:remote": "gatsby develop -H 0.0.0.0",
     "start:playground": "GATSBY_GRAPHQL_IDE=playground gatsby develop",
     "serve": "gatsby serve",
