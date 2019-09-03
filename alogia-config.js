@@ -1,5 +1,5 @@
 const query = `{
-  posts: allMarkdownRemark(
+  posts: allMdx(
     sort: { fields: frontmatter___date, order: DESC }
   ) {
     edges {

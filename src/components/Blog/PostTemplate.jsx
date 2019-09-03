@@ -10,7 +10,7 @@ import OtherPosts from './OtherPosts';
 
 export const query = graphql`
   query Post($slug: String!) {
-    markdownRemark(frontmatter: { slug: { eq: $slug } }) {
+    mdx(frontmatter: { slug: { eq: $slug } }) {
       frontmatter {
         title
         description
@@ -22,7 +22,7 @@ export const query = graphql`
   }
 `;
 
-const PostTemplate = ({ data: { markdownRemark: post }, pageContext }) => {
+const PostTemplate = ({ data: { mdx: post }, pageContext }) => {
   const { previousPost, nextPost } = pageContext;
 
   return (
@@ -47,7 +47,7 @@ const PostTemplate = ({ data: { markdownRemark: post }, pageContext }) => {
 
 PostTemplate.propTypes = {
   data: t.shape({
-    markdownRemark: t.shape({
+    mdx: t.shape({
       title: t.string,
       description: t.string,
       date: t.string

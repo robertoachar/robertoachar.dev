@@ -10,7 +10,7 @@ import { Heading1 } from '../Common';
 
 export const query = graphql`
   query PostList($limit: Int!, $skip: Int!) {
-    allMarkdownRemark(
+    allMdx(
       sort: { fields: frontmatter___date, order: DESC }
       limit: $limit
       skip: $skip
@@ -45,7 +45,7 @@ const PostsContainer = styled.section`
 
 const PostListTemplate = ({
   data: {
-    allMarkdownRemark: { edges: posts }
+    allMdx: { edges: posts }
   },
   pageContext
 }) => {
@@ -65,7 +65,7 @@ const PostListTemplate = ({
 
 PostListTemplate.propTypes = {
   data: t.shape({
-    allMarkdownRemark: t.shape({
+    allMdx: t.shape({
       edges: t.arrayOf(
         t.shape({
           node: t.shape({

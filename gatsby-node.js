@@ -5,7 +5,7 @@ exports.createPages = ({ actions, graphql }) => {
 
   return graphql(`
     query AllPosts {
-      allMarkdownRemark(sort: { fields: frontmatter___date, order: DESC }) {
+      allMdx(sort: { fields: frontmatter___date, order: DESC }) {
         edges {
           node {
             frontmatter {
@@ -28,7 +28,7 @@ exports.createPages = ({ actions, graphql }) => {
       }
     }
   `).then((result) => {
-    const posts = result.data.allMarkdownRemark.edges;
+    const posts = result.data.allMdx.edges;
 
     const postsPerPage = 50;
     const numPages = Math.ceil(posts.length / postsPerPage);
