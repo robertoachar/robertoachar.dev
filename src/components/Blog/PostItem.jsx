@@ -3,11 +3,7 @@ import t from 'prop-types';
 import styled from 'styled-components';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
-import { Hyperlink, Paragraph } from '../Common';
-
-import image01 from '../../../static/01.jpg';
-import image02 from '../../../static/02.jpeg';
-import image03 from '../../../static/03.png';
+import { Hyperlink, Image, Paragraph } from '../Common';
 
 const Card = styled.div`
   background-color: var(--sidebar-background);
@@ -24,9 +20,6 @@ const Card = styled.div`
 `;
 
 const CardCover = styled.div`
-  background: url(${image01}) no-repeat center center;
-  background-size: cover;
-  height: 192px;
   position: relative;
 `;
 
@@ -84,6 +77,7 @@ const PostItem = ({ post, slug, timeToRead }) => (
   <Hyperlink to={slug}>
     <Card>
       <CardCover>
+        <Image fluid={post.cover.childImageSharp.fluid} />
         <CardTag>{post.category}</CardTag>
       </CardCover>
       <CardBody>

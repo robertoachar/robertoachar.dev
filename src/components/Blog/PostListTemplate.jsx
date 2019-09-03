@@ -23,6 +23,13 @@ export const query = graphql`
             category
             date(formatString: "DD/MM/YYYY", locale: "pt-BR")
             description
+            cover {
+              childImageSharp {
+                fluid(maxWidth: 960) {
+                  ...GatsbyImageSharpFluid
+                }
+              }
+            }
           }
           timeToRead
           fields {
