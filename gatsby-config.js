@@ -9,9 +9,6 @@ module.exports = {
     author: '@robertoachar'
   },
   plugins: [
-    'gatsby-plugin-react-helmet',
-    'gatsby-plugin-styled-components',
-    // gatsby-remark-images needs to be first plugin
     {
       resolve: 'gatsby-source-filesystem',
       options: {
@@ -33,18 +30,13 @@ module.exports = {
         path: `${__dirname}/posts`
       }
     },
+    'gatsby-plugin-react-helmet',
+    'gatsby-plugin-styled-components',
+    'gatsby-plugin-sharp',
+    'gatsby-transformer-sharp',
     {
-      resolve: `gatsby-transformer-remark`,
+      resolve: 'gatsby-transformer-remark',
       options: {
-        // CommonMark mode (default: true)
-        commonmark: true,
-        // Footnotes mode (default: true)
-        footnotes: true,
-        // Pedantic mode (default: true)
-        pedantic: true,
-        // GitHub Flavored Markdown mode (default: true)
-        gfm: true,
-        // Plugins configs
         plugins: [
           {
             resolve: 'gatsby-remark-relative-images',
@@ -60,22 +52,8 @@ module.exports = {
             }
           },
           'gatsby-remark-lazy-load',
-          // gatsby-remark-prismjs needs to be the last plugin,
           'gatsby-remark-prismjs'
         ]
-      }
-    },
-    'gatsby-transformer-sharp',
-    'gatsby-plugin-sharp',
-    {
-      resolve: `gatsby-plugin-algolia-search`,
-      options: {
-        appId: process.env.GATSBY_ALGOLIA_APP_ID,
-        apiKey: process.env.ALGOLIA_ADMIN_KEY,
-        indexName: process.env.GATSBY_ALGOLIA_INDEX_NAME,
-        queries,
-        chunkSize: 10000,
-        enablePartialUpdates: true
       }
     },
     {
@@ -89,9 +67,18 @@ module.exports = {
         display: 'minimal-ui',
         icon: 'src/images/gatsby-icon.png'
       }
+    },
+    'gatsby-plugin-offline',
+    {
+      resolve: `gatsby-plugin-algolia-search`,
+      options: {
+        appId: process.env.GATSBY_ALGOLIA_APP_ID,
+        apiKey: process.env.ALGOLIA_ADMIN_KEY,
+        indexName: process.env.GATSBY_ALGOLIA_INDEX_NAME,
+        queries,
+        chunkSize: 10000,
+        enablePartialUpdates: true
+      }
     }
-    // this (optional) plugin enables Progressive Web App + Offline functionality
-    // To learn more, visit: https://gatsby.dev/offline
-    // 'gatsby-plugin-offline',
   ]
 };
