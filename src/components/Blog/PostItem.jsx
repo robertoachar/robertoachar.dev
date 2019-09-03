@@ -49,7 +49,6 @@ const CardTags = styled.div`
 const CardTag = styled.span`
   background: var(--background);
   border-radius: ${({ theme }) => theme.radius['radius-200']};
-  color: white;
   font-size: ${({ theme }) => theme.font.size.small};
   padding: 0.125rem 0.5rem;
 
