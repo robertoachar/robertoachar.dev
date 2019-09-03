@@ -3,6 +3,7 @@
 import React from 'react';
 import t from 'prop-types';
 import { graphql } from 'gatsby';
+import MdxRenderer from 'gatsby-plugin-mdx/mdx-renderer';
 
 import SEO from '../SEO';
 import * as POST from './Post';
@@ -16,7 +17,7 @@ export const query = graphql`
         description
         date(formatString: "DD/MM/YYYY", locale: "pt-BR")
       }
-      html
+      body
       timeToRead
     }
   }
@@ -38,7 +39,7 @@ const PostTemplate = ({ data: { mdx: post }, pageContext }) => {
         </POST.PostDescription>
       </POST.PostHeader>
       <POST.MainContent>
-        <div dangerouslySetInnerHTML={{ __html: post.html }} />
+        <MdxRenderer>{post.body}</MdxRenderer>
       </POST.MainContent>
       <OtherPosts previous={previousPost} next={nextPost} />
     </>
