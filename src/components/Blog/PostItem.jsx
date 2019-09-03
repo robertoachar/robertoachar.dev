@@ -24,7 +24,7 @@ const CardCover = styled.div`
   position: relative;
 `;
 
-const CardTag = styled.span`
+const CardCategory = styled.span`
   background: var(--yellow);
   bottom: 0;
   color: var(--sidebar-background);
@@ -38,7 +38,24 @@ const CardTag = styled.span`
 `;
 
 const CardBody = styled.div`
-  padding: 1rem 1.5rem 0;
+  padding: 0 1.5rem;
+`;
+
+const CardTags = styled.div`
+  display: flex;
+  padding: 1rem 0;
+`;
+
+const CardTag = styled.span`
+  background: var(--background);
+  border-radius: ${({ theme }) => theme.radius['radius-200']};
+  color: white;
+  font-size: ${({ theme }) => theme.font.size.small};
+  padding: 0.125rem 0.5rem;
+
+  &:not(:first-child) {
+    margin-left: 0.5rem;
+  }
 `;
 
 const CardTitle = styled.h2`
@@ -79,9 +96,14 @@ const PostItem = ({ post, timeToRead }) => (
     <Card>
       <CardCover>
         {post.cover && <Image fluid={post.cover.childImageSharp.fluid} />}
-        <CardTag>{post.category}</CardTag>
+        <CardCategory>{post.category}</CardCategory>
       </CardCover>
       <CardBody>
+        <CardTags>
+          {post.tags.map((tag) => (
+            <CardTag key={tag}>{tag}</CardTag>
+          ))}
+        </CardTags>
         <CardTitle>{post.title}</CardTitle>
         <CardDescription>{post.description}</CardDescription>
       </CardBody>
@@ -102,7 +124,7 @@ PostItem.propTypes = {
     description: t.string,
     date: t.string,
     category: t.string,
-    tags: t.string,
+    tags: t.arrayOf(t.string),
     slug: t.string
   }).isRequired,
   timeToRead: t.number.isRequired
