@@ -1,22 +1,4 @@
 const path = require('path');
-const { createFilePath } = require('gatsby-source-filesystem');
-
-exports.onCreateNode = ({ node, getNode, actions }) => {
-  const { createNodeField } = actions;
-  if (node.internal.type === 'MarkdownRemark') {
-    const slug = createFilePath({
-      node,
-      getNode,
-      basePath: 'blog'
-    });
-
-    createNodeField({
-      node,
-      name: 'slug',
-      value: `/blog/${slug.slice(12)}`
-    });
-  }
-};
 
 exports.createPages = ({ actions, graphql }) => {
   const { createPage } = actions;
@@ -27,30 +9,19 @@ exports.createPages = ({ actions, graphql }) => {
         edges {
           node {
             frontmatter {
-              title
-              category
-              date(formatString: "DD/MM/YYYY", locale: "pt-BR")
-              description
+              slug
             }
-            timeToRead
-            fields {
+          }
+          previous {
+            frontmatter {
+              title
               slug
             }
           }
           next {
-            fields {
-              slug
-            }
             frontmatter {
               title
-            }
-          }
-          previous {
-            fields {
               slug
-            }
-            frontmatter {
-              title
             }
           }
         }
@@ -77,10 +48,10 @@ exports.createPages = ({ actions, graphql }) => {
 
     posts.forEach(({ node, previous, next }) => {
       createPage({
-        path: node.fields.slug,
+        path: `blog${node.frontmatter.slug}`,
         component: path.resolve('./src/components/Blog/PostTemplate.jsx'),
         context: {
-          slug: node.fields.slug,
+          slug: node.frontmatter.slug,
           // ORDER: DESC
           previousPost: next,
           nextPost: previous

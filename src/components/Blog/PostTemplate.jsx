@@ -11,7 +11,7 @@ import OtherPosts from './OtherPosts';
 
 export const query = graphql`
   query Post($slug: String!) {
-    markdownRemark(fields: { slug: { eq: $slug } }) {
+    markdownRemark(frontmatter: { slug: { eq: $slug } }) {
       frontmatter {
         title
         description

@@ -10,6 +10,7 @@ const Card = styled.div`
   border-radius: ${({ theme }) => theme.radius['radius-200']};
   box-shadow: ${({ theme }) => theme.shadow['shadow-300']};
   color: var(--text);
+  min-height: 100%;
   overflow: hidden;
   transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
 
@@ -73,11 +74,11 @@ const CardTimeText = styled.span`
   margin-left: 0.5rem;
 `;
 
-const PostItem = ({ post, slug, timeToRead }) => (
-  <Hyperlink to={slug}>
+const PostItem = ({ post, timeToRead }) => (
+  <Hyperlink to={post.slug}>
     <Card>
       <CardCover>
-        <Image fluid={post.cover.childImageSharp.fluid} />
+        {post.cover && <Image fluid={post.cover.childImageSharp.fluid} />}
         <CardTag>{post.category}</CardTag>
       </CardCover>
       <CardBody>
@@ -97,13 +98,14 @@ const PostItem = ({ post, slug, timeToRead }) => (
 
 PostItem.propTypes = {
   post: t.shape({
-    category: t.string,
-    date: t.string,
     title: t.string,
-    description: t.string
+    description: t.string,
+    date: t.string,
+    category: t.string,
+    tags: t.string,
+    slug: t.string
   }).isRequired,
-  timeToRead: t.number.isRequired,
-  slug: t.string.isRequired
+  timeToRead: t.number.isRequired
 };
 
 export default PostItem;

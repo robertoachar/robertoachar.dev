@@ -20,9 +20,11 @@ export const query = graphql`
         node {
           frontmatter {
             title
-            category
-            date(formatString: "DD/MM/YYYY", locale: "pt-BR")
             description
+            date(formatString: "DD/MM/YYYY", locale: "pt-BR")
+            category
+            tags
+            slug
             cover {
               childImageSharp {
                 fluid(maxWidth: 960) {
@@ -32,9 +34,6 @@ export const query = graphql`
             }
           }
           timeToRead
-          fields {
-            slug
-          }
         }
       }
     }
@@ -73,14 +72,13 @@ PostListTemplate.propTypes = {
           node: t.shape({
             frontmatter: t.shape({
               title: t.string,
-              category: t.string,
+              description: t.string,
               date: t.string,
-              description: t.string
-            }),
-            timeToRead: t.number,
-            fields: t.shape({
+              category: t.string,
+              tags: t.string,
               slug: t.string
-            })
+            }),
+            timeToRead: t.number
           })
         })
       )
