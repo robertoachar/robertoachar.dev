@@ -28,30 +28,30 @@ const IconContainer = styled.div`
 
 const links = [
   {
-    label: 'Facebook',
-    href: 'https://facebook.com/robertoachar',
-    icon: ['fab', 'facebook']
-  },
-  {
     label: 'Twitter',
     href: 'https://twitter.com/robertoachar',
     icon: ['fab', 'twitter']
   },
   {
-    label: 'LinkedIn',
-    href: 'https://linkedin.com/roberto.achar',
-    icon: ['fab', 'linkedin']
-  },
-  {
-    label: 'YouTube',
-    href: 'https://youtube.com/robertoachar',
-    icon: ['fab', 'youtube']
-  },
-  {
     label: 'GitHub',
     href: 'https://github.com/robertoachar',
     icon: ['fab', 'github']
+  },
+  {
+    label: 'YouTube',
+    href: 'https://www.youtube.com/user/robertoachar',
+    icon: ['fab', 'youtube']
+  },
+  {
+    label: 'LinkedIn',
+    href: 'https://www.linkedin.com/in/roberto-achar',
+    icon: ['fab', 'linkedin']
   }
+  // {
+  //   label: 'Facebook',
+  //   href: 'https://facebook.com/robertoachar',
+  //   icon: ['fab', 'facebook']
+  // }
 ];
 
 const SocialMedia = () => (
