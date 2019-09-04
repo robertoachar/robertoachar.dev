@@ -3,13 +3,15 @@ import t from 'prop-types';
 import styled from 'styled-components';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
-import { Hyperlink, Image, Paragraph } from '../Common';
+import { Heading2, Hyperlink, Image, Paragraph } from '../Common';
 
 const Card = styled.div`
   background-color: var(--sidebar-background);
   border-radius: ${({ theme }) => theme.radius['radius-200']};
   box-shadow: ${({ theme }) => theme.shadow['shadow-300']};
   color: var(--text);
+  display: flex;
+  flex-direction: column;
   min-height: 100%;
   overflow: hidden;
   transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
@@ -38,12 +40,17 @@ const CardCategory = styled.span`
 `;
 
 const CardBody = styled.div`
-  padding: 0 1.5rem;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 1.5rem;
 `;
+
+const CardData = styled.div``;
 
 const CardTags = styled.div`
   display: flex;
-  padding: 1rem 0;
 `;
 
 const CardTag = styled.span`
@@ -57,24 +64,20 @@ const CardTag = styled.span`
   }
 `;
 
-const CardTitle = styled.h2`
-  border: 0;
-  margin: 0;
-  padding: 0;
-  font-size: ${({ theme }) => theme.font.size.medium};
-  font-weight: ${({ theme }) => theme.font.weight.semibold};
+const CardTitle = styled(Heading2)`
+  margin-top: 1rem;
 `;
 
 const CardDescription = styled(Paragraph)`
   color: var(--text-light);
-  margin-top: 0.5rem;
+  margin-top: 1rem;
 `;
 
 const CardFooter = styled.div`
   color: var(--text-light);
   display: flex;
   justify-content: space-between;
-  padding: 1rem 1.5rem;
+  margin-top: 1rem;
 `;
 
 const CardDate = styled.span`
@@ -98,21 +101,23 @@ const PostItem = ({ post, timeToRead }) => (
         <CardCategory>{post.category}</CardCategory>
       </CardCover>
       <CardBody>
-        <CardTags>
-          {post.tags.map((tag) => (
-            <CardTag key={tag}>{tag}</CardTag>
-          ))}
-        </CardTags>
-        <CardTitle>{post.title}</CardTitle>
-        <CardDescription>{post.description}</CardDescription>
+        <CardData>
+          <CardTags>
+            {post.tags.map((tag) => (
+              <CardTag key={tag}>{tag}</CardTag>
+            ))}
+          </CardTags>
+          <CardTitle>{post.title}</CardTitle>
+          <CardDescription>{post.description}</CardDescription>
+        </CardData>
+        <CardFooter>
+          <CardDate>{post.date}</CardDate>
+          <CardTime>
+            <FontAwesomeIcon icon={['far', 'clock']} />
+            <CardTimeText>{`${timeToRead} min de leitura`}</CardTimeText>
+          </CardTime>
+        </CardFooter>
       </CardBody>
-      <CardFooter>
-        <CardDate>{post.date}</CardDate>
-        <CardTime>
-          <FontAwesomeIcon icon={['far', 'clock']} />
-          <CardTimeText>{`${timeToRead} min de leitura`}</CardTimeText>
-        </CardTime>
-      </CardFooter>
     </Card>
   </Hyperlink>
 );
@@ -124,7 +129,12 @@ PostItem.propTypes = {
     date: t.string,
     category: t.string,
     tags: t.arrayOf(t.string),
-    slug: t.string
+    slug: t.string,
+    cover: t.shape({
+      childImageSharp: t.shape({
+        fluid: t.object
+      })
+    })
   }).isRequired,
   timeToRead: t.number.isRequired
 };
