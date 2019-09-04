@@ -54,7 +54,7 @@ const Profile = () => {
         <ProfileRole>Full Stack Web Developer</ProfileRole>
       </Hyperlink>
       <ProfileDescription>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Quos, sapiente?
+        Tentando me tornar melhor do que fui ontem.
       </ProfileDescription>
     </ProfileWrapper>
   );
