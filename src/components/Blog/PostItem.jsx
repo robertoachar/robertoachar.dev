@@ -70,7 +70,7 @@ const CardTitle = styled(Heading2)`
 
 const CardDescription = styled(Paragraph)`
   color: var(--text-light);
-  margin-top: 1rem;
+  margin-top: 0.5rem;
 `;
 
 const CardFooter = styled.div`

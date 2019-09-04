@@ -7,7 +7,7 @@ import PostItem from './PostItem';
 const PostsWrapper = styled.div`
   display: grid;
   grid-gap: 2.5rem;
-  grid-template-columns: repeat(auto-fit, minmax(20rem, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(16rem, 1fr));
   margin-top: 2rem;
 `;
 
