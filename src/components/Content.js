@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-const Content = styled.section`
+const Content = styled.div`
   h1,
   p {
     border: 0;

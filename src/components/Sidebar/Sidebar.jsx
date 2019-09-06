@@ -6,20 +6,10 @@ import SocialMedia from './SocialMedia';
 import Menu from './Menu';
 import { ThemeSwitcher } from '../Theme';
 
-const SidebarWrapper = styled.aside`
-  background-color: var(--sidebar-background);
-  border-top: 8px solid var(--sidebar-background);
-  grid-area: sidebar;
-  min-height: 100vh;
-  padding: 1.5rem;
-  position: fixed;
-  width: 20rem;
-`;
-
 const SidebarSeparator = styled.hr`
-  background: var(--background);
+  background: ${({ theme }) => theme.colors['blue-grey-800']};
   border: 0;
-  border-bottom: 1px solid var(--background);
+  border-bottom: 1px solid ${({ theme }) => theme.colors['blue-grey-800']};
   margin: 1rem 0;
 `;
 
@@ -30,7 +20,7 @@ const SidebarTheme = styled.div`
 `;
 
 const Sidebar = () => (
-  <SidebarWrapper>
+  <>
     <Profile />
     <SidebarSeparator />
     <Menu />
@@ -39,7 +29,7 @@ const Sidebar = () => (
     <SidebarTheme>
       <ThemeSwitcher />
     </SidebarTheme>
-  </SidebarWrapper>
+  </>
 );
 
 export default Sidebar;
