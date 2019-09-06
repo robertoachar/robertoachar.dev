@@ -1,5 +1,3 @@
-/* eslint react/no-danger: 0 */
-
 import React from 'react';
 import t from 'prop-types';
 import { graphql } from 'gatsby';
@@ -38,9 +36,7 @@ const PostTemplate = ({ data: { mdx: post }, pageContext }) => {
           {post.frontmatter.description}
         </POST.PostDescription>
       </POST.PostHeader>
-      <POST.MainContent>
-        <MdxRenderer>{post.body}</MdxRenderer>
-      </POST.MainContent>
+      <MdxRenderer>{post.body}</MdxRenderer>
       <OtherPosts previous={previousPost} next={nextPost} />
     </>
   );
