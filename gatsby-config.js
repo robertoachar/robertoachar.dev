@@ -36,6 +36,7 @@ module.exports = {
         component: require.resolve(`./src/components/Layout.jsx`)
       }
     },
+    'gatsby-plugin-resolve-src',
     'gatsby-plugin-react-helmet',
     'gatsby-plugin-styled-components',
     'gatsby-plugin-sharp',
