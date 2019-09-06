@@ -1,8 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
-import { graphql, useStaticQuery } from 'gatsby';
+import { graphql, Link, useStaticQuery } from 'gatsby';
 
-import { Heading1, Hyperlink, Paragraph } from '../Common';
 import Avatar from './Avatar';
 
 const ProfileWrapper = styled.section`
@@ -12,29 +11,25 @@ const ProfileWrapper = styled.section`
   text-align: center;
 `;
 
-const ProfileLink = styled(Hyperlink)`
+const ProfileLink = styled(Link)`
   color: ${({ theme }) => theme.colors['blue-500']};
+  text-decoration: none;
+  transition: color 0.5s;
 
   &:hover {
     color: ${({ theme }) => theme.colors['blue-300']};
   }
 `;
 
-const ProfileAuthor = styled(Heading1)`
+const ProfileAuthor = styled.h1`
   font-size: 1.5rem;
-  letter-spacing: 0.05rem;
   margin-top: 1rem;
   text-transform: uppercase;
 `;
 
-const ProfileRole = styled(Paragraph)`
+const ProfileRole = styled.p`
   color: ${({ theme }) => theme.colors['blue-grey-200']};
   margin-top: 0.25rem;
-`;
-
-const ProfileDescription = styled(Paragraph)`
-  color: ${({ theme }) => theme.colors['blue-grey-400']};
-  margin-top: 1.5rem;
 `;
 
 const Profile = () => {
@@ -61,9 +56,6 @@ const Profile = () => {
         <ProfileAuthor>{title}</ProfileAuthor>
         <ProfileRole>Full Stack Web Developer</ProfileRole>
       </ProfileLink>
-      <ProfileDescription>
-        Tentando me tornar melhor do que fui ontem.
-      </ProfileDescription>
     </ProfileWrapper>
   );
 };

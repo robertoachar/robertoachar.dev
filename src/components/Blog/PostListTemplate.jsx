@@ -1,11 +1,13 @@
 import React from 'react';
 import t from 'prop-types';
+import styled from 'styled-components';
 import { graphql } from 'gatsby';
 
 import SEO from '../SEO';
 import PostList from './PostList';
 import Pagination from './Pagination';
-import { Heading1 } from '../Common';
+
+const Title = styled.h1``;
 
 export const query = graphql`
   query AllPosts($limit: Int!, $skip: Int!) {
@@ -50,7 +52,7 @@ const PostListTemplate = ({
   return (
     <>
       <SEO title="Blog" />
-      <Heading1>Blog</Heading1>
+      <Title>Blog</Title>
       <PostList posts={edges} />
       <Pagination currentPage={currentPage} numPages={numPages} />
     </>

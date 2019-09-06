@@ -2,8 +2,6 @@ import React from 'react';
 import styled from 'styled-components';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
-import { ExternalLink } from '../Common';
-
 const SocialMediaContainer = styled.nav`
   margin-top: 1.5rem;
 `;
@@ -16,7 +14,7 @@ const SocialMediaList = styled.ul`
 
 const SocialMediaItem = styled.li``;
 
-const SocialMediaLink = styled(ExternalLink)`
+const SocialMediaLink = styled.a`
   color: ${({ theme }) => theme.colors['blue-grey-400']};
 
   &:hover {

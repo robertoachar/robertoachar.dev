@@ -1,9 +1,9 @@
 import React from 'react';
 import t from 'prop-types';
 import styled from 'styled-components';
+import { Link } from 'gatsby';
+import Img from 'gatsby-image';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-
-import { Heading2, Hyperlink, Image, Paragraph } from '../Common';
 
 const Card = styled.div`
   background-color: var(--background-dark);
@@ -64,11 +64,13 @@ const CardTag = styled.span`
   }
 `;
 
-const CardTitle = styled(Heading2)`
+const CardTitle = styled.h2`
+  font-size: ${({ theme }) => theme.font.size.medium};
+  font-weight: ${({ theme }) => theme.font.weight.semibold};
   margin-top: 1rem;
 `;
 
-const CardDescription = styled(Paragraph)`
+const CardDescription = styled.p`
   color: var(--text-light);
   margin-top: 0.5rem;
 `;
@@ -94,10 +96,10 @@ const CardTimeText = styled.span`
 `;
 
 const PostItem = ({ post, timeToRead }) => (
-  <Hyperlink to={`blog/${post.slug}`}>
+  <Link to={`blog/${post.slug}`}>
     <Card>
       <CardCover>
-        {post.cover && <Image fluid={post.cover.childImageSharp.fluid} />}
+        {post.cover && <Img fluid={post.cover.childImageSharp.fluid} />}
         <CardCategory>{post.category}</CardCategory>
       </CardCover>
       <CardBody>
@@ -119,7 +121,7 @@ const PostItem = ({ post, timeToRead }) => (
         </CardFooter>
       </CardBody>
     </Card>
-  </Hyperlink>
+  </Link>
 );
 
 PostItem.propTypes = {

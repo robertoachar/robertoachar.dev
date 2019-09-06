@@ -1,8 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import t from 'prop-types';
 import styled from 'styled-components';
-
-import { Hyperlink, Span } from '../Common';
+import { Link } from 'gatsby';
 
 const PaginationContainer = styled.section`
   align-items: center;
@@ -14,13 +13,15 @@ const PaginationContainer = styled.section`
   padding: 2rem 0 0;
 `;
 
-const PreviousNavigation = styled.div``;
+const Previous = styled.div`
+  text-align: left;
+`;
 
 const Pages = styled.div`
   text-align: center;
 `;
 
-const NextNavigation = styled.div`
+const Next = styled.div`
   text-align: right;
 `;
 
@@ -47,15 +48,9 @@ const Pagination = ({ currentPage, numPages }) => {
 
   return (
     <PaginationContainer>
-      <PreviousNavigation>
-        {!first && <Hyperlink to={previous}>Anterior</Hyperlink>}
-      </PreviousNavigation>
-      <Pages>
-        <Span>{`${currentPage} de ${numPages}`}</Span>
-      </Pages>
-      <NextNavigation>
-        {!last && <Hyperlink to={next}>Próxima</Hyperlink>}
-      </NextNavigation>
+      <Previous>{!first && <Link to={previous}>Anterior</Link>}</Previous>
+      <Pages>{`${currentPage} de ${numPages}`}</Pages>
+      <Next>{!last && <Link to={next}>Próxima</Link>}</Next>
     </PaginationContainer>
   );
 };
