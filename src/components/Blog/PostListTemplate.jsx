@@ -1,6 +1,5 @@
 import React from 'react';
 import t from 'prop-types';
-import styled from 'styled-components';
 import { graphql } from 'gatsby';
 
 import SEO from '../SEO';
@@ -9,8 +8,9 @@ import Pagination from './Pagination';
 import { Heading1 } from '../Common';
 
 export const query = graphql`
-  query PostList($limit: Int!, $skip: Int!) {
-    allMdx(
+  query AllPosts($limit: Int!, $skip: Int!) {
+    posts: allMdx(
+      filter: { fileAbsolutePath: { regex: "//content/blog//" } }
       sort: { fields: frontmatter___date, order: DESC }
       limit: $limit
       skip: $skip
@@ -39,13 +39,9 @@ export const query = graphql`
   }
 `;
 
-const PostsContainer = styled.section`
-  padding: 1.5rem 2.5rem;
-`;
-
 const PostListTemplate = ({
   data: {
-    allMdx: { edges: posts }
+    posts: { edges }
   },
   pageContext
 }) => {
@@ -54,18 +50,16 @@ const PostListTemplate = ({
   return (
     <>
       <SEO title="Blog" />
-      <PostsContainer>
-        <Heading1>Blog</Heading1>
-        <PostList posts={posts} />
-        <Pagination currentPage={currentPage} numPages={numPages} />
-      </PostsContainer>
+      <Heading1>Blog</Heading1>
+      <PostList posts={edges} />
+      <Pagination currentPage={currentPage} numPages={numPages} />
     </>
   );
 };
 
 PostListTemplate.propTypes = {
   data: t.shape({
-    allMdx: t.shape({
+    posts: t.shape({
       edges: t.arrayOf(
         t.shape({
           node: t.shape({

@@ -1,6 +1,6 @@
 require('dotenv').config();
 
-const queries = require('./alogia-config');
+// const queries = require('./alogia-config');
 
 module.exports = {
   siteMetadata: {
@@ -20,7 +20,14 @@ module.exports = {
       resolve: 'gatsby-source-filesystem',
       options: {
         name: 'blog',
-        path: `${__dirname}/blog`
+        path: `${__dirname}/content/blog`
+      }
+    },
+    {
+      resolve: 'gatsby-source-filesystem',
+      options: {
+        name: 'pages',
+        path: `${__dirname}/src/pages`
       }
     },
     {
@@ -36,6 +43,9 @@ module.exports = {
     {
       resolve: 'gatsby-plugin-mdx',
       options: {
+        // defaultLayouts: {
+        //   default: require.resolve('./src/components/Layout.jsx')
+        // },
         plugins: [
           {
             resolve: 'gatsby-remark-relative-images',

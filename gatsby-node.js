@@ -1,11 +1,48 @@
 const path = require('path');
 
-exports.createPages = ({ actions, graphql }) => {
-  const { createPage } = actions;
+const createBlog = ({ createPage, data, component }) => {
+  const { edges } = data;
 
-  return graphql(`
-    query AllPosts {
-      allMdx(sort: { fields: frontmatter___date, order: DESC }) {
+  const postsPerPage = 50;
+  const numPages = Math.ceil(edges.length / postsPerPage);
+
+  Array.from({ length: numPages }).forEach((_, index) => {
+    createPage({
+      component,
+      path: index === 0 ? '/blog' : `/blog/page/${index + 1}`,
+      context: {
+        limit: postsPerPage,
+        skip: index * postsPerPage,
+        numPages,
+        currentPage: index + 1
+      }
+    });
+  });
+};
+
+const createPosts = ({ createPage, data, component }) => {
+  const { edges } = data;
+
+  edges.forEach(({ node, previous, next }) => {
+    createPage({
+      component,
+      path: `blog/${node.frontmatter.slug}`,
+      context: {
+        slug: node.frontmatter.slug,
+        // ORDER: DESC
+        previousPost: next,
+        nextPost: previous
+      }
+    });
+  });
+};
+
+exports.createPages = async ({ actions, graphql }) => {
+  const { data, errors } = await graphql(`
+    query AllContent {
+      blog: allMdx(
+        filter: { fileAbsolutePath: { regex: "//content/blog//" } }
+      ) {
         edges {
           node {
             frontmatter {
@@ -27,36 +64,24 @@ exports.createPages = ({ actions, graphql }) => {
         }
       }
     }
-  `).then((result) => {
-    const posts = result.data.allMdx.edges;
+  `);
 
-    const postsPerPage = 50;
-    const numPages = Math.ceil(posts.length / postsPerPage);
+  if (errors) {
+    return Promise.reject(errors);
+  }
 
-    Array.from({ length: numPages }).forEach((_, index) => {
-      createPage({
-        path: index === 0 ? '/blog' : `/blog/page/${index + 1}`,
-        component: path.resolve('./src/components/Blog/PostListTemplate.jsx'),
-        context: {
-          limit: postsPerPage,
-          skip: index * postsPerPage,
-          numPages,
-          currentPage: index + 1
-        }
-      });
-    });
+  const { createPage } = actions;
+  const { blog } = data;
 
-    posts.forEach(({ node, previous, next }) => {
-      createPage({
-        path: `blog/${node.frontmatter.slug}`,
-        component: path.resolve('./src/components/Blog/PostTemplate.jsx'),
-        context: {
-          slug: node.frontmatter.slug,
-          // ORDER: DESC
-          previousPost: next,
-          nextPost: previous
-        }
-      });
-    });
+  createBlog({
+    createPage,
+    data: blog,
+    component: path.resolve('./src/components/Blog/PostListTemplate.jsx')
+  });
+
+  createPosts({
+    createPage,
+    data: blog,
+    component: path.resolve('./src/components/Blog/PostTemplate.jsx')
   });
 };
