@@ -17,11 +17,14 @@ const SocialMediaList = styled.ul`
 const SocialMediaItem = styled.li``;
 
 const SocialMediaLink = styled(ExternalLink)`
-  color: #cbd5e0;
+  color: ${({ theme }) => theme.colors['blue-grey-400']};
+
+  &:hover {
+    color: ${({ theme }) => theme.colors['blue-500']};
+  }
 `;
 
 const IconContainer = styled.div`
-  fill: #bbb;
   height: 2rem;
   width: 2rem;
 `;

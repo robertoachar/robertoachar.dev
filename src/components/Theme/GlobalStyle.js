@@ -16,22 +16,22 @@ const GlobalStyle = createGlobalStyle`
 
   body.dark {
     --background: ${({ theme }) => theme.colors['blue-grey-800']};
-    --body: ${({ theme }) => theme.colors['blue-grey-100']};
-    --sidebar-background: ${({ theme }) => theme.colors['blue-grey-900']};
-    --text: ${({ theme }) => theme.colors['grey-200']};
+    --background-dark: ${({ theme }) => theme.colors['blue-grey-900']};
+    --text: ${({ theme }) => theme.colors['blue-grey-200']};
     --text-light: ${({ theme }) => theme.colors['grey-500']};
   }
 
   body.light {
-    --background: ${({ theme }) => theme.colors['blue-grey-100']};
-    --body: ${({ theme }) => theme.colors['blue-grey-800']};
-    --sidebar-background: ${({ theme }) => theme.colors['blue-grey-900']};
+    --background: ${({ theme }) => theme.colors['blue-grey-050']};
+    --background-dark: ${({ theme }) => theme.colors['blue-grey-100']};
+    --text: ${({ theme }) => theme.colors['blue-grey-800']};
+    --text-light: ${({ theme }) => theme.colors['grey-600']};
   }
 
   body {
     background-color: var(--background);
-    color: var(--body);
-    font-family: ${({ theme }) => theme.font.family.sansSerif};
+    color: var(--text);
+    font-family: ${({ theme }) => theme.font.family.sans};
     font-size: ${({ theme }) => theme.font.size.normal};
     font-weight: ${({ theme }) => theme.font.weight.normal};
     text-align: left;

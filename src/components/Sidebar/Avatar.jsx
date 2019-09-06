@@ -4,7 +4,7 @@ import { graphql, useStaticQuery } from 'gatsby';
 import Img from 'gatsby-image';
 
 const Container = styled.div`
-  border: 2px solid #2c5282;
+  border: 2px solid ${({ theme }) => theme.colors['blue-grey-800']};
   border-radius: 50%;
   margin: auto;
   max-width: 8rem;

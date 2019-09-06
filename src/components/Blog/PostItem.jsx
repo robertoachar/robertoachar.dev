@@ -6,7 +6,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { Heading2, Hyperlink, Image, Paragraph } from '../Common';
 
 const Card = styled.div`
-  background-color: var(--sidebar-background);
+  background-color: var(--background-dark);
   border-radius: ${({ theme }) => theme.radius['radius-200']};
   box-shadow: ${({ theme }) => theme.shadow['shadow-300']};
   color: var(--text);
@@ -27,9 +27,9 @@ const CardCover = styled.div`
 `;
 
 const CardCategory = styled.span`
-  background: var(--yellow);
+  background: ${({ theme }) => theme.colors.yellow};
   bottom: 0;
-  color: var(--sidebar-background);
+  color: ${({ theme }) => theme.colors['blue-grey-900']};
   font-size: ${({ theme }) => theme.font.size.small};
   font-weight: ${({ theme }) => theme.font.weight.bold};
   left: 0;

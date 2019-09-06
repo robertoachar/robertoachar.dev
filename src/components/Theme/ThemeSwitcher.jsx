@@ -9,7 +9,7 @@ const Input = styled.input`
   width: 0;
 
   &:checked + label {
-    background: var(--body);
+    background: var(--text);
   }
 
   &:checked + label:after {
@@ -29,7 +29,7 @@ const Label = styled.label`
   width: 5rem;
 
   &::after {
-    background: var(--body);
+    background: var(--text);
     border-radius: 50%;
     box-shadow: ${({ theme }) => theme.shadow['shadow-200']};
     content: '';

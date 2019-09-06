@@ -12,7 +12,7 @@ const MenuItem = styled.li``;
 
 const MenuLink = styled(Link)`
   border-left: 8px solid transparent;
-  color: #8899a6;
+  color: ${({ theme }) => theme.colors['blue-grey-200']};
   display: block;
   padding: 0.5rem;
   text-align: center;
@@ -21,8 +21,8 @@ const MenuLink = styled(Link)`
 
   &:hover,
   &.active {
-    border-left: 8px solid #2b6cb0;
-    color: #1fa1f2;
+    border-left: 8px solid ${({ theme }) => theme.colors['blue-500']};
+    color: ${({ theme }) => theme.colors['blue-500']};
   }
 `;
 

@@ -18,5 +18,7 @@ export default {
   'grey-200': '#EDF2F7',
   'grey-500': '#A0AEC0',
 
+  'blue-500': '#4098D7',
+  'blue-300': '#84C5F4',
   yellow: '#ECC94B'
 };
