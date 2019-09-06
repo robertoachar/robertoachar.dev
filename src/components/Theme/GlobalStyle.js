@@ -3,6 +3,7 @@ import { createGlobalStyle } from 'styled-components';
 const GlobalStyle = createGlobalStyle`
   html {
     box-sizing: border-box;
+    font-size: 16px;
     scroll-behavior: smooth;
   }
 
@@ -39,14 +40,36 @@ const GlobalStyle = createGlobalStyle`
     -webkit-font-smoothing: antialiased;
   }
 
-  ul {
+  h1,
+  h2,
+  h3,
+  p,
+  ul,
+  ol,
+  button {
     border: 0;
     margin: 0;
     padding: 0;
   }
 
-  ul {
+  ul,
+  ol {
     list-style: none;
+  }
+
+  a {
+    text-decoration: none;
+    transition: color 0.5s;
+  }
+
+  button {
+    background: none;
+  }
+
+  img {
+    display: block;
+    height: auto;
+    max-width: 100%;
   }
 `;
 
