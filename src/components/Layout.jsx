@@ -4,7 +4,6 @@ import styled from 'styled-components';
 
 import Root from './Root';
 import Sidebar from './Sidebar';
-import Content from './Content';
 
 const Container = styled.section`
   display: grid;
@@ -85,9 +84,7 @@ const Layout = ({ children }) => {
           </CloseButton>
           <Sidebar />
         </Aside>
-        <Main>
-          <Content>{children}</Content>
-        </Main>
+        <Main>{children}</Main>
       </Container>
     </Root>
   );
