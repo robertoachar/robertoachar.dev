@@ -117,7 +117,7 @@ fetch('http://swapi.co/api/people/1')
 
 O ponto mais importante a observar no código acima, é que `person` será **implicitamente** do tipo `any`, pois o compilador não tem como identificar seu tipo automaticamente. Como o tipo de `person` é `any`, o _IntelliSense_ não é capaz de reconhecer o tipo.
 
-{% include image_caption.html imageurl="/images/posts/typescript-classes-vs-interfaces/typescript-any.gif" %}
+![a](images/typescript-any.gif)
 
 É nesse ponto que precisaremos definir o nosso modelo. E a pergunta que não quer calar:
 
@@ -145,7 +145,7 @@ fetch('http://swapi.co/api/people/1')
 
 No código acima, estamos definindo **explicitamente** que o tipo de `person` é `Person`. Como o tipo de `person` está explicitamente definido, o `IntelliSense` é capaz de reconhecer o tipo.
 
-{% include image_caption.html imageurl="/images/posts/typescript-classes-vs-interfaces/typescript-interface.gif" %}
+![a](images/typescript-interface.gif)
 
 - Analisando o resultado da transpilação
 
@@ -163,8 +163,6 @@ fetch('http://swapi.co/api/people/1')
     console.log(person.name);
   });
 ```
-
----
 
 ## Analisando o comportamento com Classes
 
@@ -188,7 +186,7 @@ fetch('http://swapi.co/api/people/1')
 
 No código acima, estamos definindo **explicitamente** que o tipo de `person` é `Person`. Como o tipo de `person` está explicitamente definido, o `IntelliSense` é capaz de reconhecer o tipo.
 
-{% include image_caption.html imageurl="/images/posts/typescript-classes-vs-interfaces/typescript-class.gif" %}
+![a](images/typescript-class.gif)
 
 - Analisando o resultado da transpilação
 
