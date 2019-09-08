@@ -10,7 +10,8 @@ export default {
     small: '.875rem',
     normal: '1rem',
     medium: '1.25rem',
-    large: '2rem'
+    large: '2rem',
+    huge: '3rem'
   },
   weight: {
     regular: 400,
