@@ -8,6 +8,8 @@ tags: ['javascript']
 cover: ./cover.png
 ---
 
+![opa](./cover.png)
+
 Neste artigo vou demonstrar algumas funcionalidades que o `console` possui para auxiliar no dia-a-dia dos desenvolvedores.
 
 - Introdução
@@ -21,8 +23,6 @@ Neste artigo vou demonstrar algumas funcionalidades que o `console` possui para 
 - console.time() e console.timeEnd()
 - Conclusão
 
-<!--more-->
-
 ## Introdução
 
 O `console` é um grande aliado do desenvolvedor. Eu mesmo utilizo o `console` em todas as fases do desenvolvimento dos meus projetos.
@@ -30,8 +30,6 @@ O `console` é um grande aliado do desenvolvedor. Eu mesmo utilizo o `console` e
 Participando de um projeto com um amigo, ele ficou surpreso quando utilizei algumas funcionalidades que ele não conhecia. Com base nisso, resolvi escrever esse artigo para falar um pouco sobre o poder do `console`.
 
 Nos tópicos abaixo, vou mostrar algumas funcionalidades que talvez a maioria ainda não conheça ou não utilize.
-
----
 
 ## console.log()
 
@@ -41,7 +39,7 @@ Essa é a forma mais comum de utilizar o `console`. O método exibe uma saída b
 console.log('Eu sou o Batman!');
 ```
 
-{% include image_caption.html imageurl="/images/posts/console/console-log.gif" %}
+![Google Chrome exibindo o resultado do comando mostrado acima](./images/console-log.gif)
 
 Há outras formas de enviar a mensagem:
 
@@ -51,7 +49,7 @@ Há outras formas de enviar a mensagem:
 console.log('Eu sou o %s!', 'Batman');
 ```
 
-{% include image_caption.html imageurl="/images/posts/console/console-log-interpolation.gif" %}
+![Google Chrome exibindo o resultado do comando mostrado acima](./images/console-log-interpolation.gif)
 
 Podemos utilizar variáveis também:
 
@@ -61,7 +59,7 @@ const hero = 'Batman';
 console.log('Eu sou o %s!', hero);
 ```
 
-{% include image_caption.html imageurl="/images/posts/console/console-log-interpolation-variable.gif" %}
+![Google Chrome exibindo o resultado do comando mostrado acima](./images/console-log-interpolation-variable.gif)
 
 - Utilizando `Template Strings`, uma nova funcionalidade do ES6.
 
@@ -73,7 +71,7 @@ const hero = 'Batman';
 console.log(`Eu sou o ${hero}!`);
 ```
 
-{% include image_caption.html imageurl="/images/posts/console/console-log-template-string.gif" %}
+![Google Chrome exibindo o resultado do comando mostrado acima](./images/console-log-template-string.gif)
 
 - Utilizando estilos com o uso do símbolo `%c`.
 
@@ -83,9 +81,7 @@ const style = 'color: red; font-size: 24px';
 console.log('%c Eu sou o Batman!', style);
 ```
 
-{% include image_caption.html imageurl="/images/posts/console/console-log-style.gif" %}
-
----
+![Google Chrome exibindo o resultado do comando mostrado acima](./images/console-log-style.gif)
 
 ## console.clear()
 
@@ -98,9 +94,7 @@ console.clear();
 console.log('Eu sou o Batman!');
 ```
 
-{% include image_caption.html imageurl="/images/posts/console/console-clear.gif" %}
-
----
+![Google Chrome exibindo o resultado do comando mostrado acima](./images/console-clear.gif)
 
 ## console.info()
 
@@ -110,9 +104,7 @@ Essa opção é idêntica à `console.log()`.
 console.info('Eu sou o Batman!');
 ```
 
-{% include image_caption.html imageurl="/images/posts/console/console-info.gif" %}
-
----
+![Google Chrome exibindo o resultado do comando mostrado acima](./images/console-info.gif)
 
 ## console.warn()
 
@@ -122,9 +114,7 @@ Essa opção inclui um símbolo de aviso na frente da mensagem e altera a cor pa
 console.warn('Não se meta com o Batman!');
 ```
 
-{% include image_caption.html imageurl="/images/posts/console/console-warn.gif" %}
-
----
+![Google Chrome exibindo o resultado do comando mostrado acima](./images/console-warn.gif)
 
 ## console.error()
 
@@ -134,9 +124,7 @@ Essa opção inclui um símbolo de erro na frente da mensagem e altera a cor par
 console.error('O Batman está furioso!');
 ```
 
-{% include image_caption.html imageurl="/images/posts/console/console-error.gif" %}
-
----
+![Google Chrome exibindo o resultado do comando mostrado acima](./images/console-error.gif)
 
 ## console.table()
 
@@ -152,7 +140,7 @@ const heroes = [
 console.log(heroes);
 ```
 
-{% include image_caption.html imageurl="/images/posts/console/console-array-log.gif" %}
+![Google Chrome exibindo o resultado do comando mostrado acima](./images/console-array-log.gif)
 
 No lugar de `console.log()`, experimente utilizar `console.table()`.
 
@@ -165,9 +153,7 @@ const heroes = [
 console.table(heroes); // <-- Wow
 ```
 
-{% include image_caption.html imageurl="/images/posts/console/console-array-table.gif" %}
-
----
+![Google Chrome exibindo o resultado do comando mostrado acima](./images/console-array-table.gif)
 
 ## console.group(), groupCollapsed() e groupEnd()
 
@@ -188,13 +174,11 @@ heroes.forEach((hero) => {
 });
 ```
 
-{% include image_caption.html imageurl="/images/posts/console/console-group.gif" %}
+![Google Chrome exibindo o resultado do comando mostrado acima](./images/console-group.gif)
 
 A única diferença entre `group()` e `groupCollapsed()` é que o último mantém o agrupamento fechado.
 
-{% include image_caption.html imageurl="/images/posts/console/console-group-collapsed.gif" %}
-
----
+![Google Chrome exibindo o resultado do comando mostrado acima](./images/console-group-collapsed.gif)
 
 ## console.time() e console.timeEnd()
 
@@ -211,14 +195,10 @@ fetch('https://api.github.com/users/robertoachar')
   });
 ```
 
-{% include image_caption.html imageurl="/images/posts/console/console-time.gif" %}
-
----
+![Google Chrome exibindo o resultado do comando mostrado acima](./images/console-time.gif)
 
 ## Conclusão
 
 Ainda está surpreso com `console.table()`, não é? Também fiquei assim quando utilizei pela primeira vez. Existem outras funcionalidades que não mencionei no artigo para não ficar extenso.
 
 Espero que tenham gostado e possam aplicar essas funcionalidades no seu dia-a-dia.
-
-Vamos em frente!
