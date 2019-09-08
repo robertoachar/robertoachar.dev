@@ -36,24 +36,13 @@ module.exports = {
         component: require.resolve(`./src/components/Layout.jsx`)
       }
     },
-    'gatsby-plugin-resolve-src',
-    'gatsby-plugin-react-helmet',
-    'gatsby-plugin-styled-components',
-    'gatsby-plugin-sharp',
-    'gatsby-transformer-sharp',
     {
       resolve: 'gatsby-plugin-mdx',
       options: {
         // defaultLayouts: {
         //   default: require.resolve('./src/components/Layout.jsx')
         // },
-        plugins: [
-          {
-            resolve: 'gatsby-remark-relative-images',
-            options: {
-              name: 'uploads'
-            }
-          },
+        gatsbyRemarkPlugins: [
           {
             resolve: 'gatsby-remark-images',
             options: {
@@ -61,11 +50,31 @@ module.exports = {
               linkImagesToOriginal: false
             }
           },
+          {
+            resolve: 'gatsby-remark-copy-linked-files'
+          }
+          // {
+          //   resolve: 'gatsby-remark-relative-images'
+          // },
+        ],
+        plugins: [
+          // {
+          //   resolve: 'gatsby-remark-relative-images',
+          //   options: {
+          //     name: 'blog'
+          //   }
+          // },
           'gatsby-remark-lazy-load',
           'gatsby-remark-prismjs'
         ]
       }
     },
+    'gatsby-plugin-resolve-src',
+    'gatsby-plugin-react-helmet',
+    'gatsby-plugin-styled-components',
+    'gatsby-plugin-sharp',
+    'gatsby-transformer-sharp',
+
     {
       resolve: 'gatsby-plugin-manifest',
       options: {
