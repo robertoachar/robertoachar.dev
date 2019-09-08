@@ -2,30 +2,34 @@
 
 import React from 'react';
 import t from 'prop-types';
-import styled, { ThemeProvider } from 'styled-components';
+import { ThemeProvider } from 'styled-components';
 import { MDXProvider } from '@mdx-js/react';
 import 'normalize.css';
 
 import './Icons';
 import theme, { GlobalStyle } from './Theme';
-import Code from './Code';
-
-const Pre = styled.div`
-  /* TODO: wtf is this display: grid ??? */
-  display: grid;
-`;
+import * as MDX from './MDX';
 
 const components = {
-  pre: (props) => <Pre {...props} />,
-  code: (props) => <Code {...props} />
+  h1: (props) => <MDX.Heading1 {...props} />,
+  h2: (props) => <MDX.Heading2 {...props} />,
+  p: (props) => <MDX.Paragraph {...props} />,
+  a: (props) => <MDX.Link {...props} />,
+  ul: (props) => <MDX.List {...props} />,
+  ol: (props) => <MDX.OrderedList {...props} />,
+  li: (props) => <MDX.ListItem {...props} />,
+  blockquote: (props) => <MDX.Blockquote {...props} />,
+  pre: (props) => <MDX.Pre {...props} />,
+  code: (props) => <MDX.Code {...props} />,
+  inlineCode: (props) => <MDX.InlineCode {...props} />
 };
 
 const Root = ({ children }) => (
   <ThemeProvider theme={theme}>
-    <>
+    <MDXProvider components={components}>
       <GlobalStyle />
-      <MDXProvider components={components}>{children}</MDXProvider>
-    </>
+      {children}
+    </MDXProvider>
   </ThemeProvider>
 );
 
