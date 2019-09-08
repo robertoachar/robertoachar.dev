@@ -25,8 +25,6 @@ cover: ./cover.png
 - Aguardando múltiplas requisições simultâneas usando Promise.all()
 - Conclusão
 
-<!--more-->
-
 ## Introdução
 
 `Async/Await` é uma das novas funcionalidades do ES2017. Com ela é possível escrever código assíncrono como se estivéssemos escrevendo código síncrono. Essa funcionalidade já está disponível a partir da versão 7.6 do Node.js.
@@ -57,8 +55,6 @@ Executando o código, temos o seguinte resultado.
 $ node sample.js
 Luke Skywalker
 ```
-
----
 
 ## Escrevendo uma função assíncrona com async/await
 
@@ -109,8 +105,6 @@ $ node sample.js
 Luke Skywalker
 ```
 
----
-
 ## Utilizando async/await com Promises
 
 Podemos combinar os dois mundos e utilizar `async/await` junto com `Promises`.
@@ -154,8 +148,6 @@ $ node sample.js
 Luke Skywalker
 ```
 
----
-
 ## Resolvendo ou rejeitando uma Promise com async/await
 
 Para resolver uma `Promise` com `async/await`:
@@ -177,8 +169,6 @@ async function getPerson(id) {
 
 getPerson(0).catch((err) => console.error(err.message)); // Not found
 ```
-
----
 
 ## Tratamento de erros com Throw Error()
 
@@ -259,8 +249,6 @@ getPerson(0)
   .catch((err) => console.error(err.message)); // Not found
 ```
 
----
-
 ## Tratamento de erros com try/catch
 
 Outra alternativa para tratar erros com funções assíncronas é utilizando `try/catch`.
@@ -293,8 +281,6 @@ $ node sample.js
 Not found
 Luke Skywalker
 ```
-
----
 
 ## Utilizando async/await com _function expressions_
 
@@ -340,8 +326,6 @@ $ node sample.js
 Luke Skywalker
 ```
 
----
-
 ## Entendendo o await
 
 Nesse exemplo tentaremos utilizar o `await` fora do escopo de uma função com `async`.
@@ -372,8 +356,6 @@ SyntaxError: Unexpected identifier
 > `Await` só pode ser utilizado dentro de funções com `Async`.
 
 O resultado é o erro acima, pois só podemos utilizar o `await` dentro do escopo de funções com `async`. No caso acima poderíamos ter utilizado `Promise` no lugar do `await`.
-
----
 
 ## IIFE - Immediately-Invoked Function Expression
 
@@ -435,8 +417,6 @@ $ node sample.js
 Luke Skywalker
 ```
 
----
-
 ## Utilizando async/await com classes
 
 É muito simples utilizar `async/await` com classes, basta adicionar `async` no início das funções. Neste exemplo, criamos uma classe chamada `StarWars` e definimos a função assíncrona `getPerson()`. Dentro do _IIFE_, instanciamos a classe `StarWars` e utilizamos o `await`.
@@ -467,8 +447,6 @@ $ node sample.js
 Luke Skywalker
 ```
 
----
-
 ## Exportando uma classe com funções assíncronas
 
 Para os 03 próximos exemplos, vamos escrever a classe `StarWars` em um arquivo separado e vamos adicionar uma nova função para entender como trabalhar com múltiplas requisições.
@@ -494,8 +472,6 @@ module.exports = StarWars;
 ```
 
 No código acima, criamos e exportamos a classe `StarWars` com duas funções assíncronas: `getPerson()` e `getFilm()`.
-
----
 
 ## Aguardando múltiplas requisições em sequência
 
@@ -526,8 +502,6 @@ $ node sample.js
 Luke Skywalker
 A New Hope
 ```
-
----
 
 ## Aguardando múltiplas requisições simultâneas
 
@@ -594,5 +568,3 @@ A New Hope
 ## Conclusão
 
 Essa nova funcionalidade traz inúmeros benefícios quando trabalhamos com funções assíncronas. Espero ter conseguido esclarecer todas as dúvidas com relação à `async/await`. Caso conheça algum outro cenário onde possamos utilizar `async/await`, deixe nos comentários.
-
-Vamos em frente!
