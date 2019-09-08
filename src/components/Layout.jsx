@@ -41,10 +41,6 @@ const Aside = styled.aside`
 
 const Main = styled.main`
   grid-area: main;
-  margin: 0 auto;
-  max-width: 960px;
-  padding: 1.5rem;
-  width: 100%;
 `;
 
 const OpenButton = styled.button`
