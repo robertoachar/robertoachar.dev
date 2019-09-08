@@ -56,19 +56,15 @@ $ create-react-app -V
 
 Pronto, todas as ferramentas necessárias para a criação da aplicação já estão instaladas.
 
-Para mais informações: [create-react-app](https://github.com/facebookincubator/create-react-app).
-
----
+Para mais informações sobre o Create React App: [create-react-app](https://github.com/facebookincubator/create-react-app).
 
 ## Criando o repositório da aplicação
 
 Crie um novo repositório no GitHub, mas não selecione as opções de inicializar o repositório com um arquivo README, .gitignore ou Licença.
 
-{% include image_caption.html imageurl="/images/posts/react-gh-pages/github-new-repo.png" %}
+![a](images/github-new-repo.png)
 
 **Nota**: eu escolhi o nome `react-gh-pages`, mas você pode escolher qualquer nome que quiser. O nome desse repositório será utilizado mais pra frente nesse tutorial.
-
----
 
 ## Criando a aplicação
 
@@ -88,7 +84,7 @@ $ npm start
 
 Para validar a criação da aplicação, acesse [http://localhost:3000/](http://localhost:3000/).
 
-{% include image_caption.html imageurl="/images/posts/react-gh-pages/chrome-localhost.png" %}
+![a](images/chrome-localhost.png)
 
 Nesse momento já podemos enviar o código fonte dessa aplicação para o GitHub. Para isso execute os seguintes comandos no seu terminal.
 
@@ -109,8 +105,6 @@ $ git remote add origin https://github.com/robertoachar/react-gh-pages.git
 # Enviar as alterações para o repositório remoto
 $ git push -u origin master
 ```
-
----
 
 ## Fazendo deploy no GitHub Pages
 
@@ -170,13 +164,11 @@ A mágica funciona da seguinte maneira: o script `predeploy`, responsável pelo 
 
 Para validar as configurações do repositório no GitHub, acesse o repositório, clique em `Settings` e role a página até encontrar a seção **GitHub Pages**.
 
-{% include image_caption.html imageurl="/images/posts/react-gh-pages/github-repo-settings.png" %}
+![a](images/github-repo-settings.png)
 
 Para validar a execução da aplicação, acesse o endereço da sua aplicação. No meu caso é [https://robertoachar.github.io/react-gh-pages/](https://robertoachar.github.io/react-gh-pages/).
 
-{% include image_caption.html imageurl="/images/posts/react-gh-pages/chrome-github-pages.png" %}
-
----
+![a](chrome-github-pages.png)
 
 ## Conclusão
 
