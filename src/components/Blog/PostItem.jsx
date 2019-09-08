@@ -9,7 +9,7 @@ const Card = styled.div`
   background-color: var(--background-dark);
   border-radius: ${({ theme }) => theme.radius['radius-200']};
   box-shadow: ${({ theme }) => theme.shadow['shadow-300']};
-  color: var(--text);
+  color: var(--primary);
   display: flex;
   flex-direction: column;
   min-height: 100%;
@@ -71,12 +71,12 @@ const CardTitle = styled.h2`
 `;
 
 const CardDescription = styled.p`
-  color: var(--text-light);
+  color: var(--secondary);
   margin-top: 0.5rem;
 `;
 
 const CardFooter = styled.div`
-  color: var(--text-light);
+  color: var(--secondary);
   display: flex;
   justify-content: space-between;
   margin-top: 1rem;

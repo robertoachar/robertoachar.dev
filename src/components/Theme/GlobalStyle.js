@@ -18,20 +18,22 @@ const GlobalStyle = createGlobalStyle`
   body.dark {
     --background: ${({ theme }) => theme.colors['blue-grey-800']};
     --background-dark: ${({ theme }) => theme.colors['blue-grey-900']};
-    --text: ${({ theme }) => theme.colors['blue-grey-200']};
-    --text-light: ${({ theme }) => theme.colors['grey-500']};
+    --primary: ${({ theme }) => theme.colors['blue-grey-100']};
+    --secondary: ${({ theme }) => theme.colors['blue-grey-200']};
+    --highlight: ${({ theme }) => theme.colors['blue-300']};
   }
 
   body.light {
-    --background: ${({ theme }) => theme.colors['blue-grey-050']};
-    --background-dark: ${({ theme }) => theme.colors['blue-grey-100']};
-    --text: ${({ theme }) => theme.colors['blue-grey-800']};
-    --text-light: ${({ theme }) => theme.colors['grey-600']};
+    --background: ${({ theme }) => theme.colors['blue-grey-100']};
+    --background-dark: ${({ theme }) => theme.colors['blue-grey-050']};
+    --primary: ${({ theme }) => theme.colors['blue-grey-800']};
+    --secondary: ${({ theme }) => theme.colors['blue-grey-600']};
+    --highlight: ${({ theme }) => theme.colors['blue-900']};
   }
 
   body {
     background-color: var(--background);
-    color: var(--text);
+    color: var(--primary);
     font-family: ${({ theme }) => theme.font.family.sans};
     font-size: ${({ theme }) => theme.font.size.normal};
     font-weight: ${({ theme }) => theme.font.weight.normal};
@@ -46,10 +48,15 @@ const GlobalStyle = createGlobalStyle`
   p,
   ul,
   ol,
+  blockquote,
   button {
     border: 0;
     margin: 0;
     padding: 0;
+  }
+
+  strong {
+    font-weight: 600;
   }
 
   ul,
@@ -70,6 +77,7 @@ const GlobalStyle = createGlobalStyle`
     display: block;
     height: auto;
     max-width: 100%;
+    object-fit: cover;
   }
 `;
 
