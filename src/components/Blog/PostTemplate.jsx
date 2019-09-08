@@ -4,6 +4,8 @@ import { graphql } from 'gatsby';
 import MdxRenderer from 'gatsby-plugin-mdx/mdx-renderer';
 
 import SEO from '../SEO';
+import PostHeader from './PostHeader';
+import PostContent from './PostContent';
 import * as POST from './Post';
 import OtherPosts from './OtherPosts';
 
@@ -27,16 +29,10 @@ const PostTemplate = ({ data: { mdx: post }, pageContext }) => {
   return (
     <>
       <SEO title={post.frontmatter.title} />
-      <POST.PostHeader>
-        <POST.PostDate>
-          {`${post.frontmatter.date} - ${post.timeToRead} min de leitura`}
-        </POST.PostDate>
-        <POST.PostTitle>{post.frontmatter.title}</POST.PostTitle>
-        <POST.PostDescription>
-          {post.frontmatter.description}
-        </POST.PostDescription>
-      </POST.PostHeader>
-      <MdxRenderer>{post.body}</MdxRenderer>
+      <PostHeader post={post.frontmatter} timeToRead={post.timeToRead} />
+      <PostContent>
+        <MdxRenderer>{post.body}</MdxRenderer>
+      </PostContent>
       <OtherPosts previous={previousPost} next={nextPost} />
     </>
   );
