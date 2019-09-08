@@ -39,10 +39,20 @@ module.exports = {
     {
       resolve: 'gatsby-plugin-mdx',
       options: {
-        // defaultLayouts: {
-        //   default: require.resolve('./src/components/Layout.jsx')
-        // },
         gatsbyRemarkPlugins: [
+          {
+            resolve: 'gatsby-remark-copy-linked-files'
+          },
+          {
+            resolve: 'gatsby-remark-images',
+            options: {
+              maxWidth: 960,
+              linkImagesToOriginal: false
+            }
+          }
+        ],
+        plugins: [
+          // https://github.com/gatsbyjs/gatsby/issues/15486
           {
             resolve: 'gatsby-remark-images',
             options: {
@@ -50,20 +60,6 @@ module.exports = {
               linkImagesToOriginal: false
             }
           },
-          {
-            resolve: 'gatsby-remark-copy-linked-files'
-          }
-          // {
-          //   resolve: 'gatsby-remark-relative-images'
-          // },
-        ],
-        plugins: [
-          // {
-          //   resolve: 'gatsby-remark-relative-images',
-          //   options: {
-          //     name: 'blog'
-          //   }
-          // },
           'gatsby-remark-lazy-load',
           'gatsby-remark-prismjs'
         ]
