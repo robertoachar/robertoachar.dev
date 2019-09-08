@@ -17,8 +17,6 @@ Nesse artigo vou demonstrar:
 - EditorConfig no VS Code
 - Utilizando o EditorConfig
 
----
-
 ## O que é EditorConfig?
 
 Essa é a descrição do site oficial do plugin.
@@ -29,8 +27,6 @@ O EditorConfig ajuda os desenvolvedores a definir e manter estilos de codificaç
 
 Para mais informações sobre o EditorConfig acesse [http://editorconfig.org/](http://editorconfig.org/).
 
----
-
 ## Por que utilizar EditorConfig?
 
 Desenvolvedores optam por utilizar diferentes editores de código e cada um desses editores possui suas próprias configurações para definir os padrões dos arquivos.
@@ -40,8 +36,6 @@ Um exemplo bem simples desses padrões seria: **alinhar o código utilizando esp
 Imagine um desenvolvedor que goste de utilizar 04 espaços para alinhar seu código e outro que goste de utilizar 02 tabulações. Mesmo alterando apenas uma linha do código, sempre que um deles submeter esse arquivo para o versionador de códigos, todas as outras linhas sofrerão alterações também, pois a configuração de alinhamento de código deles é diferente.
 
 Para resolver esse e outros problemas, alguém teve a brilhante ideia de desenvolver um plugin para a maioria dos editores de códigos.
-
----
 
 ## EditorConfig no VS Code
 
@@ -57,11 +51,9 @@ Para instalar o plugin EditorConfig no VS Code, siga os seguintes passos:
 
 Pronto, o EditorConfig está instalado e preparado para ser utilizado.
 
-![EditorConfig no VS Code](vscode-editor-config.png)
+![EditorConfig no VS Code](images/vscode-editor-config.png)
 
 Mais informações sobre o plugin para VS Code acesse o [Marketplace](https://marketplace.visualstudio.com/items?itemName=EditorConfig.EditorConfig).
-
----
 
 ## Utilizando o EditorConfig
 
@@ -69,7 +61,7 @@ Para utilizar o plugin, basta criar um arquivo `.editorconfig` na raíz do seu p
 
 Essas são as configurações básicas que eu utilizo em todos os meus projetos:
 
-```properties
+```yaml
 # http://editorconfig.org
 root = true
 
@@ -86,48 +78,46 @@ max_line_length = off
 trim_trailing_whitespace = false
 ```
 
----
-
 #### Configurando o EditorConfig
 
-```properties
+```yaml
 # http://editorconfig.org
 ```
 
 Essa primeira linha é apenas um comentário. Comentários podem ser feitos utilizando os caracteres `#` ou `;`.
 
-```properties
+```yaml
 root = true
 ```
 
 Todo arquivo `.editorconfig` precisa ter essa linha e ela deve ser a primeira declaração do arquivo.
 
-```properties
+```yaml
 [*]
 ```
 
 Aqui estou informando ao plugin as configurações que devem ser utilizadas para todos os formatos de arquivos.
 
-```properties
+```yaml
 [*.md]
 ```
 
 Aqui estou informando ao plugin para ele estender ou sobrescrever as configurações que devem ser utilizadas apenas para os arquivos de formato `markdown`.
 
-```properties
+```yaml
 end_of_line = lf
 ```
 
 Como vocês podem observar, eu utilizo `LF` como caracter de quebra de linha. Em um artigo futuro explicarei o motivo de utilizar esse caracter ao invés de `CRLF`.
 
-```properties
+```yaml
 indent_size = 2
 indent_style = space
 ```
 
 Nessas linhas estou instruindo o plugin a utilizar 02 espaços para o alinhamento do código.
 
-```properties
+```yaml
 insert_final_newline = true
 trim_trailing_whitespace = true
 ```
@@ -144,10 +134,6 @@ Definidas as regras, criem o arquivo e submetam ao versionador de códigos para 
 
 À medida que forem salvando os arquivos, o plugin se encarrega de aplicar as regras definidas nas configurações. À partir desse momento, você e sua equipe passarão a ter o código mais consistente.
 
----
-
 ## Conclusão
 
 Como vocês podem ver, são muitos os benefícios em utilizar o EditorConfig em seus projetos. Espero que tenham gostado do assunto e caso tenham alguma dúvida, deixem um comentário.
-
-Vamos em frente!
