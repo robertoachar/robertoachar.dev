@@ -12,7 +12,7 @@ const Container = styled.section`
   grid-template-rows: 1fr;
   height: 100vh;
 
-  @media (min-width: ${({ theme }) => theme.breakpoint.MD}) {
+  @media (min-width: ${({ theme }) => theme.breakpoint.notebook}) {
     grid-template-areas: 'sidebar main';
     grid-template-columns: 320px 1fr;
   }
@@ -34,7 +34,7 @@ const Aside = styled.aside`
     transform: translateX(0);
   }
 
-  @media (min-width: ${({ theme }) => theme.breakpoint.MD}) {
+  @media (min-width: ${({ theme }) => theme.breakpoint.notebook}) {
     transform: translateX(0);
   }
 `;
@@ -56,7 +56,7 @@ const CloseButton = styled.button`
   top: 4px;
   visibility: visible;
 
-  @media (min-width: ${({ theme }) => theme.breakpoint.MD}) {
+  @media (min-width: ${({ theme }) => theme.breakpoint.notebook}) {
     visibility: hidden;
   }
 `;
