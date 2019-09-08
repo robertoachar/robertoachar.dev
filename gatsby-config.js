@@ -30,15 +30,19 @@ module.exports = {
         path: `${__dirname}/src/pages`
       }
     },
-    {
-      resolve: 'gatsby-plugin-layout',
-      options: {
-        component: require.resolve(`./src/components/Layout.jsx`)
-      }
-    },
+    // {
+    //   resolve: 'gatsby-plugin-layout',
+    //   options: {
+    //     component: require.resolve(`./src/components/Layout.jsx`)
+    //   }
+    // },
     {
       resolve: 'gatsby-plugin-mdx',
       options: {
+        defaultLayouts: {
+          pages: require.resolve('./src/components/PageLayout.jsx'),
+          blog: require.resolve('./src/components/Layout.jsx')
+        },
         gatsbyRemarkPlugins: [
           {
             resolve: 'gatsby-remark-copy-linked-files'
