@@ -3,10 +3,10 @@ import t from 'prop-types';
 import { graphql } from 'gatsby';
 import MdxRenderer from 'gatsby-plugin-mdx/mdx-renderer';
 
+import Layout from '../Layout';
 import SEO from '../SEO';
+import Container from '../Container';
 import PostHeader from './PostHeader';
-import PostContent from './PostContent';
-import * as POST from './Post';
 import OtherPosts from './OtherPosts';
 
 export const query = graphql`
@@ -27,14 +27,14 @@ const PostTemplate = ({ data: { mdx: post }, pageContext }) => {
   const { previousPost, nextPost } = pageContext;
 
   return (
-    <>
+    <Layout>
       <SEO title={post.frontmatter.title} />
-      <PostHeader post={post.frontmatter} timeToRead={post.timeToRead} />
-      <PostContent>
+      <Container>
+        <PostHeader post={post.frontmatter} timeToRead={post.timeToRead} />
         <MdxRenderer>{post.body}</MdxRenderer>
-      </PostContent>
-      <OtherPosts previous={previousPost} next={nextPost} />
-    </>
+        <OtherPosts previous={previousPost} next={nextPost} />
+      </Container>
+    </Layout>
   );
 };
 
