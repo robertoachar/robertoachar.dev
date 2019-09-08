@@ -4,7 +4,7 @@
 import React from 'react';
 import t from 'prop-types';
 import Highlight, { defaultProps } from 'prism-react-renderer';
-import theme from 'prism-react-renderer/themes/nightOwl';
+import prism from '../Theme/prism';
 
 const Code = ({ children, className: codeClassName }) => {
   const language = codeClassName.replace(/language-/, '');
@@ -14,7 +14,7 @@ const Code = ({ children, className: codeClassName }) => {
       {...defaultProps}
       code={children}
       language={language}
-      theme={theme}
+      theme={prism}
     >
       {({ className, style, tokens, getLineProps, getTokenProps }) => (
         <pre
