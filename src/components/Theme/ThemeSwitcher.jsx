@@ -20,7 +20,7 @@ const Input = styled.input`
 
 const Label = styled.label`
   background: var(--background);
-  border-radius: 50px;
+  border-radius: 2.5rem;
   box-shadow: ${({ theme }) => theme.shadow['shadow-200']};
   cursor: pointer;
   display: block;
@@ -30,7 +30,7 @@ const Label = styled.label`
 
   &::after {
     background: var(--primary);
-    border-radius: 50%;
+    border-radius: ${({ theme }) => theme.radius['radius-full']};
     box-shadow: ${({ theme }) => theme.shadow['shadow-200']};
     content: '';
     height: 2rem;

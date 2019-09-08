@@ -5,14 +5,14 @@ import Img from 'gatsby-image';
 
 const Container = styled.div`
   border: 2px solid ${({ theme }) => theme.colors['blue-grey-800']};
-  border-radius: 50%;
+  border-radius: ${({ theme }) => theme.radius['radius-full']};
   margin: auto;
   max-width: 8rem;
   padding: 0.25rem;
 `;
 
 const Photo = styled(Img)`
-  border-radius: 50%;
+  border-radius: ${({ theme }) => theme.radius['radius-full']};
   max-width: 100%;
 `;
 
