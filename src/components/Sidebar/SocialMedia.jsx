@@ -57,7 +57,7 @@ const SocialMedia = () => (
         return (
           <SocialMediaItem key={link.label}>
             <SocialMediaLink href={link.href} title={link.label}>
-              <FontAwesomeIcon icon={link.icon} fixedWidth size="md" />
+              <FontAwesomeIcon icon={link.icon} fixedWidth size="1x" />
             </SocialMediaLink>
           </SocialMediaItem>
         );
