@@ -9,7 +9,7 @@ export default {
     tiny: '0.75rem',
     small: '0.875rem',
     normal: '1rem',
-    medium: '1.5rem',
+    medium: '1.25rem',
     large: '2rem',
     huge: '3.5rem'
   },
