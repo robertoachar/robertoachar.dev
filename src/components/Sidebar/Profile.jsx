@@ -12,9 +12,7 @@ const ProfileWrapper = styled.section`
 `;
 
 const ProfileLink = styled(Link)`
-  color: ${({ theme }) => theme.colors['blue-500']};
-  text-decoration: none;
-  transition: color 0.5s;
+  color: ${({ theme }) => theme.colors['blue-grey-100']};
 
   &:hover {
     color: ${({ theme }) => theme.colors['blue-300']};
@@ -22,8 +20,9 @@ const ProfileLink = styled(Link)`
 `;
 
 const ProfileAuthor = styled.h1`
-  font-size: 1.5rem;
+  font-size: ${({ theme }) => theme.font.size.medium};
   margin-top: 1rem;
+  letter-spacing: 0.05rem;
   text-transform: uppercase;
 `;
 
