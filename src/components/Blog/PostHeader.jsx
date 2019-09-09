@@ -2,20 +2,21 @@ import React from 'react';
 import t from 'prop-types';
 import styled from 'styled-components';
 
-export const Header = styled.header``;
+import PostDate from './PostDate';
 
-const Date = styled.time`
-  color: var(--secondary);
-  font-size: ${({ theme }) => theme.font.size.small};
-`;
+const Header = styled.header``;
 
-export const Title = styled.h1`
-  font-size: ${({ theme }) => theme.font.size.huge};
+const Title = styled.h1`
+  font-size: ${({ theme }) => theme.font.size.large};
   font-weight: ${({ theme }) => theme.font.weight.medium};
   margin-top: ${({ theme }) => theme.space.normal};
+
+  @media (min-width: ${({ theme }) => theme.breakpoint.tablet}) {
+    font-size: ${({ theme }) => theme.font.size.huge};
+  }
 `;
 
-export const Subtitle = styled.h2`
+const Subtitle = styled.h2`
   font-size: ${({ theme }) => theme.font.size.medium};
   font-weight: ${({ theme }) => theme.font.weight.light};
   margin-top: ${({ theme }) => theme.space.small};
@@ -25,10 +26,7 @@ const PostHeader = ({ post, timeToRead }) => {
   const { title, description, date } = post;
   return (
     <Header>
-      <Date>
-        <span>{date}</span>
-        <span>{timeToRead}</span>
-      </Date>
+      <PostDate date={date} timeToRead={timeToRead} />
       <Title>{title}</Title>
       <Subtitle>{description}</Subtitle>
     </Header>

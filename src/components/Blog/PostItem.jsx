@@ -3,7 +3,8 @@ import t from 'prop-types';
 import styled from 'styled-components';
 import { Link } from 'gatsby';
 import Img from 'gatsby-image';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+
+import PostDate from './PostDate';
 
 const Card = styled.div`
   background-color: var(--background-dark);
@@ -76,23 +77,7 @@ const CardDescription = styled.p`
 `;
 
 const CardFooter = styled.div`
-  color: var(--secondary);
-  display: flex;
-  justify-content: space-between;
   margin-top: ${({ theme }) => theme.space.normal};
-`;
-
-const CardDate = styled.span`
-  font-size: ${({ theme }) => theme.font.size.small};
-`;
-
-const CardTime = styled.div`
-  display: flex;
-  font-size: ${({ theme }) => theme.font.size.small};
-`;
-
-const CardTimeText = styled.span`
-  margin-left: ${({ theme }) => theme.space.small};
 `;
 
 const PostItem = ({ post, timeToRead }) => (
@@ -113,11 +98,7 @@ const PostItem = ({ post, timeToRead }) => (
           <CardDescription>{post.description}</CardDescription>
         </CardData>
         <CardFooter>
-          <CardDate>{post.date}</CardDate>
-          <CardTime>
-            <FontAwesomeIcon icon={['far', 'clock']} />
-            <CardTimeText>{`${timeToRead} min de leitura`}</CardTimeText>
-          </CardTime>
+          <PostDate date={post.date} timeToRead={timeToRead} />
         </CardFooter>
       </CardBody>
     </Card>
