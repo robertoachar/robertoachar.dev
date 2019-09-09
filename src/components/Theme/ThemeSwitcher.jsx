@@ -9,36 +9,36 @@ const Input = styled.input`
   width: 0;
 
   &:checked + label {
-    background: var(--primary);
+    /* background: var(--primary); */
   }
 
   &:checked + label:after {
-    background: var(--background);
-    left: 2.75rem;
+    /* background: var(--background-dark); */
+    left: 2.25rem;
   }
 `;
 
 const Label = styled.label`
   background: var(--background);
-  border-radius: 2.5rem;
+  border-radius: 2rem;
   box-shadow: ${({ theme }) => theme.shadow['shadow-200']};
   cursor: pointer;
   display: block;
-  height: 2.5rem;
+  height: 2rem;
   position: relative;
-  width: 5rem;
+  width: 4rem;
 
   &::after {
     background: var(--primary);
     border-radius: ${({ theme }) => theme.radius['radius-full']};
     box-shadow: ${({ theme }) => theme.shadow['shadow-200']};
     content: '';
-    height: 2rem;
+    height: 1.5rem;
     left: 0.25rem;
     position: absolute;
     top: 0.25rem;
     transition: 0.3s;
-    width: 2rem;
+    width: 1.5rem;
   }
 `;
 
