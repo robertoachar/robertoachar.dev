@@ -4,16 +4,16 @@ const createBlog = ({ createPage, data, component }) => {
   const { edges } = data;
 
   const postsPerPage = 50;
-  const numPages = Math.ceil(edges.length / postsPerPage);
+  const totalPages = Math.ceil(edges.length / postsPerPage);
 
-  Array.from({ length: numPages }).forEach((_, index) => {
+  Array.from({ length: totalPages }).forEach((_, index) => {
     createPage({
       component,
       path: index === 0 ? '/blog' : `/blog/page/${index + 1}`,
       context: {
         limit: postsPerPage,
         skip: index * postsPerPage,
-        numPages,
+        totalPages,
         currentPage: index + 1
       }
     });

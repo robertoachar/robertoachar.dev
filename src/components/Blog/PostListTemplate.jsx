@@ -46,7 +46,7 @@ export const query = graphql`
 `;
 
 const PostListTemplate = ({ data, pageContext }) => {
-  const { currentPage, numPages } = pageContext;
+  const { currentPage, totalPages } = pageContext;
 
   return (
     <Layout>
@@ -54,7 +54,7 @@ const PostListTemplate = ({ data, pageContext }) => {
       <Container>
         <Title>Blog</Title>
         <PostList posts={data.posts.edges} />
-        <Pagination currentPage={currentPage} numPages={numPages} />
+        <Pagination currentPage={currentPage} totalPages={totalPages} />
       </Container>
     </Layout>
   );
@@ -68,7 +68,7 @@ PostListTemplate.propTypes = {
   }).isRequired,
   pageContext: t.shape({
     currentPage: t.number,
-    numPages: t.number
+    totalPages: t.number
   }).isRequired
 };
 

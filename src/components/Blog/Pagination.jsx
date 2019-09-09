@@ -25,7 +25,7 @@ const Next = styled.div`
   text-align: right;
 `;
 
-const Pagination = ({ currentPage, numPages }) => {
+const Pagination = ({ currentPage, totalPages }) => {
   const [first, setFirst] = useState(false);
   const [last, setLast] = useState(false);
   const [previous, setPrevious] = useState('');
@@ -35,7 +35,7 @@ const Pagination = ({ currentPage, numPages }) => {
     const isFirst = currentPage === 1;
     setFirst(isFirst);
 
-    const isLast = currentPage === numPages;
+    const isLast = currentPage === totalPages;
     setLast(isLast);
 
     const previousPage =
@@ -44,12 +44,12 @@ const Pagination = ({ currentPage, numPages }) => {
 
     const nextPage = `/blog/page/${currentPage + 1}`;
     setNext(nextPage);
-  }, [currentPage, numPages]);
+  }, [currentPage, totalPages]);
 
   return (
     <PaginationContainer>
       <Previous>{!first && <Link to={previous}>Anterior</Link>}</Previous>
-      <Pages>{`${currentPage} de ${numPages}`}</Pages>
+      <Pages>{`${currentPage} de ${totalPages}`}</Pages>
       <Next>{!last && <Link to={next}>Próxima</Link>}</Next>
     </PaginationContainer>
   );
@@ -57,7 +57,7 @@ const Pagination = ({ currentPage, numPages }) => {
 
 Pagination.propTypes = {
   currentPage: t.number.isRequired,
-  numPages: t.number.isRequired
+  totalPages: t.number.isRequired
 };
 
 export default Pagination;
