@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import t from 'prop-types';
 import styled from 'styled-components';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 import Root from './Root';
 import Sidebar from './Sidebar';
@@ -28,7 +29,7 @@ const Aside = styled.aside`
   transform: translateX(-320px);
   transition: transform 0.5s ease-in-out;
   width: 320px;
-  z-index: 2;
+  z-index: 10;
 
   &.active {
     transform: translateX(0);
@@ -43,17 +44,39 @@ const Main = styled.main`
   grid-area: main;
 `;
 
+const Header = styled.div`
+  background-color: var(--background);
+  box-shadow: ${({ theme }) => theme.shadow['shadow-300']};
+  display: flex;
+  padding: ${({ theme }) => theme.space.normal};
+  position: sticky;
+  top: 0;
+  z-index: 5;
+
+  @media (min-width: ${({ theme }) => theme.breakpoint.notebook}) {
+    display: none;
+    position: static;
+  }
+`;
+
+const Title = styled.span`
+  color: var(--secondary);
+  font-size: ${({ theme }) => theme.font.size.normal};
+  font-weight: ${({ theme }) => theme.font.weight.medium};
+  margin-left: ${({ theme }) => theme.space.normal};
+`;
+
 const OpenButton = styled.button`
-  left: 8px;
-  position: fixed;
-  top: 4px;
-  z-index: 1;
+  color: var(--primary);
+  cursor: pointer;
 `;
 
 const CloseButton = styled.button`
+  color: ${({ theme }) => theme.colors['blue-300']};
+  cursor: pointer;
   position: absolute;
-  right: 8px;
-  top: 4px;
+  right: ${({ theme }) => theme.space.normal};
+  top: ${({ theme }) => theme.space.normal};
   visibility: visible;
 
   @media (min-width: ${({ theme }) => theme.breakpoint.notebook}) {
@@ -71,16 +94,21 @@ const Layout = ({ children }) => {
   return (
     <Root>
       <Container>
-        <OpenButton type="button" onClick={toggle}>
-          OPEN
-        </OpenButton>
         <Aside className={open ? 'active' : ''}>
           <CloseButton type="button" onClick={toggle}>
-            CLOSE
+            <FontAwesomeIcon icon={['fas', 'times']} fixedWidth size="1x" />
           </CloseButton>
           <Sidebar />
         </Aside>
-        <Main>{children}</Main>
+        <Main>
+          <Header>
+            <OpenButton type="button" onClick={toggle}>
+              <FontAwesomeIcon icon={['fas', 'bars']} fixedWidth size="1x" />
+            </OpenButton>
+            <Title>robertoachar.dev</Title>
+          </Header>
+          {children}
+        </Main>
       </Container>
     </Root>
   );
