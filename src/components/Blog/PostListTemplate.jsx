@@ -5,6 +5,7 @@ import { graphql } from 'gatsby';
 
 import Layout from '../Layout';
 import SEO from '../SEO';
+import Container from '../Container';
 import PostList from './PostList';
 import Pagination from './Pagination';
 
@@ -53,9 +54,11 @@ const PostListTemplate = ({
   return (
     <Layout>
       <SEO title="Blog" />
-      <Title>Blog</Title>
-      <PostList posts={edges} />
-      <Pagination currentPage={currentPage} numPages={numPages} />
+      <Container>
+        <Title>Blog</Title>
+        <PostList posts={edges} />
+        <Pagination currentPage={currentPage} numPages={numPages} />
+      </Container>
     </Layout>
   );
 };
