@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 const SocialMediaContainer = styled.nav`
-  margin-top: 1.5rem;
+  margin-top: ${({ theme }) => theme.space.medium};
 `;
 
 const SocialMediaList = styled.ul`
@@ -20,11 +20,6 @@ const SocialMediaLink = styled.a`
   &:hover {
     color: ${({ theme }) => theme.colors['blue-300']};
   }
-`;
-
-const IconContainer = styled.div`
-  height: 2rem;
-  width: 2rem;
 `;
 
 const links = [
@@ -62,9 +57,7 @@ const SocialMedia = () => (
         return (
           <SocialMediaItem key={link.label}>
             <SocialMediaLink href={link.href} title={link.label}>
-              <IconContainer>
-                <FontAwesomeIcon icon={link.icon} fixedWidth size="lg" />
-              </IconContainer>
+              <FontAwesomeIcon icon={link.icon} fixedWidth size="md" />
             </SocialMediaLink>
           </SocialMediaItem>
         );

@@ -29,12 +29,11 @@ const CardPhoto = styled.div`
 const CardCategory = styled.span`
   background: ${({ theme }) => theme.colors.yellow};
   bottom: 0;
-  color: ${({ theme }) => theme.colors['blue-grey-900']};
+  color: ${({ theme }) => theme.colors['blue-grey-800']};
   font-size: ${({ theme }) => theme.font.size.tiny};
   font-weight: ${({ theme }) => theme.font.weight.bold};
   left: 0;
-  letter-spacing: 0.05rem;
-  padding: 0.5rem 0.75rem;
+  padding: 0.25rem 0.5rem;
   position: absolute;
   text-transform: uppercase;
 `;
@@ -44,7 +43,7 @@ const CardBody = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  padding: 1.5rem;
+  padding: ${({ theme }) => theme.space.normal};
 `;
 
 const CardData = styled.div``;
@@ -60,26 +59,27 @@ const CardTag = styled.span`
   padding: 0.125rem 0.5rem;
 
   &:not(:first-child) {
-    margin-left: 0.5rem;
+    margin-left: ${({ theme }) => theme.space.small};
   }
 `;
 
 const CardTitle = styled.h2`
   font-size: ${({ theme }) => theme.font.size.medium};
   font-weight: ${({ theme }) => theme.font.weight.semibold};
-  margin-top: 1rem;
+  margin-top: ${({ theme }) => theme.space.normal};
 `;
 
 const CardDescription = styled.p`
   color: var(--secondary);
-  margin-top: 0.5rem;
+  line-height: 1.4;
+  margin-top: ${({ theme }) => theme.space.small};
 `;
 
 const CardFooter = styled.div`
   color: var(--secondary);
   display: flex;
   justify-content: space-between;
-  margin-top: 1rem;
+  margin-top: ${({ theme }) => theme.space.normal};
 `;
 
 const CardDate = styled.span`
@@ -92,7 +92,7 @@ const CardTime = styled.div`
 `;
 
 const CardTimeText = styled.span`
-  margin-left: 0.5rem;
+  margin-left: ${({ theme }) => theme.space.small};
 `;
 
 const PostItem = ({ post, timeToRead }) => (

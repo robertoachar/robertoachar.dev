@@ -6,7 +6,7 @@ import styled from 'styled-components';
 import Img from 'gatsby-image';
 
 const Figure = styled.figure`
-  margin-top: 1rem;
+  margin-top: ${({ theme }) => theme.space.normal};
   position: relative;
 `;
 

@@ -21,10 +21,10 @@ const Container = styled.section`
 const Aside = styled.aside`
   background-color: ${({ theme }) => theme.colors['blue-grey-900']};
   grid-area: sidebar;
+  height: 100%;
   overflow-y: auto;
   padding: 1.5rem;
   position: fixed;
-  height: 100%;
   transform: translateX(-320px);
   transition: transform 0.5s ease-in-out;
   width: 320px;

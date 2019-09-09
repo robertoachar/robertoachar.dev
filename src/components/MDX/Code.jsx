@@ -3,8 +3,15 @@
 
 import React from 'react';
 import t from 'prop-types';
+import styled from 'styled-components';
 import Highlight, { defaultProps } from 'prism-react-renderer';
 import prism from '../Theme/prism';
+
+const Pre = styled.pre`
+  overflow: auto;
+  margin-top: ${({ theme }) => theme.space.normal};
+  padding: ${({ theme }) => theme.space.normal};
+`;
 
 const Code = ({ children, className: codeClassName }) => {
   const language = codeClassName.replace(/language-/, '');
@@ -17,10 +24,7 @@ const Code = ({ children, className: codeClassName }) => {
       theme={prism}
     >
       {({ className, style, tokens, getLineProps, getTokenProps }) => (
-        <pre
-          className={className}
-          style={{ ...style, overflow: 'auto', padding: '16px' }}
-        >
+        <Pre className={className} style={{ ...style }}>
           {tokens.map((line, i) => (
             <div key={i} {...getLineProps({ line, key: i })}>
               {line.map((token, key) => (
@@ -28,7 +32,7 @@ const Code = ({ children, className: codeClassName }) => {
               ))}
             </div>
           ))}
-        </pre>
+        </Pre>
       )}
     </Highlight>
   );

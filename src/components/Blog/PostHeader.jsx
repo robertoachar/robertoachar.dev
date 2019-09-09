@@ -11,28 +11,18 @@ const Date = styled.time`
 
 export const Title = styled.h1`
   font-size: ${({ theme }) => theme.font.size.huge};
-  font-weight: 500;
-  margin-top: 1rem;
+  font-weight: ${({ theme }) => theme.font.weight.medium};
+  margin-top: ${({ theme }) => theme.space.normal};
 `;
 
 export const Subtitle = styled.h2`
-  font-size: 1.5rem;
-  font-weight: 300;
-  margin-top: 0.5rem;
-`;
-
-export const Category = styled.h2`
-  font-size: 2rem;
-  font-weight: 200;
-`;
-
-export const Tags = styled.h2`
-  font-size: 2rem;
-  font-weight: 200;
+  font-size: ${({ theme }) => theme.font.size.medium};
+  font-weight: ${({ theme }) => theme.font.weight.light};
+  margin-top: ${({ theme }) => theme.space.small};
 `;
 
 const PostHeader = ({ post, timeToRead }) => {
-  const { title, description, date, category, tags } = post;
+  const { title, description, date } = post;
   return (
     <Header>
       <Date>
@@ -41,8 +31,6 @@ const PostHeader = ({ post, timeToRead }) => {
       </Date>
       <Title>{title}</Title>
       <Subtitle>{description}</Subtitle>
-      <Category>{category}</Category>
-      <Tags>{tags}</Tags>
     </Header>
   );
 };

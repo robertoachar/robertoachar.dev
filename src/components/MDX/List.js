@@ -2,8 +2,8 @@ import styled from 'styled-components';
 
 const Markup = styled.ul`
   list-style: disc;
-  margin-left: 1rem;
-  margin-top: 1rem;
+  margin-left: ${({ theme }) => theme.space.normal};
+  margin-top: ${({ theme }) => theme.space.normal};
 `;
 
 export default Markup;

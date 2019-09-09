@@ -14,7 +14,7 @@ const MenuLink = styled(Link)`
   border-left: 8px solid transparent;
   color: ${({ theme }) => theme.colors['blue-grey-200']};
   display: block;
-  padding: 0.5rem;
+  padding: ${({ theme }) => theme.space.small};
   text-align: center;
   text-decoration: none;
   transition: color 0.5s, border-color 0.5s;

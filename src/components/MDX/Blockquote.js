@@ -4,8 +4,8 @@ const Markup = styled.blockquote`
   border-left: 4px solid var(--highlight);
   color: var(--secondary);
   font-style: italic;
-  padding-left: 1.5rem;
-  margin-top: 1rem;
+  padding-left: ${({ theme }) => theme.space.medium};
+  margin-top: ${({ theme }) => theme.space.normal};
 `;
 
 export default Markup;

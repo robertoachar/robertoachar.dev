@@ -3,8 +3,12 @@ import { createGlobalStyle } from 'styled-components';
 const GlobalStyle = createGlobalStyle`
   html {
     box-sizing: border-box;
-    font-size: 20px;
+    font-size: 16px;
     scroll-behavior: smooth;
+
+    @media (min-width: ${({ theme }) => theme.breakpoint.tablet}) {
+      font-size: 20px;
+    }
   }
 
   *, *:before, *:after {
@@ -50,7 +54,8 @@ const GlobalStyle = createGlobalStyle`
   ol,
   blockquote,
   button,
-  figure {
+  figure,
+  pre {
     border: 0;
     margin: 0;
     padding: 0;

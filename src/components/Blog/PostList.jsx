@@ -6,9 +6,9 @@ import PostItem from './PostItem';
 
 const PostsWrapper = styled.div`
   display: grid;
-  grid-gap: 2.5rem;
+  grid-gap: ${({ theme }) => theme.space.medium};
   grid-template-columns: repeat(auto-fit, minmax(16rem, 1fr));
-  margin-top: 2rem;
+  margin-top: ${({ theme }) => theme.space.medium};
 `;
 
 const PostList = ({ posts }) => {

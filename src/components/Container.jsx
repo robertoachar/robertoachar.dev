@@ -5,8 +5,12 @@ import styled from 'styled-components';
 const StyledContainer = styled.div`
   margin: 0 auto;
   max-width: 960px;
-  padding: 1.5rem;
+  padding: ${({ theme }) => theme.space.normal};
   width: 100%;
+
+  @media (min-width: ${({ theme }) => theme.breakpoint.notebook}) {
+    padding: ${({ theme }) => theme.space.medium};
+  }
 `;
 
 const Container = ({ children }) => (

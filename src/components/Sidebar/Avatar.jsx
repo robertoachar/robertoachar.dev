@@ -8,7 +8,7 @@ const Container = styled.div`
   border-radius: ${({ theme }) => theme.radius['radius-full']};
   margin: auto;
   max-width: 8rem;
-  padding: 0.25rem;
+  padding: ${({ theme }) => theme.space.tiny};
 `;
 
 const Photo = styled(Img)`

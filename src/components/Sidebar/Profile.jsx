@@ -21,14 +21,14 @@ const ProfileLink = styled(Link)`
 
 const ProfileAuthor = styled.h1`
   font-size: ${({ theme }) => theme.font.size.medium};
-  margin-top: 1rem;
+  margin-top: ${({ theme }) => theme.space.normal};
   letter-spacing: 0.05rem;
   text-transform: uppercase;
 `;
 
 const ProfileRole = styled.p`
   color: ${({ theme }) => theme.colors['blue-grey-200']};
-  margin-top: 0.25rem;
+  margin-top: ${({ theme }) => theme.space.tiny};
 `;
 
 const Profile = () => {
