@@ -74,17 +74,16 @@ module.exports = {
     'gatsby-plugin-styled-components',
     'gatsby-plugin-sharp',
     'gatsby-transformer-sharp',
-
     {
       resolve: 'gatsby-plugin-manifest',
       options: {
         name: 'Roberto Achar',
         short_name: 'Roberto Achar',
         start_url: '/',
-        background_color: '#ffffff',
-        theme_color: '#ffffff',
-        display: 'minimal-ui',
-        icon: 'src/images/gatsby-icon.png'
+        background_color: '#102A43',
+        theme_color: '#F0F4F8',
+        display: 'standalone',
+        icon: 'src/images/icon.png'
       }
     },
     'gatsby-plugin-offline'
