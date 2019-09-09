@@ -18,7 +18,7 @@ const SocialMediaLink = styled.a`
   color: ${({ theme }) => theme.colors['blue-grey-400']};
 
   &:hover {
-    color: ${({ theme }) => theme.colors['blue-500']};
+    color: ${({ theme }) => theme.colors['blue-300']};
   }
 `;
 
