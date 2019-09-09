@@ -21,8 +21,8 @@ const MenuLink = styled(Link)`
 
   &:hover,
   &.active {
-    border-left: 8px solid ${({ theme }) => theme.colors['blue-500']};
-    color: ${({ theme }) => theme.colors['blue-500']};
+    border-left: 8px solid ${({ theme }) => theme.colors['blue-300']};
+    color: ${({ theme }) => theme.colors['blue-300']};
   }
 `;
 
