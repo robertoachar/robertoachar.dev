@@ -6,7 +6,7 @@ export default {
     mono: 'Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace'
   },
   size: {
-    extrasmall: '0.75rem',
+    tiny: '0.75rem',
     small: '0.875rem',
     normal: '1rem',
     medium: '1.5rem',
