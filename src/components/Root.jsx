@@ -13,6 +13,7 @@ import * as MDX from './MDX';
 const components = {
   h1: (props) => <MDX.Heading1 {...props} />,
   h2: (props) => <MDX.Heading2 {...props} />,
+  h3: (props) => <MDX.Heading3 {...props} />,
   p: (props) => <MDX.Paragraph {...props} />,
   a: (props) => <MDX.Link {...props} />,
   ul: (props) => <MDX.List {...props} />,
