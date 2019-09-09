@@ -49,14 +49,11 @@ const GlobalStyle = createGlobalStyle`
   ul,
   ol,
   blockquote,
-  button {
+  button,
+  figure {
     border: 0;
     margin: 0;
     padding: 0;
-  }
-
-  strong {
-    font-weight: 600;
   }
 
   ul,
