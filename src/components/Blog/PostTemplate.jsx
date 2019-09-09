@@ -12,11 +12,13 @@ import OtherPosts from './OtherPosts';
 
 export const query = graphql`
   query Post($slug: String!) {
-    mdx(frontmatter: { slug: { eq: $slug } }) {
+    post: mdx(frontmatter: { slug: { eq: $slug } }) {
       frontmatter {
         title
         description
         date(formatString: "DD/MM/YYYY", locale: "pt-BR")
+        category
+        tags
         photoCredit
         photoLink
         photo {
@@ -33,7 +35,8 @@ export const query = graphql`
   }
 `;
 
-const PostTemplate = ({ data: { mdx: post }, pageContext }) => {
+const PostTemplate = ({ data, pageContext }) => {
+  const { post } = data;
   const { previousPost, nextPost } = pageContext;
 
   return (
@@ -47,7 +50,7 @@ const PostTemplate = ({ data: { mdx: post }, pageContext }) => {
           photoLink={post.frontmatter.photoLink}
         />
         <MdxRenderer>{post.body}</MdxRenderer>
-        <OtherPosts previous={previousPost} next={nextPost} />
+        {/* <OtherPosts previousPost={previousPost} nextPost={nextPost} /> */}
       </Container>
     </Layout>
   );
@@ -55,34 +58,36 @@ const PostTemplate = ({ data: { mdx: post }, pageContext }) => {
 
 PostTemplate.propTypes = {
   data: t.shape({
-    mdx: t.shape({
-      title: t.string,
-      description: t.string,
-      date: t.string,
-      photoCredit: t.string,
-      photoLink: t.string,
-      photo: t.shape({
-        childImageSharp: t.shape({
-          fluid: t.object
+    post: t.shape({
+      frontmatter: t.shape({
+        title: t.string,
+        description: t.string,
+        date: t.string,
+        category: t.string,
+        tags: t.arrayOf(t.string),
+        photoCredit: t.string,
+        photoLink: t.string,
+        photo: t.shape({
+          childImageSharp: t.shape({
+            fluid: t.object
+          })
         })
-      })
+      }),
+      body: t.string,
+      timeToRead: t.number
     })
   }).isRequired,
   pageContext: t.shape({
     previousPost: t.shape({
-      fields: t.shape({
-        slug: t.string
-      }),
       frontmatter: t.shape({
-        title: t.string
+        slug: t.string.isRequired,
+        title: t.string.isRequired
       })
     }),
     nextPost: t.shape({
-      fields: t.shape({
-        slug: t.string
-      }),
       frontmatter: t.shape({
-        title: t.string
+        slug: t.string.isRequired,
+        title: t.string.isRequired
       })
     })
   }).isRequired

@@ -51,14 +51,14 @@ exports.createPages = async ({ actions, graphql }) => {
           }
           previous {
             frontmatter {
-              title
               slug
+              title
             }
           }
           next {
             frontmatter {
-              title
               slug
+              title
             }
           }
         }
