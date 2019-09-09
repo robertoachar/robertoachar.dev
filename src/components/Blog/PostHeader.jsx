@@ -32,7 +32,7 @@ export const Tags = styled.h2`
 `;
 
 const PostHeader = ({ post, timeToRead }) => {
-  const { date, title, description, category, tags } = post;
+  const { title, description, date, category, tags } = post;
   return (
     <Header>
       <Date>
@@ -45,6 +45,17 @@ const PostHeader = ({ post, timeToRead }) => {
       <Tags>{tags}</Tags>
     </Header>
   );
+};
+
+PostHeader.propTypes = {
+  post: t.shape({
+    title: t.string.isRequired,
+    description: t.string.isRequired,
+    date: t.string.isRequired,
+    category: t.string.isRequired,
+    tags: t.arrayOf(t.string).isRequired
+  }).isRequired,
+  timeToRead: t.number.isRequired
 };
 
 export default PostHeader;
