@@ -10,6 +10,7 @@ import ListItem from './ListItem';
 import OrderedList from './OrderedList';
 import Paragraph from './Paragraph';
 import Pre from './Pre';
+import Strong from './Strong';
 
 export {
   Blockquote,
@@ -23,5 +24,6 @@ export {
   ListItem,
   OrderedList,
   Paragraph,
-  Pre
+  Pre,
+  Strong
 };
