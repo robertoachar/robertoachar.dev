@@ -14,8 +14,12 @@ const PostsWrapper = styled.div`
 const PostList = ({ posts }) => {
   return (
     <PostsWrapper>
-      {posts.map(({ node: { frontmatter: post, timeToRead } }) => (
-        <PostItem key={post.slug} post={post} timeToRead={timeToRead} />
+      {posts.map(({ node: { frontmatter, timeToRead } }) => (
+        <PostItem
+          key={frontmatter.slug}
+          post={frontmatter}
+          timeToRead={timeToRead}
+        />
       ))}
     </PostsWrapper>
   );
@@ -25,14 +29,7 @@ PostList.propTypes = {
   posts: t.arrayOf(
     t.shape({
       node: t.shape({
-        frontmatter: t.shape({
-          title: t.string,
-          description: t.string,
-          date: t.string,
-          category: t.string,
-          tags: t.arrayOf(t.string),
-          slug: t.string
-        }),
+        frontmatter: t.object,
         timeToRead: t.number
       })
     })

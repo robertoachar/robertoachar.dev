@@ -22,13 +22,15 @@ export const query = graphql`
       edges {
         node {
           frontmatter {
+            slug
             title
             description
             date(formatString: "DD/MM/YYYY", locale: "pt-BR")
             category
             tags
-            slug
-            cover {
+            photoCredit
+            photoLink
+            photo {
               childImageSharp {
                 fluid(maxWidth: 960) {
                   ...GatsbyImageSharpFluid
@@ -43,12 +45,7 @@ export const query = graphql`
   }
 `;
 
-const PostListTemplate = ({
-  data: {
-    posts: { edges }
-  },
-  pageContext
-}) => {
+const PostListTemplate = ({ data, pageContext }) => {
   const { currentPage, numPages } = pageContext;
 
   return (
@@ -56,7 +53,7 @@ const PostListTemplate = ({
       <SEO title="Blog" />
       <Container>
         <Title>Blog</Title>
-        <PostList posts={edges} />
+        <PostList posts={data.posts.edges} />
         <Pagination currentPage={currentPage} numPages={numPages} />
       </Container>
     </Layout>
@@ -66,21 +63,7 @@ const PostListTemplate = ({
 PostListTemplate.propTypes = {
   data: t.shape({
     posts: t.shape({
-      edges: t.arrayOf(
-        t.shape({
-          node: t.shape({
-            frontmatter: t.shape({
-              title: t.string,
-              description: t.string,
-              date: t.string,
-              category: t.string,
-              tags: t.arrayOf(t.string),
-              slug: t.string
-            }),
-            timeToRead: t.number
-          })
-        })
-      )
+      edges: t.arrayOf(t.object)
     })
   }).isRequired,
   pageContext: t.shape({

@@ -22,7 +22,7 @@ const Card = styled.div`
   }
 `;
 
-const CardCover = styled.div`
+const CardPhoto = styled.div`
   position: relative;
 `;
 
@@ -30,11 +30,11 @@ const CardCategory = styled.span`
   background: ${({ theme }) => theme.colors.yellow};
   bottom: 0;
   color: ${({ theme }) => theme.colors['blue-grey-900']};
-  font-size: ${({ theme }) => theme.font.size.small};
+  font-size: ${({ theme }) => theme.font.size.tiny};
   font-weight: ${({ theme }) => theme.font.weight.bold};
   left: 0;
   letter-spacing: 0.05rem;
-  padding: 0.5rem 1rem;
+  padding: 0.5rem 0.75rem;
   position: absolute;
   text-transform: uppercase;
 `;
@@ -98,10 +98,10 @@ const CardTimeText = styled.span`
 const PostItem = ({ post, timeToRead }) => (
   <Link to={`blog/${post.slug}`}>
     <Card>
-      <CardCover>
-        {post.cover && <Img fluid={post.cover.childImageSharp.fluid} />}
+      <CardPhoto>
+        {post.photo && <Img fluid={post.photo.childImageSharp.fluid} />}
         <CardCategory>{post.category}</CardCategory>
-      </CardCover>
+      </CardPhoto>
       <CardBody>
         <CardData>
           <CardTags>
@@ -126,13 +126,13 @@ const PostItem = ({ post, timeToRead }) => (
 
 PostItem.propTypes = {
   post: t.shape({
+    slug: t.string,
     title: t.string,
     description: t.string,
     date: t.string,
     category: t.string,
     tags: t.arrayOf(t.string),
-    slug: t.string,
-    cover: t.shape({
+    photo: t.shape({
       childImageSharp: t.shape({
         fluid: t.object
       })

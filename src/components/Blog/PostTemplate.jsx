@@ -7,6 +7,7 @@ import Layout from '../Layout';
 import SEO from '../SEO';
 import Container from '../Container';
 import PostHeader from './PostHeader';
+import PostPhoto from './PostPhoto';
 import OtherPosts from './OtherPosts';
 
 export const query = graphql`
@@ -16,6 +17,15 @@ export const query = graphql`
         title
         description
         date(formatString: "DD/MM/YYYY", locale: "pt-BR")
+        photoCredit
+        photoLink
+        photo {
+          childImageSharp {
+            fluid(maxWidth: 1366) {
+              ...GatsbyImageSharpFluid
+            }
+          }
+        }
       }
       body
       timeToRead
@@ -31,6 +41,11 @@ const PostTemplate = ({ data: { mdx: post }, pageContext }) => {
       <SEO title={post.frontmatter.title} />
       <Container>
         <PostHeader post={post.frontmatter} timeToRead={post.timeToRead} />
+        <PostPhoto
+          photo={post.frontmatter.photo}
+          photoCredit={post.frontmatter.photoCredit}
+          photoLink={post.frontmatter.photoLink}
+        />
         <MdxRenderer>{post.body}</MdxRenderer>
         <OtherPosts previous={previousPost} next={nextPost} />
       </Container>
@@ -43,7 +58,14 @@ PostTemplate.propTypes = {
     mdx: t.shape({
       title: t.string,
       description: t.string,
-      date: t.string
+      date: t.string,
+      photoCredit: t.string,
+      photoLink: t.string,
+      photo: t.shape({
+        childImageSharp: t.shape({
+          fluid: t.object
+        })
+      })
     })
   }).isRequired,
   pageContext: t.shape({

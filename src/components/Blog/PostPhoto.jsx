@@ -32,20 +32,20 @@ const Link = styled.a`
   }
 `;
 
-const PostCover = ({ fluid, link, name }) => (
+const PostPhoto = ({ photo, photoCredit, photoLink }) => (
   <Figure>
-    <Img fluid={fluid} />
+    <Img fluid={photo.childImageSharp.fluid} />
     <Caption>
       <Text>Foto de </Text>
-      <Link href={link}>{name}</Link>
+      <Link href={photoLink}>{photoCredit}</Link>
     </Caption>
   </Figure>
 );
 
-PostCover.propTypes = {
-  fluid: t.object.isRequired,
-  link: t.string.isRequired,
-  name: t.string.isRequired
+PostPhoto.propTypes = {
+  photo: t.object.isRequired,
+  photoCredit: t.string.isRequired,
+  photoLink: t.string.isRequired
 };
 
-export default PostCover;
+export default PostPhoto;
