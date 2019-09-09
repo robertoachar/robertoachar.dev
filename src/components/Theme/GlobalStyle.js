@@ -27,7 +27,7 @@ const GlobalStyle = createGlobalStyle`
     --background: ${({ theme }) => theme.colors['blue-grey-100']};
     --background-dark: ${({ theme }) => theme.colors['blue-grey-050']};
     --primary: ${({ theme }) => theme.colors['blue-grey-800']};
-    --secondary: ${({ theme }) => theme.colors['blue-grey-600']};
+    --secondary: ${({ theme }) => theme.colors['blue-grey-700']};
     --highlight: ${({ theme }) => theme.colors['blue-900']};
   }
 
