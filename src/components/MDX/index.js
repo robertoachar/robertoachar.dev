@@ -1,5 +1,6 @@
 import Blockquote from './Blockquote';
 import Code from './Code';
+import Emphasis from './Emphasis';
 import Heading1 from './Heading1';
 import Heading2 from './Heading2';
 import Heading3 from './Heading3';
@@ -15,6 +16,7 @@ import Strong from './Strong';
 export {
   Blockquote,
   Code,
+  Emphasis,
   Heading1,
   Heading2,
   Heading3,

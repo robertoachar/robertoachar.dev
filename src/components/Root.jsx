@@ -16,6 +16,7 @@ const components = {
   h3: (props) => <MDX.Heading3 {...props} />,
   p: (props) => <MDX.Paragraph {...props} />,
   strong: (props) => <MDX.Strong {...props} />,
+  em: (props) => <MDX.Emphasis {...props} />,
   a: (props) => <MDX.Link {...props} />,
   ul: (props) => <MDX.List {...props} />,
   ol: (props) => <MDX.OrderedList {...props} />,
