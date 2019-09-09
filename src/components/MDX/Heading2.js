@@ -1,9 +1,9 @@
 import styled from 'styled-components';
 
 const Markup = styled.h2`
-  color: var(--highlight);
-  font-size: ${({ theme }) => theme.font.size.large};
-  font-weight: ${({ theme }) => theme.font.weight.regular};
+  color: var(--secondary);
+  font-size: ${({ theme }) => theme.font.size.medium};
+  font-weight: ${({ theme }) => theme.font.weight.semibold};
   margin-top: 2.5rem;
 `;
 
