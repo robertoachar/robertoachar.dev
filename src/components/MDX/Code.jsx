@@ -8,8 +8,9 @@ import Highlight, { defaultProps } from 'prism-react-renderer';
 import prism from '../Theme/prism';
 
 const Pre = styled.pre`
-  overflow: auto;
+  font-size: ${({ theme }) => theme.font.size.small};
   margin-top: ${({ theme }) => theme.space.normal};
+  overflow: auto;
   padding: ${({ theme }) => theme.space.normal};
 `;
 
