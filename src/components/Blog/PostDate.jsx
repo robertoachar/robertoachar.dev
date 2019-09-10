@@ -14,12 +14,13 @@ const Date = styled.span`
 `;
 
 const Time = styled.div`
+  align-items: center;
   display: flex;
   font-size: ${({ theme }) => theme.font.size.small};
 `;
 
 const TimeText = styled.span`
-  margin-left: ${({ theme }) => theme.space.small};
+  margin-left: ${({ theme }) => theme.space.tiny};
 `;
 
 const PostDate = ({ date, timeToRead }) => (
