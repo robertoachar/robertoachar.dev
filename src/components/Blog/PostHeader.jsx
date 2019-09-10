@@ -2,20 +2,13 @@ import React from 'react';
 import t from 'prop-types';
 import styled from 'styled-components';
 
+import Heading1 from '../MDX/Heading1';
 import PostDate from './PostDate';
 
 const Header = styled.header``;
 
-const Title = styled.h1`
-  color: var(--primary);
-  font-size: ${({ theme }) => theme.font.size.wide};
-  font-weight: ${({ theme }) => theme.font.weight.bold};
-  line-height: 1;
+const Title = styled(Heading1)`
   margin-top: ${({ theme }) => theme.space.normal};
-
-  @media (min-width: ${({ theme }) => theme.breakpoint.tablet}) {
-    font-size: ${({ theme }) => theme.font.size.huge};
-  }
 `;
 
 const Subtitle = styled.h2`
