@@ -14,7 +14,8 @@ const Caption = styled.figcaption`
   background-color: var(--background-dark);
   bottom: 0;
   color: var(--secondary);
-  font-size: ${({ theme }) => theme.font.size.tiny};
+  font-size: ${({ theme }) => theme.font.size.small};
+  font-weight: ${({ theme }) => theme.font.weight.regular};
   font-style: italic;
   padding: 0.25rem 0.5rem;
   position: absolute;
