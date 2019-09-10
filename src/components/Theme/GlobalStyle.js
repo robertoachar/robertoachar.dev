@@ -30,7 +30,7 @@ const GlobalStyle = createGlobalStyle`
     --heading: ${({ theme }) => theme.colors['light-blue-900']};
     --primary: ${({ theme }) => theme.colors['grey-800']};
     --secondary: ${({ theme }) => theme.colors['grey-600']};
-    --hfighlight: ${({ theme }) => theme.colors['light-blue-800']};
+    --highlight: ${({ theme }) => theme.colors['light-blue-800']};
   }
 
   body {
