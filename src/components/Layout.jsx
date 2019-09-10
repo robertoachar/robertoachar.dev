@@ -97,6 +97,7 @@ const Layout = ({ children }) => {
         <Aside className={open ? 'active' : ''}>
           <CloseButton type="button" onClick={toggle}>
             <FontAwesomeIcon icon={['fas', 'times']} fixedWidth size="1x" />
+            <span className="sr-only">Fechar menu</span>
           </CloseButton>
           <Sidebar />
         </Aside>
@@ -104,6 +105,7 @@ const Layout = ({ children }) => {
           <Header>
             <OpenButton type="button" onClick={toggle}>
               <FontAwesomeIcon icon={['fas', 'bars']} fixedWidth size="1x" />
+              <span className="sr-only">Abrir menu</span>
             </OpenButton>
             <Title>robertoachar.dev</Title>
           </Header>
