@@ -56,6 +56,7 @@ const CardTags = styled.div`
 const CardTag = styled.span`
   background: var(--background);
   border-radius: ${({ theme }) => theme.radius['radius-200']};
+  color: var(--secondary);
   font-size: ${({ theme }) => theme.font.size.small};
   padding: 0.125rem 0.5rem;
 
@@ -71,7 +72,7 @@ const CardTitle = styled.h2`
 `;
 
 const CardDescription = styled.p`
-  color: var(--secondary);
+  color: var(--primary);
   line-height: 1.4;
   margin-top: ${({ theme }) => theme.space.small};
 `;
