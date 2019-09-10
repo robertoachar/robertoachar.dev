@@ -14,31 +14,31 @@ const Input = styled.input`
 
   &:checked + label:after {
     /* background: var(--background-dark); */
-    left: 2.25rem;
+    left: 1.25rem;
   }
 `;
 
 const Label = styled.label`
   background: var(--background);
-  border-radius: 2rem;
+  border-radius: 1rem;
   box-shadow: ${({ theme }) => theme.shadow['shadow-200']};
   cursor: pointer;
   display: block;
-  height: 2rem;
+  height: 1rem;
   position: relative;
-  width: 4rem;
+  width: 2rem;
 
   &::after {
     background: var(--primary);
     border-radius: ${({ theme }) => theme.radius['radius-full']};
     box-shadow: ${({ theme }) => theme.shadow['shadow-200']};
     content: '';
-    height: 1.5rem;
+    height: 0.5rem;
     left: 0.25rem;
     position: absolute;
     top: 0.25rem;
     transition: 0.3s;
-    width: 1.5rem;
+    width: 0.5rem;
   }
 `;
 
