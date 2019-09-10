@@ -7,8 +7,10 @@ import PostDate from './PostDate';
 const Header = styled.header``;
 
 const Title = styled.h1`
-  font-size: ${({ theme }) => theme.font.size.large};
-  font-weight: ${({ theme }) => theme.font.weight.medium};
+  color: var(--primary);
+  font-size: ${({ theme }) => theme.font.size.wide};
+  font-weight: ${({ theme }) => theme.font.weight.bold};
+  line-height: 1;
   margin-top: ${({ theme }) => theme.space.normal};
 
   @media (min-width: ${({ theme }) => theme.breakpoint.tablet}) {
@@ -19,7 +21,7 @@ const Title = styled.h1`
 const Subtitle = styled.h2`
   font-size: ${({ theme }) => theme.font.size.medium};
   font-weight: ${({ theme }) => theme.font.weight.light};
-  margin-top: ${({ theme }) => theme.space.small};
+  margin-top: ${({ theme }) => theme.space.normal};
 `;
 
 const PostHeader = ({ post, timeToRead }) => {
