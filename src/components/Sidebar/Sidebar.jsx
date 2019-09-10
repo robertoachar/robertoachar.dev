@@ -17,7 +17,7 @@ const SidebarSeparator = styled.hr`
 const SidebarTheme = styled.div`
   display: flex;
   justify-content: center;
-  margin-top: ${({ theme }) => theme.space.normal};
+  margin-top: ${({ theme }) => theme.space.medium};
 `;
 
 const Sidebar = () => (
