@@ -3,12 +3,8 @@ import { createGlobalStyle } from 'styled-components';
 const GlobalStyle = createGlobalStyle`
   html {
     box-sizing: border-box;
-    font-size: 16px;
+    font-size: 20px;
     scroll-behavior: smooth;
-
-    @media (min-width: ${({ theme }) => theme.breakpoint.tablet}) {
-      font-size: 20px;
-    }
   }
 
   *, *:before, *:after {
@@ -22,17 +18,19 @@ const GlobalStyle = createGlobalStyle`
   body.dark {
     --background: ${({ theme }) => theme.colors['blue-grey-800']};
     --background-dark: ${({ theme }) => theme.colors['blue-grey-900']};
+    --heading: ${({ theme }) => theme.colors['blue-300']};
     --primary: ${({ theme }) => theme.colors['blue-grey-100']};
-    --secondary: ${({ theme }) => theme.colors['blue-grey-200']};
+    --secondary: ${({ theme }) => theme.colors['blue-grey-300']};
     --highlight: ${({ theme }) => theme.colors['blue-300']};
   }
 
   body.light {
-    --background: ${({ theme }) => theme.colors['blue-grey-100']};
-    --background-dark: ${({ theme }) => theme.colors['blue-grey-050']};
-    --primary: ${({ theme }) => theme.colors['blue-grey-900']};
-    --secondary: ${({ theme }) => theme.colors['blue-grey-700']};
-    --highlight: ${({ theme }) => theme.colors['blue-900']};
+    --background: ${({ theme }) => theme.colors['grey-100']};
+    --background-dark: ${({ theme }) => theme.colors['grey-050']};
+    --heading: ${({ theme }) => theme.colors['light-blue-900']};
+    --primary: ${({ theme }) => theme.colors['grey-800']};
+    --secondary: ${({ theme }) => theme.colors['grey-600']};
+    --hfighlight: ${({ theme }) => theme.colors['light-blue-800']};
   }
 
   body {
