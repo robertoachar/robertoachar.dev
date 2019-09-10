@@ -1,0 +1,287 @@
+---
+slug: react-hooks
+title: React Hooks
+description: Neste artigo pretendo demonstrar a nova funcionalidade do React chamada Hooks.
+date: 2018-10-27
+category: Artigo
+tags: ['javascript', 'react', 'hooks']
+photo: ./photo.jpg
+photoCredit: Dawid Zawiła
+photoLink: https://unsplash.com/photos/-G3rw6Y02D0
+---
+
+- Introdução
+- Cenário atual
+- O que são React Hooks?
+- Vantagens
+- Hook useState
+- Reutilizando os Hooks
+- Próximos passos
+- Conclusão
+
+## Introdução
+
+Entre os dias 25 e 26 de outubro de 2018, aconteceu a ReactConf 2018 em Las Vegas. O evento foi transmitido através do YouTube e eu pude acompanhar [a apresentação do Dan Abramov sobre React Hooks](https://www.youtube.com/watch?v=dpw9EHDh2bM). Durante e após a apresentação, o assunto React Hooks caiu nas graças da comunidade.
+
+## Cenário atual
+
+Sempre que precisamos controlar o estado de um `input`, precisamos criar uma classe, inicializar o estado do componente (o estado precisa ser um objeto), criar o método para tratar as alterações do estado do componente e fazer o `bind` desse método para que ele tenha acesso ao objeto `this`.
+
+Para demonstrar um cenário muito comum, vou criar um componente semelhante à um formulário de contato. Nesse primeiro exemplo, vou adicionar apenas 01 `input` ao formulário.
+
+```javascript
+// importar o React e o Component para criar a classe
+import React, { Component } from 'react';
+
+// exportar uma classe chamada ContactForm
+export default class ContactForm extends Component {
+  constructor(props) {
+    // inicializar o contrutor
+    super(props);
+
+    // inicializar o estado do componente
+    this.state = { name: 'Roberto Achar' };
+
+    // fazer o `bind` do método para que ele tenha acesso ao objeto `this`
+    this.handleName = this.handleName.bind(this);
+  }
+
+  // criar o método para tratar as alterações do input name
+  handleName(e) {
+    this.setState({ name: e.target.value });
+  }
+
+  // renderizar o componente
+  render() {
+    return (
+      <div>
+        <input type="text" value={this.state.name} onChange={this.handleName} />
+      </div>
+    );
+  }
+}
+```
+
+Para adicionar mais campos a esse formulário, é necessário adicionar os novos campos ao objeto `state`, criar métodos para tratar as alterações dos novos campos e fazer o `bind` desses métodos para que eles tenham acesso ao objeto `this`.
+
+```javascript
+// importar o React e o Component para criar a classe
+import React, { Component } from 'react';
+
+// exportar uma classe chamada ContactForm
+export default class ContactForm extends Component {
+  constructor(props) {
+    // inicializar o contrutor
+    super(props);
+
+    // inicializar o estado do componente
+    this.state = {
+      name: 'Roberto Achar',
+      email: 'robertoachar@gmail.com',
+      message: 'Mensagem...'
+    };
+
+    // fazer o `bind` dos métodos para que eles tenham acesso ao objeto `this`
+    this.handleName = this.handleName.bind(this);
+    this.handleEmail = this.handleEmail.bind(this);
+    this.handleMessage = this.handleMessage.bind(this);
+  }
+
+  // criar o método para tratar as alterações do input name
+  handleName(e) {
+    this.setState({ name: e.target.value });
+  }
+
+  // criar o método para tratar as alterações do input email
+  handleEmail(e) {
+    this.setState({ email: e.target.value });
+  }
+
+  // criar o método para tratar as alterações do input message
+  handleMessage(e) {
+    this.setState({ message: e.target.value });
+  }
+
+  // renderizar o componente
+  render() {
+    return (
+      <div>
+        <input type="text" value={this.state.name} onChange={this.handleName} />
+        <input
+          type="text"
+          value={this.state.email}
+          onChange={this.handleEmail}
+        />
+        <textarea
+          rows="3"
+          value={this.state.message}
+          onChange={this.handleMessage}
+        />
+      </div>
+    );
+  }
+}
+```
+
+> Podemos simplificar e fazer as alterações do estado do componente de forma `inline` ou construir um único método que faça as alterações de forma dinâmica. 😉
+
+## O que são React Hooks?
+
+É um conjunto de novas funcionalidades que permitem que você controle o estado da aplicação, além de outras funcionalidades, sem a necessidade da utilização de classes.
+
+Essas novas funcionalidades não alteram em nada a forma como nossas aplicações são construídas e a utilização de classes continuará sendo permitida. React Hooks vem para melhorar a forma como construímos nossas aplicações, mas de maneira opcional.
+
+É extremamente importante comentar que embora tenha sido apresentado na ReactConf, React Hooks ainda é uma proposta (**proposal**), ou seja, está em fase experimental, aguardando novos comentários da comunidade e ainda não está pronto para ser utilizado em produção. Os Hooks estão disponíveis na versão **16.7.0-alpha.0** para quem quiser brincar.
+
+```bash
+$ npm i react@next react-dom@next
+```
+
+Para mais informações sobre React Hooks, acesse: [https://reactjs.org/hooks](https://reactjs.org/hooks).
+
+## Vantagens
+
+As vantagens de utilizar React Hooks são:
+
+- Não será mais necessário a utilização de classes
+- Evitará a utilização de `this` e `bind()`, conceitos que geram muita confusão principalmente para iniciantes
+- Poderemos dividir e separar componentes funcionais e torná-los reutilizáveis
+- Os testes serão muito mais fáceis, justamente por causa da separação de componentes
+
+## Hook useState
+
+Com o React Hooks, poderemos construir a mesma funcionalidade sem a necessidade de utilizar classes. Utilizando o Hook `useState`, poderemos adicionar a funcionalidade `state` do React para componentes que retornam apenas uma função (`function components`).
+
+```javascript
+// importar o React e o useState
+import React, { useState } from 'react';
+
+// definir o nosso componente sem a necessidade de utilizar classe
+const ContactForm = () => {
+  // inicializar o estado do componente
+  const [name, setName] = useState('Roberto Achar');
+
+  // renderizar o componente
+  return (
+    <div>
+      <input
+        type="text"
+        value={name}
+        onChange={(e) => setName(e.target.value)}
+      />
+    </div>
+  );
+};
+
+// exportar o componente
+export default ContactForm;
+```
+
+Para adicionar mais campos à esse formulário, é necessário apenas inicializar os novos campos com `useState`.
+
+```javascript
+// importar o React e o useState
+import React, { useState } from 'react';
+
+// definir o nosso componente sem a necessidade de utilizar classe
+const ContactForm = () => {
+  // inicializar o estado do componente
+  const [name, setName] = useState('Roberto Achar');
+  const [email, setEmail] = useState('robertoachar@gmail.com');
+  const [message, setMessage] = useState('Mensagem...');
+
+  // renderizar o componente
+  return (
+    <div>
+      <input
+        type="text"
+        value={name}
+        onChange={(e) => setName(e.target.value)}
+      />
+      <input
+        type="text"
+        value={email}
+        onChange={(e) => setEmail(e.target.value)}
+      />
+      <textarea
+        rows="3"
+        value={message}
+        onChange={(e) => setMessage(e.target.value)}
+      />
+    </div>
+  );
+};
+
+// exportar o componente
+export default ContactForm;
+```
+
+## Reutilizando os Hooks
+
+Um dos maiores benefícios dos Hooks é a reutilização de funcionalidades. No exemplo anterior, estamos utilizando 03 vezes o Hook `useState` para tratar as alterações de `name`, `email` e `message`.
+
+Podemos construir uma funcionalidade separada para tratar os 03 campos com mais facilidade e reutilizar essa funcionalidade no formulário.
+
+```javascript
+// importar o Hook useState
+import { useState } from 'react';
+
+// criar a funcionalidade `useInput` e aceitar o valor inicial como parâmetro
+const useInput = (initial) => {
+  // inicializar o estado
+  const [value, setValue] = useState(initial);
+
+  // exportar um objeto com o `value` e o método `onChange`
+  // o método `onChange` já trata a mudança de estado
+  return {
+    value,
+    onChange: (e) => setValue(e.target.value)
+  };
+};
+
+// exportar a nova funcionalidade
+export default useInput;
+```
+
+Podemos reutilizar a funcionalidade `useInput` para tratar o estado dos 03 campos de uma maneira mais "elegante".
+
+```javascript
+// importar o React
+import React from 'react';
+
+// importar a funcionalidade `useInput` que criamos anteriormente
+import useInput from './useInput';
+
+// definir o nosso componente sem a necessidade de utilizar classe
+const ContactForm = () => {
+  // inicializar o estado do componente através do `useInput`
+  const name = useInput('Roberto Achar');
+  const email = useInput('robertoachar@gmail.com');
+  const message = useInput('Mensagem vai aqui...');
+
+  // renderizar o componente
+  // utilizar `destructuring` para adicionar `value` e `onChange` no `input`
+  return (
+    <div>
+      <input type="text" {...name} />
+      <input type="text" {...email} />
+      <textarea rows="3" {...message} />
+    </div>
+  );
+};
+
+// exportar o componente
+export default ContactForm;
+```
+
+## Próximos passos
+
+- Assistir a [apresentação do Dan Abramov](https://www.youtube.com/watch?v=dpw9EHDh2bM) sobre React Hooks na ReactConf 2018
+
+- Ler mais a respeito na [documentação](https://reactjs.org/hooks) disponível no site do React
+
+- Acompanhar a ["awesome list"](https://github.com/rehooks/awesome-react-hooks) do React Hooks
+
+## Conclusão
+
+Esse é apenas o começo do React Hooks. A aprensentaçao do Dan Abramov foi um pouco além e quero atualizar esse artigo com mais informações sobre Hooks.
