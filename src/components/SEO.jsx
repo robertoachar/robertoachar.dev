@@ -3,7 +3,7 @@ import t from 'prop-types';
 import Helmet from 'react-helmet';
 import { useStaticQuery, graphql } from 'gatsby';
 
-function SEO({ title, description, image, meta }) {
+const SEO = ({ title, description, slug, type, image, imageAlt, meta }) => {
   const { site } = useStaticQuery(
     graphql`
       query {
@@ -12,79 +12,107 @@ function SEO({ title, description, image, meta }) {
             title
             description
             author
-            url
+            siteUrl
           }
         }
       }
     `
   );
 
+  const metaTitle = title
+    ? `${title} | ${site.siteMetadata.title}`
+    : site.siteMetadata.title;
   const metaDescription = description || site.siteMetadata.description;
-  const metaImage = `${site.siteMetadata.url}${image || '/banner.png'}`;
+  const metaUrl = `${site.siteMetadata.siteUrl}${slug}`;
+  const metaType = type || 'website';
+  const metaImage = `${site.siteMetadata.siteUrl}${image || '/banner.png'}`;
+  const metaImageAlt = imageAlt || 'robertoachar.dev';
 
   return (
     <Helmet
       htmlAttributes={{
         lang: 'pt-BR'
       }}
-      title={title}
-      titleTemplate={`%s | ${site.siteMetadata.title}`}
+      title={metaTitle}
       meta={[
         {
-          name: `description`,
+          name: 'description',
           content: metaDescription
         },
         {
-          property: `og:type`,
-          content: `website`
+          property: 'og:url',
+          content: metaUrl
         },
         {
-          property: `og:title`,
-          content: title
+          property: 'og:type',
+          content: metaType
         },
         {
-          property: `og:description`,
+          property: 'og:title',
+          content: metaTitle
+        },
+        {
+          property: 'og:description',
           content: metaDescription
         },
         {
-          property: `og:image`,
+          property: 'og:image',
           content: metaImage
         },
         {
-          name: `twitter:card`,
-          content: `summary_large_image`
+          property: 'og:image:alt',
+          content: metaImageAlt
         },
         {
-          name: `twitter:title`,
-          content: title
+          property: 'og:image:height',
+          content: '1366'
         },
         {
-          name: `twitter:description`,
+          property: 'og:image:width',
+          content: '768'
+        },
+        {
+          name: 'twitter:card',
+          content: 'summary_large_image'
+        },
+        {
+          name: 'twitter:title',
+          content: metaTitle
+        },
+        {
+          name: 'twitter:description',
           content: metaDescription
         },
         {
-          name: `twitter:creator`,
+          name: 'twitter:image',
+          content: metaImage
+        },
+        {
+          name: 'twitter:creator',
           content: site.siteMetadata.author
-        },
-        {
-          name: `twitter:image`,
-          content: metaImage
         }
       ].concat(meta)}
     />
   );
-}
+};
 
 SEO.propTypes = {
-  title: t.string.isRequired,
+  title: t.string,
   description: t.string,
+  slug: t.string,
+  type: t.string,
   image: t.string,
+  imageAlt: t.string,
   meta: t.arrayOf(t.object)
 };
 
 SEO.defaultProps = {
+  title: '',
   description: '',
-  image: null,
+  slug: '/',
+  type: '',
+  image: '',
+  imageAlt: '',
   meta: []
 };
 
