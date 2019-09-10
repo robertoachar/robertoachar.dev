@@ -22,6 +22,7 @@ export const query = graphql`
         photoCredit
         photoLink
         photo {
+          publicURL
           childImageSharp {
             fluid(maxWidth: 1366) {
               ...GatsbyImageSharpFluid
@@ -41,7 +42,11 @@ const PostTemplate = ({ data, pageContext }) => {
 
   return (
     <Layout>
-      <SEO title={post.frontmatter.title} />
+      <SEO
+        title={post.frontmatter.title}
+        description={post.frontmatter.description}
+        image={post.frontmatter.photo.publicURL}
+      />
       <Container>
         <PostHeader post={post.frontmatter} timeToRead={post.timeToRead} />
         <PostPhoto
@@ -68,6 +73,7 @@ PostTemplate.propTypes = {
         photoCredit: t.string,
         photoLink: t.string,
         photo: t.shape({
+          publicURL: t.string,
           childImageSharp: t.shape({
             fluid: t.object
           })

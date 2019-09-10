@@ -5,8 +5,10 @@ require('dotenv').config();
 module.exports = {
   siteMetadata: {
     title: 'Roberto Achar',
-    description: 'Roberto Achar',
-    author: '@robertoachar'
+    description:
+      'Minha missão é compartilhar o máximo de experiência e conhecimento que adquiri ao longo da minha carreira.',
+    author: '@robertoachar',
+    url: 'http://robertoachar.dev'
   },
   plugins: [
     {

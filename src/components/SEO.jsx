@@ -3,7 +3,7 @@ import t from 'prop-types';
 import Helmet from 'react-helmet';
 import { useStaticQuery, graphql } from 'gatsby';
 
-function SEO({ description, meta, title }) {
+function SEO({ title, description, image, meta }) {
   const { site } = useStaticQuery(
     graphql`
       query {
@@ -12,6 +12,7 @@ function SEO({ description, meta, title }) {
             title
             description
             author
+            url
           }
         }
       }
@@ -19,6 +20,7 @@ function SEO({ description, meta, title }) {
   );
 
   const metaDescription = description || site.siteMetadata.description;
+  const metaImage = `${site.siteMetadata.url}${image || '/banner.png'}`;
 
   return (
     <Helmet
@@ -33,6 +35,10 @@ function SEO({ description, meta, title }) {
           content: metaDescription
         },
         {
+          property: `og:type`,
+          content: `website`
+        },
+        {
           property: `og:title`,
           content: title
         },
@@ -41,16 +47,12 @@ function SEO({ description, meta, title }) {
           content: metaDescription
         },
         {
-          property: `og:type`,
-          content: `website`
+          property: `og:image`,
+          content: metaImage
         },
         {
           name: `twitter:card`,
-          content: `summary`
-        },
-        {
-          name: `twitter:creator`,
-          content: site.siteMetadata.author
+          content: `summary_large_image`
         },
         {
           name: `twitter:title`,
@@ -59,21 +61,31 @@ function SEO({ description, meta, title }) {
         {
           name: `twitter:description`,
           content: metaDescription
+        },
+        {
+          name: `twitter:creator`,
+          content: site.siteMetadata.author
+        },
+        {
+          name: `twitter:image`,
+          content: metaImage
         }
       ].concat(meta)}
     />
   );
 }
 
-SEO.defaultProps = {
-  description: '',
-  meta: []
+SEO.propTypes = {
+  title: t.string.isRequired,
+  description: t.string,
+  image: t.string,
+  meta: t.arrayOf(t.object)
 };
 
-SEO.propTypes = {
-  description: t.string,
-  meta: t.arrayOf(t.object),
-  title: t.string.isRequired
+SEO.defaultProps = {
+  description: '',
+  image: null,
+  meta: []
 };
 
 export default SEO;
