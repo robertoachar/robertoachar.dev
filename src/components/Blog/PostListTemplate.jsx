@@ -7,7 +7,7 @@ import SEO from '../SEO';
 import Container from '../Container';
 import Heading1 from '../MDX/Heading1';
 import PostList from './PostList';
-import Pagination from './Pagination';
+// import Pagination from './Pagination';
 
 export const query = graphql`
   query AllPosts($limit: Int!, $skip: Int!) {
@@ -44,7 +44,7 @@ export const query = graphql`
 `;
 
 const PostListTemplate = ({ data, pageContext }) => {
-  const { currentPage, totalPages } = pageContext;
+  // const { currentPage, totalPages } = pageContext;
 
   return (
     <Layout>
@@ -52,7 +52,7 @@ const PostListTemplate = ({ data, pageContext }) => {
       <Container>
         <Heading1>Blog</Heading1>
         <PostList posts={data.posts.edges} />
-        <Pagination currentPage={currentPage} totalPages={totalPages} />
+        {/* <Pagination currentPage={currentPage} totalPages={totalPages} /> */}
       </Container>
     </Layout>
   );
