@@ -45,7 +45,7 @@ const Main = styled.main`
 `;
 
 const Header = styled.div`
-  background-color: var(--background);
+  background-color: var(--background-dark);
   box-shadow: ${({ theme }) => theme.shadow['shadow-300']};
   display: flex;
   padding: ${({ theme }) => theme.space.normal};
