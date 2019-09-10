@@ -33,9 +33,9 @@ const Link = styled.a`
   }
 `;
 
-const PostPhoto = ({ photo, photoCredit, photoLink }) => (
+const PostPhoto = ({ photo, photoCredit, photoLink, photoAlt }) => (
   <Figure>
-    <Img fluid={photo.childImageSharp.fluid} />
+    <Img fluid={photo.childImageSharp.fluid} alt={photoAlt} />
     <Caption>
       <Text>Foto de </Text>
       <Link href={photoLink}>{photoCredit}</Link>
@@ -46,7 +46,8 @@ const PostPhoto = ({ photo, photoCredit, photoLink }) => (
 PostPhoto.propTypes = {
   photo: t.object.isRequired,
   photoCredit: t.string.isRequired,
-  photoLink: t.string.isRequired
+  photoLink: t.string.isRequired,
+  photoAlt: t.string.isRequired
 };
 
 export default PostPhoto;

@@ -85,7 +85,9 @@ const PostItem = ({ post, timeToRead }) => (
   <Link to={`blog/${post.slug}`}>
     <Card>
       <CardPhoto>
-        {post.photo && <Img fluid={post.photo.childImageSharp.fluid} />}
+        {post.photo && (
+          <Img fluid={post.photo.childImageSharp.fluid} alt={post.photoAlt} />
+        )}
         <CardCategory>{post.category}</CardCategory>
       </CardPhoto>
       <CardBody>
@@ -114,6 +116,7 @@ PostItem.propTypes = {
     date: t.string,
     category: t.string,
     tags: t.arrayOf(t.string),
+    photoAlt: t.string.isRequired,
     photo: t.shape({
       childImageSharp: t.shape({
         fluid: t.object
