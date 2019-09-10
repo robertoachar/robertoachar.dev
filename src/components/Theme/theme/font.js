@@ -10,8 +10,9 @@ export default {
     small: '0.875rem',
     normal: '1rem',
     medium: '1.25rem',
-    large: '2rem',
-    huge: '3.5rem'
+    large: '1.5rem',
+    wide: '2rem',
+    huge: '2.5rem'
   },
   weight: {
     thin: 200,
