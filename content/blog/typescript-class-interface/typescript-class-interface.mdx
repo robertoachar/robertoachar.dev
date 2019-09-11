@@ -8,6 +8,7 @@ tags: [javascript, typescript]
 photo: ./photo.jpg
 photoCredit: Giammarco Boscaro
 photoLink: https://unsplash.com/photos/UkOpMcslmX8
+photoAlt: Um lindo lago de água azul, cercado por árvores e pedras
 ---
 
 - Introdução
@@ -117,7 +118,7 @@ fetch('http://swapi.co/api/people/1')
 
 O ponto mais importante a observar no código acima, é que `person` será **implicitamente** do tipo `any`, pois o compilador não tem como identificar seu tipo automaticamente. Como o tipo de `person` é `any`, o _IntelliSense_ não é capaz de reconhecer o tipo.
 
-![a](images/typescript-any.gif)
+![VS Code não consegue reconhecer o tipo de `person`](images/typescript-any.gif)
 
 É nesse ponto que precisaremos definir o nosso modelo. E a pergunta que não quer calar:
 
@@ -145,7 +146,7 @@ fetch('http://swapi.co/api/people/1')
 
 No código acima, estamos definindo **explicitamente** que o tipo de `person` é `Person`. Como o tipo de `person` está explicitamente definido, o `IntelliSense` é capaz de reconhecer o tipo.
 
-![a](images/typescript-interface.gif)
+![VS Code é capaz de reconher o tipo de `person`](images/typescript-interface.gif)
 
 - Analisando o resultado da transpilação
 
@@ -186,7 +187,7 @@ fetch('http://swapi.co/api/people/1')
 
 No código acima, estamos definindo **explicitamente** que o tipo de `person` é `Person`. Como o tipo de `person` está explicitamente definido, o `IntelliSense` é capaz de reconhecer o tipo.
 
-![a](images/typescript-class.gif)
+![VS Code é capaz de reconher o tipo de `person`](images/typescript-class.gif)
 
 - Analisando o resultado da transpilação
 

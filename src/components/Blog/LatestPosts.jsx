@@ -22,6 +22,7 @@ const query = graphql`
             tags
             photoCredit
             photoLink
+            photoAlt
             photo {
               childImageSharp {
                 fluid(maxWidth: 960) {

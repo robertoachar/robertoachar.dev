@@ -28,6 +28,7 @@ export const query = graphql`
             tags
             photoCredit
             photoLink
+            photoAlt
             photo {
               childImageSharp {
                 fluid(maxWidth: 960) {
@@ -48,7 +49,11 @@ const PostListTemplate = ({ data, pageContext }) => {
 
   return (
     <Layout>
-      <SEO title="Blog" />
+      <SEO
+        title="Blog do Roberto Achar"
+        description="Acompanhe os últimos artigos e tutoriais"
+        slug="/blog"
+      />
       <Container>
         <Heading1>Blog</Heading1>
         <PostList posts={data.posts.edges} />

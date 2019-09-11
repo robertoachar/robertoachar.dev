@@ -14,6 +14,7 @@ export const query = graphql`
   query Post($slug: String!) {
     post: mdx(frontmatter: { slug: { eq: $slug } }) {
       frontmatter {
+        slug
         title
         description
         date(formatString: "DD/MM/YYYY", locale: "pt-BR")
@@ -21,6 +22,7 @@ export const query = graphql`
         tags
         photoCredit
         photoLink
+        photoAlt
         photo {
           publicURL
           childImageSharp {
@@ -43,9 +45,11 @@ const PostTemplate = ({ data, pageContext }) => {
   return (
     <Layout>
       <SEO
+        slug={post.frontmatter.slug}
         title={post.frontmatter.title}
         description={post.frontmatter.description}
         image={post.frontmatter.photo.publicURL}
+        imageAlt={post.frontmatter.photoAlt}
       />
       <Container>
         <PostHeader post={post.frontmatter} timeToRead={post.timeToRead} />
@@ -53,6 +57,7 @@ const PostTemplate = ({ data, pageContext }) => {
           photo={post.frontmatter.photo}
           photoCredit={post.frontmatter.photoCredit}
           photoLink={post.frontmatter.photoLink}
+          photoAlt={post.frontmatter.photoAlt}
         />
         <MdxRenderer>{post.body}</MdxRenderer>
         {/* <OtherPosts previousPost={previousPost} nextPost={nextPost} /> */}
@@ -65,6 +70,7 @@ PostTemplate.propTypes = {
   data: t.shape({
     post: t.shape({
       frontmatter: t.shape({
+        slug: t.string,
         title: t.string,
         description: t.string,
         date: t.string,
@@ -72,6 +78,7 @@ PostTemplate.propTypes = {
         tags: t.arrayOf(t.string),
         photoCredit: t.string,
         photoLink: t.string,
+        photoAlt: t.string,
         photo: t.shape({
           publicURL: t.string,
           childImageSharp: t.shape({

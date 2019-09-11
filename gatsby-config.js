@@ -8,7 +8,7 @@ module.exports = {
     description:
       'Minha missão é compartilhar o máximo de experiência e conhecimento que adquiri ao longo da minha carreira.',
     author: '@robertoachar',
-    url: 'http://robertoachar.dev'
+    siteUrl: 'http://robertoachar.dev'
   },
   plugins: [
     {
