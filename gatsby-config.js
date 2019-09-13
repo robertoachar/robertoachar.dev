@@ -49,6 +49,9 @@ module.exports = {
               maxWidth: 960,
               linkImagesToOriginal: false
             }
+          },
+          {
+            resolve: 'gatsby-remark-embedder'
           }
         ],
         plugins: [
