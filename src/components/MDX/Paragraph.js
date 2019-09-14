@@ -7,6 +7,10 @@ const Markup = styled.p`
   &:not(:first-child) {
     margin-top: ${({ theme }) => theme.space.normal};
   }
+
+  & > .twitter-tweet {
+    margin: 0 auto;
+  }
 `;
 
 export default Markup;
