@@ -85,17 +85,17 @@ Para criar o Token de autenticação:
 
 ![Tela do GitHub com ênfase no passo acima](images/github-scopes.jpg)
 
-8. Clique no botão **Generate token** no final da página.
+7. Clique no botão **Generate token** no final da página.
 
 ![Tela do GitHub com ênfase no passo acima](images/github-generate-token.jpg)
 
-9. Copie o token.
+8. Copie o token.
 
 > O token não será exibido novamente. Se você não conseguiu copiar o token, você terá que gerar outro.
 
 ![Tela do GitHub com ênfase no passo acima](images/github-token.jpg)
 
-10. Crie ou edite o aquivo `~/.npmrc` e substitua `PERSONAL-ACCESS-TOKEN` pelo seu token. O arquivo `~/.npmrc` é responsável pelas configurações globais do `npm`.
+9. Crie ou edite o aquivo `~/.npmrc` e substitua `PERSONAL-ACCESS-TOKEN` pelo seu token. O arquivo `~/.npmrc` é responsável pelas configurações globais do `npm`.
 
 ```text
 //npm.pkg.github.com/:_authToken=PERSONAL-ACCESS-TOKEN
@@ -106,6 +106,7 @@ Para criar o Token de autenticação:
 Para esse tutorial eu vou utilizar dois repositórios:
 
 1. [`gpr-package`](https://github.com/robertoachar/gpr-package) é o repositório que será publicado no GitHub Package Registry
+
 2. [`gpr-project`](https://github.com/robertoachar/gpr-project) é o projeto que utilizará o pacote publicado
 
 Antes de publicar o pacote, precisamos fazer algumas alterações no repositório `gpr-package`.

@@ -69,6 +69,7 @@ const Title = styled.span`
 const OpenButton = styled.button`
   color: var(--primary);
   cursor: pointer;
+  font-size: ${({ theme }) => theme.font.size.normal};
 `;
 
 const CloseButton = styled.button`
