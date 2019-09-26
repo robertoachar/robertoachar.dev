@@ -11,6 +11,7 @@ const Markup = styled.p`
 
   & > .twitter-tweet {
     margin: 0 auto;
+    width: auto !important;
   }
 `;
 
