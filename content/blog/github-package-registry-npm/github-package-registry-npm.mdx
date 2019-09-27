@@ -2,7 +2,7 @@
 slug: github-package-registry-npm
 title: Como utilizar o GitHub Package Registry com o npm
 description: Nesse tutorial eu pretendo demonstrar como utilizar a nova funcionalidade do GitHub.
-date: 2019-09-21
+date: 2019-09-26
 category: Tutorial
 tags: ['node', 'npm', 'github']
 photo: ./photo.jpg
@@ -16,8 +16,9 @@ photoAlt: Uma escada de madeira no meio da vegetação leva até a praia.
 - Autenticando no GitHub Package Registry com o npm
 - Publicando um pacote
 - Instalando um pacote
+- Publicando com o GitHub Actions
 - Conclusão
-- Solucão de problemas
+- Solução de problemas
 
 ## Introdução
 
@@ -27,7 +28,7 @@ A instalação padrão do `Node.js`, instala o `npm` - Node Package Manager ou G
 
 - **CLI**: um utilitário de linha de comando para interagir com o `npm`
 
-- **Registry**: um bando de dados de pacotes disponíveis para o `Node.js`
+- **Registry**: um banco de dados de pacotes disponíveis para o `Node.js`
 
 Quando precisamos instalar algum pacote do `Node.js`, procuramos o pacote no Website e instalamos utilizando o utilitário de linha de comando.
 
@@ -53,7 +54,7 @@ No dia 10 de maio de 2019, o GitHub anunciou sua mais nova funcionalidade: **Git
 
 https://twitter.com/github/status/1126949311848288256?s=20
 
-O **GitHub Package Registry** é um serviço de hospedagem de pacotes, semelhante ao `npm`, que permite que você hospede seus pacotes e códigos em um único lugar. Ele suporta pacotes do `Node.js`, `Ruby`, `Java`, `.NET` e imagens `Docker`.
+O **GitHub Package Registry** é um serviço de hospedagem de pacotes, semelhante ao `npm`, que permite que você hospede seus códigos e pacotes em um único lugar. Ele suporta pacotes do `Node.js`, `Ruby`, `Java`, `.NET` e imagens `Docker`.
 
 > Essa funcionalidade ainda está em fase `beta`. Caso você queira se inscrever para participar, acesse a [página do GitHub Package Registry](https://github.com/features/package-registry).
 
@@ -81,15 +82,15 @@ Para criar o Token de autenticação:
 
 ![Tela do GitHub com ênfase no passo acima](images/github-generate-new-token.jpg)
 
-6. Informe a descrição do token (Ex.: GitHub Package Registry)e selecione os escopos **write:packages** e **read:packages** (o escopo **repo** será automaticamente selecionado para publicar pacotes privados)
+6. Informe a descrição do token (Ex.: GitHub Package Registry) e selecione os escopos **write:packages** e **read:packages** (o escopo **repo** será automaticamente selecionado para publicar pacotes privados)
 
 ![Tela do GitHub com ênfase no passo acima](images/github-scopes.jpg)
 
-7. Clique no botão **Generate token** no final da página.
+7. Clique no botão **Generate token** no final da página
 
 ![Tela do GitHub com ênfase no passo acima](images/github-generate-token.jpg)
 
-8. Copie o token.
+8. Copie o token
 
 > O token não será exibido novamente. Se você não conseguiu copiar o token, você terá que gerar outro.
 
@@ -105,9 +106,9 @@ Para criar o Token de autenticação:
 
 Para esse tutorial eu vou utilizar dois repositórios:
 
-1. [`gpr-package`](https://github.com/robertoachar/gpr-package) é o repositório que será publicado no GitHub Package Registry
+1. [`gpr-package`](https://github.com/robertoachar/gpr-package) é o repositório que contém o código do pacote que será publicado no GitHub Package Registry
 
-2. [`gpr-project`](https://github.com/robertoachar/gpr-project) é o projeto que utilizará o pacote publicado
+2. [`gpr-project`](https://github.com/robertoachar/gpr-project) é o repositório que contém o código que utilizará o pacote publicado
 
 Antes de publicar o pacote, precisamos fazer algumas alterações no repositório `gpr-package`.
 
@@ -200,19 +201,23 @@ import hello from '@robertoachar/gpr-package';
 hello();
 ```
 
+## Publicando com o GitHub Actions
+
+Quer aprender a publicar os pacotes automaticamente com o **GitHub Actions**? Acesse meu artigo [GitHub Package Registry + GitHub Actions](/blog/github-package-registry-actions).
+
 ## Conclusão
 
 Agora temos uma nova alternativa para publicar e disponbilizar pacotes para o `Node.js`. 😉
 
 Próximos passos:
 
-- Ler o [artigo sobre a introdução do GitHub Package Registry](https://github.blog/2019-05-10-introducing-github-package-registry/) no blog do GitHub.
+- Leia o [artigo sobre a introdução do GitHub Package Registry](https://github.blog/2019-05-10-introducing-github-package-registry/) no blog do GitHub.
 
-- Ler a [documentação do GitHub Package Registry](https://help.github.com/en/articles/about-github-package-registry)
+- Leia a [documentação do GitHub Package Registry](https://help.github.com/en/articles/about-github-package-registry)
 
-- Visitar a [página do GitHub Package Registry](https://github.com/features/package-registry) para conhecer mais sobre a nova funcionalidade e se inscrever no _open beta_.
+- Visite a [página do GitHub Package Registry](https://github.com/features/package-registry) para conhecer mais sobre a nova funcionalidade e se inscrever no _open beta_.
 
-## Solucão de problemas
+## Solução de problemas
 
 Relacionei alguns problemas que podem ocorrer na integração do GitHub Package Registry com o `npm`.
 
