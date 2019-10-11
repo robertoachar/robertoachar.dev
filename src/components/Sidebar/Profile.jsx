@@ -21,6 +21,7 @@ const ProfileLink = styled(Link)`
 
 const ProfileAuthor = styled.h1`
   font-size: ${({ theme }) => theme.font.size.medium};
+  margin: 0;
   margin-top: ${({ theme }) => theme.space.normal};
   letter-spacing: 0.05rem;
   text-transform: uppercase;
