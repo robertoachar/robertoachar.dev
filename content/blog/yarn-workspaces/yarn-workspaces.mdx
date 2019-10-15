@@ -1,0 +1,416 @@
+---
+slug: yarn-workspaces
+title: Monorepo + Yarn Workspaces
+description: Como configurar um monorepo utilizando o Yarn Workspaces
+date: 2019-10-15
+category: Tutorial
+tags: [node, monorepo, yarn, workspaces]
+photo: ./photo.jpg
+photoCredit: Dan Stark
+photoLink: https://unsplash.com/photos/DLwUVlzrP0Q
+photoAlt: Um lindo oceano com ondas batendo nas pedras.
+---
+
+- Introdução
+- O que é Monorepo?
+- O que é Yarn?
+- O que é Yarn Workspaces?
+- Como instalar o Yarn?
+- Contruindo o primeiro monorepo
+- Configurando os scripts
+- Instalando dependências
+- Conclusão
+
+## Introdução
+
+Esse é o primeiro de alguns tutoriais que quero escrever sobre **Monorepo** utilizando o **Yarn Workspaces**. Venho utilizando bastante essa estratégia e tenho gostado do resultado.
+
+## O que é monorepo?
+
+**Monorepo** é uma estratégia de desenvolvimento de software onde o código de vários projetos são agrupados em um mesmo repositório.
+
+Essa técnica não é nova, muito pelo contrário, ela já exite há muitos anos, ela apenas ganhou um nome (como tudo hoje em dia 🤭).
+
+### Vantagens
+
+- **Ambiente de desenvolvimento**: facilidade para executar o ambiente de desenvolvimento. Basta clonar um único repositório, instalar as dependências de todos os projetos com um único comando e executar o projeto com outro comando.
+
+- **Reutilização de código**: funcionalidades compartilhadas podem ser facilmente extraídas em um projeto separado e reutilizadas em outros projetos.
+
+- **Gerenciamento de dependências**: em múltiplos repositórios, uma dependência externa será baixada múltiplas vezes. No monorepo, a dependência externa pode ser otimizada e reutilizada.
+
+- **Gerenciamento de versões**: em múltiplos repositórios, quando um projeto é versionado, todos os outros projetos que dependem dele precisam ser atualizados. No monorepo, não há essa necessidade, pois o código está _linkado_.
+
+### Desvantagens
+
+- **CI/CD**: realizar o _Continuous Integration_ ou _Continuous Delivery_ com monorepo pode ser complicado. Não é fácil identificar qual projeto foi alterado para iniciar os processos de **CI/CD** apenas para ele.
+
+- **Segurança**: como todos os projetos estão no mesmo repositório, os desenvolvedores têm acesso a tudo. Isso pode causar alguns problemas de segurança. **Obs.:** há projetos em que esse cenário não é considerado uma desvantagem.
+
+- **Equívocos**: com muitos projetos em um mesmo repositório, se não prestar atenção no diretório que está aberto no Terminal, você acaba executando ou instalando alguma dependência no projeto errado.
+
+## O que é Yarn?
+
+**Yarn** é uma alternativa ao **npm**, é um gerenciador de dependências do Node. Ele foi criado para tentar resolver alguns problemas do **npm**.
+
+Para mais informações sobre o Yarn: [https://yarnpkg.com](https://yarnpkg.com).
+
+## O que é Yarn Workspaces?
+
+Workspaces é uma funcionalidade do Yarn que permite agrupar múltiplos projetos em um único repositório. Ele é o grande facilitador para a criação de monorepos. Basta informar quais são os diretórios no arquivo `package.json` para que o Yarn seja capaz de instalar as dependências e _linkar_ os projetos locais.
+
+Para mais informações sobre o Yarn Workspaces: [https://yarnpkg.com/en/docs/workspaces](https://yarnpkg.com/en/docs/workspaces).
+
+## Como instalar o Yarn?
+
+Acesse a [página com as instruções de instalação](https://yarnpkg.com/en/docs/install), escolha o sistema operacional, a versão e siga os passos descritos nessa página. Para verificar se a instalação ocorreu com sucesso, abra o Terminal e digite:
+
+```bash
+$ yarn --version
+1.19.1
+```
+
+Se quiser entender mais como o Yarn funciona, acesse a documentação: [https://yarnpkg.com/en/docs](https://yarnpkg.com/en/docs).
+
+## Contruindo o primeiro monorepo
+
+Nesse tutorial, iremos construir um monorepo com dois projetos extremamente simples.
+
+- `sum`: biblioteca que exporta uma funcionalidade para somar dois números
+- `calc`: aplicação que utiliza a funcionalidade de soma
+
+### Criando o repositório principal
+
+O primeiro passo é criar o diretório principal e inicializar uma nova aplicação `Node`. Para isso, abra o Terminal e digite:
+
+```bash
+$ mkdir monorepo
+$ cd monorepo
+$ yarn init -y
+```
+
+Esse comando gera o arquivo `package.json` na raíz do projeto:
+
+```json
+{
+  "name": "monorepo",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT"
+}
+```
+
+Como o `package.json` principal não vai exportar nenhuma funcionalidade, precisamos fazer 02 alterações:
+
+1. Excluir o campo `main`
+2. Adicionar o campo `private` como `true`, para que o repositório não seja publicado acidentalmente
+
+```json
+{
+  "name": "monorepo",
+  "version": "1.0.0",
+  "license": "MIT",
+  "private": true
+}
+```
+
+### Configurando o Workspace
+
+Para configurar o monorepo é necessário criar o campo `workspaces` no arquivo `package.json`. Há duas maneiras de configurar o campo `workspaces`.
+
+1. Criar os diretórios `calc` e `sum` na raíz do repositório e adicionar o nome dos dois projetos no campo `workspaces` no arquivo `package.json`. O problema dessa maneira é que sempre que formos adicionar ou excluir projetos do _workspace_, precisamos lembrar de alterar o arquivo `package.json`.
+
+**Estrutura de arquivos e diretórios**
+
+```text
+.
+|--- calc
+|--- sum
+|--- package.json
+```
+
+**Arquivo package.json**
+
+```json
+{
+  "workspaces": ["sum", "calc"]
+}
+```
+
+2. Criar um diretório `packages` na raíz, criar os diretórios `calc` e `sum` dentro do diretório `packages` e adicionar um _glob_ no campo `workspaces` no arquivo `package.json`. Essa é a melhor maneira, pois informamos ao Yarn que todos os projetos dentro do diretório `packages` fazem parte do _workspace_. Com isso não precisamos mais nos preocupar com o campo `workspaces`.
+
+```text
+.
+|--- packages
+|    |--- calc
+|    |--- sum
+|--- package.json
+```
+
+```json
+{
+  "workspaces": {
+    "packages": ["packages/*"]
+  }
+}
+```
+
+Nesse tutorial iremos utilizar a segunda opção.
+
+### Criando a biblioteca
+
+Crie um diretório `sum` dentro do diretório `packages`, abra o diretório `sum` no Terminal e digite `yarn init -y`. Esse comando inicializa um novo projeto `Node` no diretório `sum`.
+
+```json
+{
+  "name": "sum",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT"
+}
+```
+
+Crie o arquivo `index.js` no diretório `sum`.
+
+```javascript
+module.exports = (x, y) => {
+  return x + y;
+};
+```
+
+### Criando a aplicação
+
+Crie um diretório `calc` dentro do diretório `packages`, abra o diretório `calc` no Terminal e digite `yarn init -y`. Esse comando inicializa um novo projeto `Node` no diretório `calc`.
+
+```json
+{
+  "name": "calc",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT"
+}
+```
+
+Para utilizar a biblioteca `sum` na aplicação `calc` é necessário instalá-la como dependência. Abra o diretório `calc` no Terminal e digite:
+
+```bash
+$ yarn add sum@1.0.0
+```
+
+> É necessário utilizar a versão exata do pacote para que o Yarn saiba onde procurar. Se você não informar a versão, o Yarn vai tentar encontrar o pacote no registro do npm (caso ele seja o _default_).
+
+```json
+{
+  "dependencies": {
+    "sum": "1.0.0"
+  }
+}
+```
+
+Crie o arquivo `index.js` no diretório `calc`.
+
+```javascript
+const sum = require('sum');
+
+const total = sum(5, 5);
+
+console.log(total);
+```
+
+Para executar a aplicação e testar se tudo está funcionando, abra o Terminal no diretório `calc` e digite:
+
+```bash
+$ node index.js
+10
+```
+
+### Utilizando scoped packages
+
+Podemos utilizar _scoped packages_ também.
+
+- Altere o nome do pacote da aplicação `calc`
+
+```json
+{
+  "name": "@monorepo/calc"
+}
+```
+
+- Altere o nome do pacote da biblioteca `sum`
+
+```json
+{
+  "name": "@monorepo/sum"
+}
+```
+
+- Remova e instale novamente a biblioteca `sum`. Abra o diretório `calc` no Terminal e digite:
+
+```bash
+$ yarn remove sum
+$ yarn add @monorepo/sum@1.0.0
+```
+
+- Altere a referência no arquivo `index.js` da aplicação `calc`
+
+```javascript
+const sum = require('@monorepo/sum');
+```
+
+Para executar a aplicação e testar se tudo continua funcionando, abra o Terminal no diretório `calc` e digite:
+
+```bash
+$ node index.js
+10
+```
+
+### Analisando o diretório node_modules
+
+O Yarn Workspaces já faz o trabalho de _linkagem_ dos projetos automaticamente para nós. Dê uma olhada no diretório _node_modules_.
+
+```bash
+$ l node_modules
+@monorepo
+
+$ l node_modules/@monorepo
+calc -> ../../packages/calc
+sum -> ../../packages/sum
+```
+
+### Dependências externas
+
+O processo para instalar dependências externas é o mesmo. Abra o diretório `sum` no Terminal e digite:
+
+```bash
+$ yarn add chalk
+```
+
+Altere o arquivo `index.js` do projeto `sum`.
+
+```javascript
+const chalk = require('chalk');
+
+module.exports = (x, y) => {
+  console.log(`Adding ${chalk.blue(x)} + ${chalk.blue(y)}`);
+
+  return x + y;
+};
+```
+
+Abra o diretório `calc` no Terminal e digite:
+
+```bash
+$ yarn add chalk
+```
+
+Altere o arquivo `index.js` do projeto `calc`.
+
+```javascript
+const chalk = require('chalk');
+const sum = require('@monorepo/sum');
+
+const total = sum(5, 5);
+
+console.log(chalk.green(total));
+```
+
+Para executar a aplicação e testar se tudo continua funcionando, abra o Terminal no diretório `calc` e digite:
+
+```bash
+$ node index.js
+Adding 5 + 5
+10
+```
+
+## Configurando os scripts
+
+Para configurar os scripts é muito simples.
+
+### Configurando o script do projeto `calc`
+
+Edite o arquivo `package.json` do projeto `calc` e adicione o script `start`.
+
+```json
+{
+  "scripts": {
+    "start": "node index.js"
+  }
+}
+```
+
+Abra o Terminal no diretório `calc` e digite:
+
+```bash
+$ yarn start
+```
+
+**Output**
+
+```bash
+yarn run v1.19.1
+$ node index.js
+Adding 5 + 5
+10
+✨  Done in 0.20s.
+```
+
+### Configurando o script do monorepo
+
+Edite o arquivo `package.json` do diretório raíz e adicione o script `start`.
+
+```json
+{
+  "scripts": {
+    "start": "yarn workspace @monorepo/calc start"
+  }
+}
+```
+
+Abra o Terminal no diretório raíz e digite:
+
+```bash
+$ yarn start
+```
+
+**Output**
+
+```bash
+yarn run v1.19.1
+$ yarn workspace @monorepo/calc start
+$ node index.js
+Adding 5 + 5
+10
+✨  Done in 1.13s.
+```
+
+## Instalando dependências
+
+Nessa seção vamos entender como funciona o processo de instalação de dependências com o Yarn Workspaces. Essa é uma das grandes vantagens de trabalhar com Monorepo.
+
+Primeiro vamos apagar a pasta `node_modules` para simular que acabamos de clonar o repositório. Abra o Terminal no diretório raíz e digite:
+
+```bash
+$ rm -rf node_modules
+```
+
+No mesmo diretório, digite:
+
+```bash
+$ yarn
+```
+
+Com apenas um comando, todas as dependências de todos os projetos foram instaladas.
+
+**MAGIC!** 😘
+
+## Conclusão
+
+Esse tutorial foi bem introdutório mas acho que deu para perceber a facilidade de trabalhar com Monorepos e Yarn Workspaces. Pretendo continuar escrevendo sobre esse assunto ao longo das próximas semanas.
+
+Caso queira dar uma olhada no código final desse tutorial e acompanhar a sequência de commits: [https://github.com/robertoachar/monorepo](https://github.com/robertoachar/monorepo).
+
+### Próximos passos
+
+- Leia o artigo sobre a [introdução ao Yarn Workspaces](https://yarnpkg.com/blog/2017/08/02/introducing-workspaces/).
+- Leia a documentação do [Yarn Workspaces](https://yarnpkg.com/en/docs/workspaces)
+- Estude as funcionalidades [`yarn workspaces`](https://yarnpkg.com/en/docs/cli/workspaces) e [`yarn workspace`](https://yarnpkg.com/en/docs/cli/workspace)
