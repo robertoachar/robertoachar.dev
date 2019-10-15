@@ -1,10 +1,10 @@
 ---
 slug: yarn-workspaces
 title: Monorepo + Yarn Workspaces
-description: Como configurar um monorepo utilizando o Yarn Workspaces
+description: Como configurar um Monorepo utilizando o Yarn Workspaces
 date: 2019-10-15
 category: Tutorial
-tags: [node, monorepo, yarn, workspaces]
+tags: [node, Monorepo, yarn, workspaces]
 photo: ./photo.jpg
 photoCredit: Dan Stark
 photoLink: https://unsplash.com/photos/DLwUVlzrP0Q
@@ -16,7 +16,7 @@ photoAlt: Um lindo oceano com ondas batendo nas pedras.
 - O que é Yarn?
 - O que é Yarn Workspaces?
 - Como instalar o Yarn?
-- Construindo o primeiro monorepo
+- Construindo o primeiro Monorepo
 - Configurando os scripts
 - Instalando dependências
 - Conclusão
@@ -25,7 +25,7 @@ photoAlt: Um lindo oceano com ondas batendo nas pedras.
 
 Esse é o primeiro de alguns tutoriais que quero escrever sobre **Monorepo** utilizando o **Yarn Workspaces**. Venho utilizando bastante essa estratégia e tenho gostado do resultado.
 
-## O que é monorepo?
+## O que é Monorepo?
 
 **Monorepo** é uma estratégia de desenvolvimento de software onde o código de vários projetos são agrupados em um mesmo repositório.
 
@@ -37,13 +37,13 @@ Essa técnica não é nova, muito pelo contrário, ela já exite há muitos anos
 
 - **Reutilização de código**: funcionalidades compartilhadas podem ser facilmente extraídas em um projeto separado e reutilizadas em outros projetos.
 
-- **Gerenciamento de dependências**: em múltiplos repositórios, uma dependência externa será baixada múltiplas vezes. No monorepo, a dependência externa pode ser otimizada e reutilizada.
+- **Gerenciamento de dependências**: em múltiplos repositórios, uma dependência externa será baixada múltiplas vezes. No Monorepo, a dependência externa pode ser otimizada e reutilizada.
 
-- **Gerenciamento de versões**: em múltiplos repositórios, quando um projeto é versionado, todos os outros projetos que dependem dele precisam ser atualizados. No monorepo, não há essa necessidade, pois o código está _linkado_.
+- **Gerenciamento de versões**: em múltiplos repositórios, quando um projeto é versionado, todos os outros projetos que dependem dele precisam ser atualizados. No Monorepo, não há essa necessidade, pois o código está _linkado_.
 
 ### Desvantagens
 
-- **CI/CD**: realizar o _Continuous Integration_ ou _Continuous Delivery_ com monorepo pode ser complicado. Não é fácil identificar qual projeto foi alterado para iniciar os processos de **CI/CD** apenas para ele.
+- **CI/CD**: realizar o _Continuous Integration_ ou _Continuous Delivery_ com Monorepo pode ser complicado. Não é fácil identificar qual projeto foi alterado para iniciar os processos de **CI/CD** apenas para ele.
 
 - **Segurança**: como todos os projetos estão no mesmo repositório, os desenvolvedores têm acesso a tudo. Isso pode causar alguns problemas de segurança. **Obs.:** há projetos em que esse cenário não é considerado uma desvantagem.
 
@@ -57,7 +57,7 @@ Para mais informações sobre o Yarn: [https://yarnpkg.com](https://yarnpkg.com)
 
 ## O que é Yarn Workspaces?
 
-Workspaces é uma funcionalidade do Yarn que permite agrupar múltiplos projetos em um único repositório. Ele é o grande facilitador para a criação de monorepos. Basta informar quais são os diretórios no arquivo `package.json` para que o Yarn seja capaz de instalar as dependências e _linkar_ os projetos locais.
+Workspaces é uma funcionalidade do Yarn que permite agrupar múltiplos projetos em um único repositório. Ele é o grande facilitador para a criação de Monorepos. Basta informar quais são os diretórios no arquivo `package.json` para que o Yarn seja capaz de instalar as dependências e _linkar_ os projetos locais.
 
 Para mais informações sobre o Yarn Workspaces: [https://yarnpkg.com/en/docs/workspaces](https://yarnpkg.com/en/docs/workspaces).
 
@@ -72,9 +72,9 @@ $ yarn --version
 
 Se quiser entender mais como o Yarn funciona, acesse a documentação: [https://yarnpkg.com/en/docs](https://yarnpkg.com/en/docs).
 
-## Construindo o primeiro monorepo
+## Construindo o primeiro Monorepo
 
-Nesse tutorial, iremos construir um monorepo com dois projetos extremamente simples.
+Nesse tutorial, iremos construir um Monorepo com dois projetos extremamente simples.
 
 - `sum`: biblioteca que exporta uma funcionalidade para somar dois números
 - `calc`: aplicação que utiliza a funcionalidade de soma
@@ -116,7 +116,7 @@ Como o `package.json` principal não vai exportar nenhuma funcionalidade, precis
 
 ### Configurando o Workspace
 
-Para configurar o monorepo é necessário criar o campo `workspaces` no arquivo `package.json`. Há duas maneiras de configurar o campo `workspaces`.
+Para configurar o Monorepo é necessário criar o campo `workspaces` no arquivo `package.json`. Há duas maneiras de configurar o campo `workspaces`.
 
 1. Criar os diretórios `calc` e `sum` na raíz do repositório e adicionar o nome dos dois projetos no campo `workspaces` no arquivo `package.json`. O problema dessa maneira é que sempre que formos adicionar ou excluir projetos do _workspace_, precisamos lembrar de alterar o arquivo `package.json`.
 
@@ -354,7 +354,7 @@ Adding 5 + 5
 ✨  Done in 0.20s.
 ```
 
-### Configurando o script do monorepo
+### Configurando o script do Monorepo
 
 Edite o arquivo `package.json` do diretório raíz e adicione o script `start`.
 
