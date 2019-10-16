@@ -1,0 +1,358 @@
+---
+slug: yarn-workspaces-eslint
+title: Monorepo + ESLint + Prettier
+description: Como configurar o ESLint e o Prettier em um Monorepo.
+date: 2019-10-16
+category: Tutorial
+tags: [monorepo, eslint, prettier]
+photo: ./photo.jpg
+photoCredit: Sébastien Jermer
+photoLink: https://unsplash.com/photos/n7DY58YFg9E
+photoAlt: Uma linda praia de água verde, um barco beirando a margem de uma pequena ilha.
+---
+
+> Tutoriais da série sobre Monorepo:
+>
+> - Parte 01: [Como configurar um Monorepo utilizando o Yarn Workspaces](/blog/yarn-workspaces)
+> - Parte 02: [Como configurar o ESLint e o Prettier em um Monorepo](/blog/yarn-workspaces-eslint)
+
+- Introdução
+- O que é lint?
+- O que é ESLint?
+- O que é Prettier?
+- Pensando em Monorepo
+- Integrando o ESLint no Monorepo
+- Integrando o Prettier no Monorepo
+- Configurando os scripts
+- Reutilizando as configurações
+- Conclusão
+
+## Introdução
+
+Esse é o segundo de alguns tutoriais que quero escrever sobre **Monorepo** utilizando o **Yarn Workspaces**. Venho utilizando bastante essa estratégia e tenho gostado do resultado.
+
+O objetivo desse tutorial é mostrar uma das maneiras de configurar o ESLint e o Prettier em um Monorepo.
+
+## O que é lint?
+
+**Lint** é o termo utilizado para análise estática de código e seu objetivo é encontrar problemas no código antes mesmo dele ser executado. É uma das etapas mais importantes da construção de um software.
+
+## O que é ESLint?
+
+**ESLint** é uma ferramenta de _linting_ desenvolvida especificamente para **JavaScript**. Possui uma grande quantidade de regras pré-definidas e é completamente customizável através de _plugins_.
+
+Para mais informações, acesse o site oficial do [ESLint](https://eslint.org/).
+
+## O que é Prettier?
+
+**Prettier** é um formatador de códigos com suporte a muitas linguagens e possui integração com a maioria dos editores de código. Seu objetivo é fazer com que o código seja formatado de maneira sólida e consistente.
+
+O Prettier pode ser integrado ao ESLint para sobrescrever as regras definidas pelo ESLint.
+
+Para mais informações, acesse o site oficial do [Prettier](https://prettier.io/).
+
+## Pensando em Monorepo
+
+Uma das vantagens do Monorepo é a **reutilização de código**. Funcionalidades compartilhadas podem ser facilmente extraídas em uma aplicação separada e reutilizadas em outras aplicações.
+
+Pensando nesse cenário, podemos concluir que é mais vantajoso configurar o ESLint e o Prettier uma vez e reutilizar nas demais aplicações.
+
+O ESLint permite o [compartilhamento de configurações](https://eslint.org/docs/developer-guide/shareable-configs) e é exatamente isso que iremos utilizar no nosso Monorepo.
+
+Nesse tutorial, iremos utilizar um Monorepo com duas aplicações extremamente simples:
+
+- `sum`: biblioteca que exporta uma funcionalidade para somar dois números
+- `calc`: aplicação que utiliza a funcionalidade de soma
+
+O código fonte do Monorepo que será utilizado está [no meu GitHub](https://github.com/robertoachar/monorepo).
+
+## Integrando o ESLint no Monorepo
+
+Os processos para integrar o ESLint no Monorepo são:
+
+1. Criar uma nova aplicação
+2. Exportar as configurações do ESLint
+3. Utilizar as configurações nas outras aplicações
+
+### Criando a nova aplicação
+
+Crie o diretório `eslint-config-node` dentro do diretório `packages`, abra o diretório `eslint-config-node` no Terminal e digite `yarn init -y`. Esse comando inicializa uma nova aplicação `Node` no diretório `eslint-config-node`.
+
+```json
+{
+  "name": "eslint-config-node",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT"
+}
+```
+
+Altere o nome da aplicação para `@monorepo/eslint-config-node`.
+
+```json
+{
+  "name": "@monorepo/eslint-config-node"
+}
+```
+
+Abra o Terminal no diretório `eslint-config-node` e instale o ESLint:
+
+```bash
+$ yarn add eslint
+```
+
+**package.json**
+
+```json
+{
+  "dependencies": {
+    "eslint": "6.5.1"
+  }
+}
+```
+
+### Exportando as configurações do ESLint
+
+Crie os arquivos `.eslintrc.json`, `.eslintignore` e `index.js` no diretório `eslint-config-node`.
+
+**.eslintrc.json** é o arquivo responsável pela definição das regras do ESLint.
+
+```json
+{
+  "extends": ["eslint:recommended"],
+  "env": {
+    "es6": true,
+    "node": true
+  }
+}
+```
+
+**.eslintignore** é o arquivo responsável por informar ao ESLint quais arquivos ou diretórios devem ser ignorados.
+
+```text
+node_modules
+```
+
+**index.js** é o arquivo responsável por exportar as regras do ESLint.
+
+```javascript
+const config = require('./.eslintrc.json');
+
+module.exports = config;
+```
+
+Edite o arquivo `package.json` do diretório `eslint-config-node` e adicione o script lint.
+
+```json
+{
+  "scripts": {
+    "lint": "eslint ."
+  }
+}
+```
+
+Para executar o _lint_ e testar se tudo está funcionando, abra o Terminal no diretório `eslint-config-node` e digite:
+
+```bash
+$ yarn lint
+```
+
+### Utilizando as configurações nas outras aplicações
+
+Para utilizar as configurações nas outras aplicações, repita os passos abaixo para os diretórios `calc` e `sum`.
+
+Abra o Terminal no diretório da aplicação e digite:
+
+```bash
+$ yarn add @monorepo/eslint-config-node@1.0.0
+```
+
+**package.json**
+
+```json
+{
+  "dependencies": {
+    "@monorepo/eslint-config-node": "1.0.0"
+  }
+}
+```
+
+Crie os arquivos `.eslintrc.json` e `.eslintignore` no diretório da aplicação.
+
+**.eslintrc.json**
+
+```json
+{
+  "extends": ["@monorepo/node"]
+}
+```
+
+**.eslintignore**
+
+```text
+node_modules
+```
+
+Edite o arquivo `package.json` do diretório da aplicação e adicione o script lint.
+
+```json
+{
+  "scripts": {
+    "lint": "eslint ."
+  }
+}
+```
+
+Para executar o _lint_ e testar se tudo está funcionando, abra o Terminal no diretório da aplicação e digite:
+
+```bash
+$ yarn lint
+```
+
+## Integrando o Prettier no Monorepo
+
+Os processos para integrar o Prettier no Monorepo são:
+
+1. Instalar as dependências
+2. Definir as regras
+
+### Instalando as dependências
+
+Abra o Terminal no diretório `eslint-config-node` e digite:
+
+```bash
+$ yarn add prettier eslint-config-prettier eslint-plugin-prettier
+```
+
+**package.json**
+
+```json
+{
+  "dependencies": {
+    "eslint": "6.5.1",
+    "eslint-config-prettier": "6.4.0",
+    "eslint-plugin-prettier": "3.1.1",
+    "prettier": "1.18.2"
+  }
+}
+```
+
+### Definindo as regras
+
+Edite o arquivo `.eslintrc.json` do diretório `eslint-config-node` para adicionar as regras do Prettier.
+
+```json
+{
+  "extends": ["eslint:recommended", "plugin:prettier/recommended"],
+  "env": {
+    "es6": true,
+    "node": true
+  },
+  "rules": {
+    "prettier/prettier": [
+      "error",
+      {
+        "singleQuote": true
+      }
+    ]
+  }
+}
+```
+
+Abra o Terminal no diretório raíz e digite:
+
+```bash
+$ yarn lint
+```
+
+**Output**
+
+```bash
+yarn run v1.19.1
+$ yarn lint:calc & yarn lint:sum
+$ yarn workspace @monorepo/calc lint
+$ yarn workspace @monorepo/sum lint
+$ eslint .
+$ eslint .
+✨  Done in 1.88s.
+```
+
+## Configurando os scripts
+
+Edite o arquivo `package.json` do diretório raíz e adicione os scripts de `lint`.
+
+```json
+{
+  "scripts": {
+    "lint": "yarn lint:calc & yarn lint:sum",
+    "lint:calc": "yarn workspace @monorepo/calc lint",
+    "lint:sum": "yarn workspace @monorepo/sum lint"
+  }
+}
+```
+
+Abra o Terminal no diretório raíz e digite:
+
+```bash
+$ yarn lint
+```
+
+**Output**
+
+```bash
+yarn run v1.19.1
+$ yarn lint:calc & yarn lint:sum
+$ yarn workspace @monorepo/calc lint
+$ yarn workspace @monorepo/sum lint
+$ eslint .
+$ eslint .
+✨  Done in 1.85s.
+```
+
+## Reutilizando as configurações
+
+Caso você queira alterar as regras do ESLint, você só precisa alterar em um lugar: `eslint-config-node`.
+
+Vamos supor que você não queira permitir o uso do `console` nas suas aplicações. Edite o arquivo `.eslintrc.json` do diretório `eslint-config-node` e adicione a nova regra.
+
+```json
+{
+  "rules": {
+    "no-console": "error"
+  }
+}
+```
+
+Abra o Terminal no diretório raíz e digite:
+
+```bash
+$ yarn lint
+```
+
+**Output**
+
+```bash
+...
+/Users/robertoachar/github/monorepo-eslint-prettier/packages/sum/index.js
+  4:3  error  Unexpected console statement  no-console
+
+✖ 1 problem (1 error, 0 warnings)
+
+
+/Users/robertoachar/github/monorepo-eslint-prettier/packages/calc/index.js
+  6:1  error  Unexpected console statement  no-console
+
+✖ 1 problem (1 error, 0 warnings)
+...
+```
+
+## Conclusão
+
+Essa é uma das maneiras de configurar o ESLint e o Prettier em um Monorepo. Não há necessidade de instalar, configurar e executar o _lint_ em cada uma das aplicações separadamente. Basta extrair a funcionalidade em uma aplicação separada e reutilizar nas outras aplicações.
+
+Caso queira dar uma olhada no código final desse tutorial e acompanhar a sequência de commits: [https://github.com/robertoachar/monorepo-eslint-prettier](https://github.com/robertoachar/monorepo-eslint-prettier).
+
+**Próximos passos**
+
+- Ler a documentação do [ESLint](https://eslint.org/)
+- Ler a documentação do [Prettier](https://prettier.io/)
