@@ -41,6 +41,11 @@ const links = [
     label: 'Blog',
     to: '/blog',
     partial: true
+  },
+  {
+    label: 'Open Source',
+    to: '/open-source',
+    partial: true
   }
 ];
 
