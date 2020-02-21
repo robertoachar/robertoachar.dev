@@ -43,11 +43,6 @@ const links = [
     href: 'https://www.linkedin.com/in/roberto-achar',
     icon: ['fab', 'linkedin']
   }
-  // {
-  //   label: 'Facebook',
-  //   href: 'https://facebook.com/robertoachar',
-  //   icon: ['fab', 'facebook']
-  // }
 ];
 
 const SocialMedia = () => (
