@@ -1,7 +1,3 @@
-require('dotenv').config();
-
-// const queries = require('./alogia-config');
-
 module.exports = {
   siteMetadata: {
     title: 'Roberto Achar',
